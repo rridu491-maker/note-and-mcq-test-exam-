@@ -3,382 +3,1105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#a23b3b">
+<meta name="theme-color" content="#4f46e5">
 <title>আমার পরীক্ষার প্রস্তুতি</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
 <style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   :root {
-    --paper: #faf7ef;
-    --rule: #eae2cc;
-    --margin: #a23b3b;
-    --ink: #2a2a26;
-    --ink-soft: #7a7566;
-    --pen: #263d5c;
-    --pen-dark: #1a2b40;
-    --tick: #2e6b45;
-    --tick-bg: #eef4ee;
-    --cross-bg: #f7ecec;
-    --gold: #9c6b1f;
-    --gold-bg: #f6ecd6;
+    --ink: #1e293b;
+    --ink-soft: #64748b;
+    --ink-mute: #94a3b8;
+    --border: #e2e8f0;
+    --card: #ffffff;
+    --primary: #4f46e5;
+    --primary-soft: #eef2ff;
+    --primary-dark: #4338ca;
+    --success: #16a34a;
+    --success-soft: #f0fdf4;
+    --danger: #dc2626;
+    --danger-soft: #fef2f2;
+    --warning: #d97706;
+    --warning-soft: #fffbeb;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,0.05);
+    --shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 14px rgba(15,23,42,0.05);
+    --shadow-lg: 0 8px 30px rgba(15,23,42,0.10);
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background-color: var(--paper);
-    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--rule) 27px, var(--rule) 28px);
+  html, body {
+    margin: 0; padding: 0; min-height: 100vh;
+    font-family: 'Hind Siliguri', -apple-system, "Segoe UI", Roboto, sans-serif;
     color: var(--ink);
-    font-family: 'Hind Siliguri', -apple-system, "Segoe UI", "Noto Sans Bengali", Roboto, sans-serif;
-    min-height: 100vh;
+    background: #f5f7fb;
+    background-image:
+      radial-gradient(circle at 0% 0%, #eef2ff 0%, transparent 45%),
+      radial-gradient(circle at 100% 0%, #fdf2f8 0%, transparent 40%),
+      linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
   }
-  button:focus-visible, input:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--pen); outline-offset: 2px;
+  #app { max-width: 560px; margin: 0 auto; padding: 20px 16px 80px; }
+  button { font-family: inherit; cursor: pointer; }
+  input, textarea { font-family: inherit; }
+
+  .hero {
+    padding: 4px 4px 22px;
   }
-  #app { max-width: 560px; margin: 0 auto; padding: 24px 18px 60px 22px; border-left: 3px solid var(--margin); min-height: 100vh; }
-  .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-  .back-btn {
-    background: none; border: 1.5px solid var(--ink); color: var(--ink);
-    width: 34px; height: 34px; border-radius: 6px; font-size: 16px; cursor: pointer; flex-shrink: 0;
-  }
-  .page-title { font-size: 18px; font-weight: 700; margin: 0; }
-  .app-title {
+  .hero h1 {
     font-family: 'Tiro Bangla', Georgia, serif;
-    font-size: 25px; font-weight: 700; color: var(--pen-dark);
-    padding-bottom: 12px; margin: 4px 0 20px; border-bottom: 2px solid var(--margin);
+    font-size: 26px; font-weight: 700; margin: 0 0 6px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .row { display: flex; align-items: center; gap: 12px; padding: 14px 2px; border-bottom: 1px solid var(--rule); cursor: pointer; }
-  .row:active { background: rgba(38,61,92,0.05); }
-  .row-num {
-    width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink);
-    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0;
+  .hero p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
+
+  .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .back-btn {
+    background: var(--card); border: 1px solid var(--border); color: var(--ink);
+    width: 38px; height: 38px; border-radius: 12px; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-sm); flex-shrink: 0;
   }
+  .back-btn:active { transform: scale(0.95); }
+  .page-title { font-size: 18px; font-weight: 700; margin: 0; flex: 1; }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    border: 1px solid rgba(226,232,240,0.6);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card.tappable { cursor: pointer; }
+  .card.tappable:active { transform: scale(0.985); box-shadow: var(--shadow-sm); }
+
+  .row { display: flex; align-items: center; gap: 14px; }
   .row-main { flex: 1; min-width: 0; }
-  .row-title { font-weight: 700; font-size: 15.5px; }
-  .row-sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  .link-del { background: none; border: none; font-size: 12.5px; cursor: pointer; color: var(--ink-soft); text-decoration: underline; padding: 4px 0 4px 6px; flex-shrink: 0; }
+  .row-title { font-weight: 700; font-size: 15.5px; color: var(--ink); }
+  .row-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+
+  .badge-num {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary), #7c3aed);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(79,70,229,0.25);
+  }
+  .badge-num.warn { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 12px rgba(217,119,6,0.25); }
+  .badge-num.danger { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 4px 12px rgba(220,38,38,0.25); }
+  .badge-num.trash { background: linear-gradient(135deg, #64748b, #475569); box-shadow: 0 4px 12px rgba(71,85,105,0.2); }
+
+  .chip {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; margin-left: 6px;
+  }
+  .chip.green { background: var(--success-soft); color: var(--success); }
+  .chip.red { background: var(--danger-soft); color: var(--danger); }
+  .chip.amber { background: var(--warning-soft); color: var(--warning); }
+
+  .del-btn {
+    background: none; border: none; color: var(--ink-mute);
+    font-size: 12.5px; padding: 8px; cursor: pointer; flex-shrink: 0;
+  }
+  .del-btn:hover { color: var(--danger); }
+
   .btn {
-    display: block; width: 100%; padding: 13px; border-radius: 6px; border: 1.5px solid var(--pen);
-    background: var(--paper); color: var(--pen); font-size: 14.5px; font-weight: 700;
-    cursor: pointer; text-align: center; margin-bottom: 10px; font-family: inherit;
+    display: block; width: 100%; padding: 14px; border-radius: 12px;
+    border: none; font-size: 15px; font-weight: 700; cursor: pointer;
+    text-align: center; margin-bottom: 10px;
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
   }
-  .btn-solid { background: var(--pen); color: #fff; }
-  .btn-quiet { border-color: var(--rule); color: var(--ink-soft); }
-  .btn-stamp {
-    display: block; width: 100%; background: var(--gold-bg); border: 2px dashed var(--gold);
-    color: var(--gold); font-weight: 700; font-size: 15px; letter-spacing: .02em;
-    padding: 16px; border-radius: 4px; cursor: pointer; transform: rotate(-1deg);
-    margin: 22px 0 8px; font-family: inherit;
+  .btn:active { transform: scale(0.98); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), #6366f1);
+    color: #fff; box-shadow: 0 6px 20px rgba(79,70,229,0.30);
   }
-  .btn-stamp:disabled { opacity: .4; transform: none; cursor: not-allowed; }
-  .choice-row { display: flex; align-items: center; gap: 14px; padding: 16px 2px; border-bottom: 1px solid var(--rule); cursor: pointer; }
-  .choice-row .mark {
-    width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--pen);
-    display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--pen); flex-shrink: 0;
+  .btn-outline {
+    background: var(--card); color: var(--primary);
+    border: 1.5px solid var(--primary); box-shadow: var(--shadow-sm);
   }
-  .choice-row .label { font-weight: 700; font-size: 15px; }
-  .choice-row .sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  textarea, input[type=text] {
-    width: 100%; padding: 11px 10px; border: 1.5px solid var(--rule); border-radius: 6px;
-    font-size: 14px; margin-bottom: 10px; font-family: inherit; background: #fff; color: var(--ink);
+  .btn-quiet {
+    background: var(--card); color: var(--ink-soft);
+    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   }
-  textarea:focus, input[type=text]:focus { outline: none; border-color: var(--pen); }
-  .opt-input-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff; box-shadow: 0 6px 20px rgba(220,38,38,0.25);
+  }
+  .btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.25);
+  }
+
+  .section-label {
+    font-size: 12px; font-weight: 700; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin: 22px 4px 10px;
+  }
+
+  input[type=text], textarea {
+    width: 100%; padding: 13px 14px; border: 1.5px solid var(--border);
+    border-radius: 12px; font-size: 14.5px; margin-bottom: 10px;
+    background: var(--card); color: var(--ink); transition: border-color 0.15s;
+  }
+  input[type=text]:focus, textarea:focus {
+    outline: none; border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+  }
+
+  .opt-input-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
   .opt-input-row input[type=text] { margin-bottom: 0; }
-  .opt-row {
-    display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
-    padding: 11px 2px; border: none; border-bottom: 1px solid var(--rule); background: none;
-    font-size: 14.5px; font-family: inherit; color: var(--ink); cursor: pointer;
+  .opt-input-row input[type=radio] {
+    accent-color: var(--primary); width: 20px; height: 20px; flex-shrink: 0;
   }
+  .opt-letter {
+    font-weight: 700; width: 18px; flex-shrink: 0;
+    color: var(--ink-soft); font-size: 14px;
+  }
+
+  .opt-row {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    padding: 14px; border: 1.5px solid var(--border); border-radius: 12px;
+    background: var(--card); font-size: 15px; color: var(--ink);
+    cursor: pointer; margin-bottom: 10px; transition: all 0.15s ease;
+  }
+  .opt-row:active:not(:disabled) { transform: scale(0.985); }
   .opt-row:disabled { cursor: default; }
   .opt-bubble {
-    width: 29px; height: 29px; border-radius: 50%; border: 1.5px solid var(--ink);
-    display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; flex-shrink: 0; color: var(--ink);
+    width: 34px; height: 34px; border-radius: 10px;
+    background: var(--primary-soft); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13.5px; font-weight: 700; flex-shrink: 0;
   }
-  .opt-row.correct { color: var(--tick); }
-  .opt-row.correct .opt-bubble { background: var(--tick); border-color: var(--tick); color: #fff; }
-  .opt-row.wrong { color: var(--margin); }
-  .opt-row.wrong .opt-bubble { background: var(--margin); border-color: var(--margin); color: #fff; }
-  .q-progress { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 8px; }
-  .q-rule { height: 1px; background: var(--rule); margin-bottom: 18px; }
-  .q-text { font-size: 16.5px; font-weight: 700; line-height: 1.55; margin-bottom: 18px; }
-  .result-wrap { text-align: center; padding: 26px 10px 16px; }
-  .result-num { font-family: 'Tiro Bangla', Georgia, serif; font-size: 42px; font-weight: 700; color: var(--pen-dark); margin-top: 8px; }
-  .result-pct { display: inline-block; margin-top: 14px; padding: 4px 14px; border: 1.5px solid var(--rule); border-radius: 20px; font-size: 13px; color: var(--ink-soft); }
-  .empty-state { text-align: center; color: var(--ink-soft); padding: 26px 10px; font-size: 13px; line-height: 1.6; }
-  .qa-item { padding: 12px 2px; border-bottom: 1px solid var(--rule); }
-  .qa-q { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
-  .qa-opt { font-size: 12.5px; color: var(--ink-soft); padding: 2px 0; }
-  .qa-opt.is-correct { color: var(--tick); font-weight: 700; }
-  .section-label { font-size: 12px; font-weight: 700; color: var(--ink-soft); margin: 20px 0 8px; }
-  .note-banner { background: var(--cross-bg); color: var(--margin); padding: 9px 12px; border-radius: 6px; font-size: 12.5px; margin-bottom: 10px; border: 1px solid var(--margin); }
+  .opt-row.correct {
+    border-color: var(--success); background: var(--success-soft);
+    color: #166534;
+  }
+  .opt-row.correct .opt-bubble { background: var(--success); color: #fff; }
+  .opt-row.wrong {
+    border-color: var(--danger); background: var(--danger-soft);
+    color: #991b1b;
+  }
+  .opt-row.wrong .opt-bubble { background: var(--danger); color: #fff; }
+
+  .q-progress {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12.5px; color: var(--ink-soft); margin-bottom: 10px;
+    padding: 0 4px;
+  }
+  .q-progress .score-pill {
+    background: var(--primary-soft); color: var(--primary);
+    padding: 3px 10px; border-radius: 20px; font-weight: 700;
+  }
+  .progress-bar {
+    height: 6px; background: var(--border); border-radius: 3px;
+    overflow: hidden; margin-bottom: 22px;
+  }
+  .progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--primary), #7c3aed);
+    border-radius: 3px; transition: width 0.3s ease;
+  }
+  .q-text {
+    font-size: 17.5px; font-weight: 700; line-height: 1.55;
+    margin-bottom: 20px; padding: 0 4px;
+  }
+
+  .result-wrap { text-align: center; padding: 20px 10px; }
+  .result-circle {
+    width: 140px; height: 140px; border-radius: 50%;
+    margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--primary), #7c3aed);
+    box-shadow: 0 12px 40px rgba(79,70,229,0.30);
+    color: #fff;
+  }
+  .result-circle.good { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 12px 40px rgba(16,185,129,0.30); }
+  .result-circle.bad { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 12px 40px rgba(220,38,38,0.30); }
+  .result-circle .num { font-size: 38px; font-weight: 800; line-height: 1; }
+  .result-circle .lbl { font-size: 13px; opacity: 0.9; margin-top: 6px; }
+  .result-title { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
+  .result-sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 26px; }
+
+  .empty-state {
+    text-align: center; color: var(--ink-mute); padding: 40px 20px;
+    font-size: 14px; line-height: 1.7;
+  }
+  .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
+
+  .qa-item {
+    padding: 14px; border-radius: 12px; background: var(--card);
+    border: 1px solid var(--border); margin-bottom: 10px;
+  }
+  .qa-q { font-weight: 700; font-size: 14.5px; margin-bottom: 10px; line-height: 1.5; }
+  .qa-opt {
+    font-size: 13.5px; color: var(--ink-soft);
+    padding: 5px 0; display: flex; align-items: center; gap: 8px;
+  }
+  .qa-opt.is-correct { color: var(--success); font-weight: 700; }
+  .qa-opt .letter {
+    display: inline-flex; width: 22px; height: 22px;
+    background: var(--primary-soft); color: var(--primary);
+    border-radius: 6px; align-items: center; justify-content: center;
+    font-size: 11.5px; font-weight: 700; flex-shrink: 0;
+  }
+  .qa-opt.is-correct .letter { background: var(--success); color: #fff; }
+
+  .note-banner {
+    background: var(--danger-soft); color: var(--danger);
+    padding: 12px 14px; border-radius: 10px; font-size: 13px;
+    margin-bottom: 12px; border: 1px solid #fecaca;
+  }
+  .info-banner {
+    background: var(--primary-soft); color: var(--primary-dark);
+    padding: 12px 14px; border-radius: 10px; font-size: 13px;
+    margin-bottom: 12px; border: 1px solid #c7d2fe; line-height: 1.6;
+  }
+
+  .trash-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px; background: var(--card); border-radius: 12px;
+    border: 1px solid var(--border); margin-bottom: 10px;
+  }
+  .trash-info { flex: 1; min-width: 0; }
+  .trash-name { font-weight: 700; font-size: 14px; }
+  .trash-meta { font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; }
+  .trash-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 10px; border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; cursor: pointer;
+  }
+  .icon-btn.restore { background: var(--success-soft); color: var(--success); }
+  .icon-btn.kill { background: var(--danger-soft); color: var(--danger); }
+
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; z-index: 100; backdrop-filter: blur(4px);
+  }
+  .modal {
+    background: var(--card); border-radius: 18px; padding: 24px;
+    max-width: 380px; width: 100%; box-shadow: var(--shadow-lg);
+  }
+  .modal h3 { margin: 0 0 10px; font-size: 17px; }
+  .modal p { margin: 0 0 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
 </style>
 </head>
 <body>
 <div id="app"></div>
+
 <script>
-// ---------- Storage: works normally on GitHub Pages; falls back to in-memory if a preview sandbox blocks it ----------
-var memoryFallback = null;
+/* =====================================================
+   STORAGE & DATA
+===================================================== */
+const STORAGE_KEY = 'examStudyAppData_v2';
+const TRASH_TTL_DAYS = 30;
+const LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
+const MAX_FINAL_TEST = 40;
+
+let memoryFallback = null;
+
 function defaultData() {
-  var names = ['বিষয় ১', 'বিষয় ২', 'বিষয় ৩', 'বিষয় ৪'];
-  var subjects = names.map(function (name, i) { return { id: 'subj-' + (i + 1), name: name, chapters: [] }; });
-  subjects[0].chapters.push({
-    id: 'demo-ch',
-    name: 'অধ্যায় ১ (উদাহরণ)',
-    questions: [
-      { id: 'demo-q1', text: 'বাংলাদেশের রাজধানীর নাম কী?', options: ['চট্টগ্রাম', 'ঢাকা', 'খুলনা', 'রাজশাহী'], correct: 1 },
-      { id: 'demo-q2', text: 'বাংলাদেশ স্বাধীন হয় কোন সালে?', options: ['১৯৬৯', '১৯৭০', '১৯৭১', '১৯৭২'], correct: 2 }
-    ]
-  });
-  return { subjects: subjects };
+  return {
+    subjects: [
+      { id: 'subj-1', name: 'বিষয় ১', chapters: [] },
+      { id: 'subj-2', name: 'বিষয় ২', chapters: [] },
+      { id: 'subj-3', name: 'বিষয় ৩', chapters: [] },
+      { id: 'subj-4', name: 'বিষয় ৪', chapters: [] }
+    ],
+    wrongQuestions: [],
+    trash: []
+  };
 }
+
 function loadData() {
   if (memoryFallback) return memoryFallback;
   try {
-    var raw = localStorage.getItem('examStudyAppData');
+    const raw = localStorage.getItem(STORAGE_KEY);
     memoryFallback = raw ? JSON.parse(raw) : defaultData();
-  } catch (e) { memoryFallback = defaultData(); }
+    if (!memoryFallback.wrongQuestions) memoryFallback.wrongQuestions = [];
+    if (!memoryFallback.trash) memoryFallback.trash = [];
+    purgeOldTrash();
+  } catch (e) {
+    memoryFallback = defaultData();
+  }
   return memoryFallback;
 }
-function saveData() {
-  try { localStorage.setItem('examStudyAppData', JSON.stringify(memoryFallback)); }
-  catch (e) { /* blocked in some preview sandboxes; saves normally once hosted on GitHub Pages */ }
-}
-var data = loadData();
-var state = { screen: 'home', subjectId: null, chapterId: null, mode: null, addingSubject: false, addingChapter: false, noteError: null };
-var LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
 
-function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
-function findSubject(id) { return data.subjects.find(function (s) { return s.id === id; }); }
-function findChapter(subj, id) { return subj.chapters.find(function (c) { return c.id === id; }); }
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(memoryFallback));
+  } catch (e) {
+    alert('⚠️ ডেটা সেভ করা যাচ্ছে না। স্টোরেজ প্রায় ভরে গেছে।\n\nএকটি ব্যাকআপ ডাউনলোড করে কিছু পুরনো প্রশ্ন মুছে ফেলুন।');
+  }
+}
+
+function purgeOldTrash() {
+  const now = Date.now();
+  const ttl = TRASH_TTL_DAYS * 24 * 60 * 60 * 1000;
+  memoryFallback.trash = memoryFallback.trash.filter(item => (now - item.deletedAt) < ttl);
+  saveData();
+}
+
+/* =====================================================
+   HELPERS
+===================================================== */
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function findSubject(id) { return data.subjects.find(s => s.id === id); }
+function findChapter(subj, id) { return subj ? subj.chapters.find(c => c.id === id) : null; }
 function allQuestionsOfSubject(subj) {
-  var qs = [];
-  subj.chapters.forEach(function (ch) { ch.questions.forEach(function (q) { qs.push(q); }); });
+  const qs = [];
+  subj.chapters.forEach(ch => ch.questions.forEach(q => qs.push({ q, chapterId: ch.id, chapterName: ch.name })));
   return qs;
 }
 function shuffle(arr) {
-  var a = arr.slice();
-  for (var i = a.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var t = a[i]; a[i] = a[j]; a[j] = t;
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
 function escapeHtml(str) {
-  var d = document.createElement('div');
+  const d = document.createElement('div');
   d.innerText = str;
   return d.innerHTML;
 }
+function fmtDate(ts) {
+  const d = new Date(ts);
+  return d.toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+/* =====================================================
+   STATE
+===================================================== */
+let data = loadData();
+const state = {
+  screen: 'home',
+  subjectId: null,
+  chapterId: null,
+  mode: null,          // 'chapter' | 'final' | 'wrong'
+  quizQuestions: [],
+  quizIndex: 0,
+  quizScore: 0,
+  quizAnswered: null,
+  quizWrongIds: [],     // question ids wrong in this quiz session
+  addingSubject: false,
+  addingChapter: false,
+  noteError: null,
+  modal: null
+};
+
 function goto(screen, opts) {
   state.screen = screen;
   if (opts) Object.assign(state, opts);
   render();
   window.scrollTo(0, 0);
 }
-function topbar(title, backScreen) {
-  return '<div class="topbar"><button class="back-btn" onclick="goto(\'' + backScreen + '\')">←</button><h1 class="page-title">' + title + '</h1></div>';
-}
+
+/* =====================================================
+   RENDER ROOT
+===================================================== */
 function render() {
-  var app = document.getElementById('app');
-  var fn = { home: renderHome, subject: renderSubject, chapter: renderChapter, notes: renderNotes, quiz: renderQuiz, result: renderResult }[state.screen];
-  app.innerHTML = fn();
+  const app = document.getElementById('app');
+  const fn = {
+    home: renderHome,
+    subject: renderSubject,
+    chapter: renderChapter,
+    notes: renderNotes,
+    quiz: renderQuiz,
+    result: renderResult,
+    wrongList: renderWrongList,
+    trash: renderTrash,
+    backup: renderBackup
+  }[state.screen];
+  app.innerHTML = fn() + (state.modal ? renderModal() : '');
 }
 
-// ---------- Home ----------
+function topbar(title, backScreen) {
+  return `<div class="topbar">
+    <button class="back-btn" onclick="goto('${backScreen}')">←</button>
+    <h1 class="page-title">${title}</h1>
+  </div>`;
+}
+
+/* =====================================================
+   HOME
+===================================================== */
 function renderHome() {
-  var html = '<div class="app-title">আমার পরীক্ষার প্রস্তুতি</div>';
-  data.subjects.forEach(function (s, i) {
-    var totalQ = allQuestionsOfSubject(s).length;
-    html += '<div class="row" onclick="goto(\'subject\',{subjectId:\'' + s.id + '\'})">'
-      + '<div class="row-num">' + (i + 1) + '</div>'
-      + '<div class="row-main"><div class="row-title">' + escapeHtml(s.name) + '</div>'
-      + '<div class="row-sub">' + s.chapters.length + ' অধ্যায় · ' + totalQ + ' প্রশ্ন</div></div>'
-      + '<button class="link-del" onclick="event.stopPropagation();deleteSubject(\'' + s.id + '\')">মুছুন</button></div>';
-  });
-  if (state.addingSubject) {
-    html += '<input type="text" id="newSubjectName" placeholder="সাবজেক্টের নাম লেখো" style="margin-top:14px;">'
-      + '<button class="btn btn-solid" onclick="confirmAddSubject()">যোগ করো</button>'
-      + '<button class="btn btn-quiet" onclick="state.addingSubject=false;render();">বাতিল</button>';
+  let html = `<div class="hero">
+    <h1>আমার পরীক্ষার প্রস্তুতি</h1>
+    <p>প্রশ্ন যোগ করুন · প্র্যাকটিস করুন · ভুল থেকে শিখুন</p>
+  </div>`;
+
+  // Subjects
+  html += `<div class="section-label">সাবজেক্ট সমূহ</div>`;
+  if (data.subjects.length === 0) {
+    html += `<div class="empty-state"><span class="emoji">📚</span>এখনো কোনো সাবজেক্ট নেই।<br>নিচে থেকে প্রথম সাবজেক্ট যোগ করুন।</div>`;
   } else {
-    html += '<button class="btn btn-quiet" style="margin-top:14px;" onclick="state.addingSubject=true;render();">+ নতুন সাবজেক্ট</button>';
+    data.subjects.forEach((s, i) => {
+      const totalQ = allQuestionsOfSubject(s).length;
+      html += `<div class="card tappable" onclick="goto('subject',{subjectId:'${s.id}'})">
+        <div class="row">
+          <div class="badge-num">${i + 1}</div>
+          <div class="row-main">
+            <div class="row-title">${escapeHtml(s.name)}</div>
+            <div class="row-sub">${s.chapters.length} অধ্যায় · ${totalQ} প্রশ্ন</div>
+          </div>
+          <button class="del-btn" onclick="event.stopPropagation();askDeleteSubject('${s.id}')">🗑️</button>
+        </div>
+      </div>`;
+    });
   }
+
+  if (state.addingSubject) {
+    html += `<input type="text" id="newSubjectName" placeholder="সাবজেক্টের নাম লিখুন" style="margin-top:12px;">
+      <button class="btn btn-primary" onclick="confirmAddSubject()">যোগ করুন</button>
+      <button class="btn btn-quiet" onclick="state.addingSubject=false;render();">বাতিল</button>`;
+  } else {
+    html += `<button class="btn btn-outline" onclick="state.addingSubject=true;render();">+ নতুন সাবজেক্ট</button>`;
+  }
+
+  // Quick actions
+  html += `<div class="section-label">দ্রুত অ্যাকশন</div>`;
+  const wrongCount = data.wrongQuestions.length;
+  html += `<div class="card tappable" onclick="goto('wrongList')">
+    <div class="row">
+      <div class="badge-num danger">✕</div>
+      <div class="row-main">
+        <div class="row-title">ভুল প্রশ্ন প্র্যাকটিস<span class="chip red">${wrongCount}</span></div>
+        <div class="row-sub">শুধু যেগুলো ভুল করেছেন সেগুলো আবার প্র্যাকটিস করুন</div>
+      </div>
+    </div>
+  </div>`;
+
+  const trashCount = data.trash.length;
+  html += `<div class="card tappable" onclick="goto('trash')">
+    <div class="row">
+      <div class="badge-num trash">🗑️</div>
+      <div class="row-main">
+        <div class="row-title">রিসাইকেল বিন<span class="chip amber">${trashCount}</span></div>
+        <div class="row-sub">ডিলিট করা জিনিস ৩০ দিন পর্যন্ত এখানে থাকবে</div>
+      </div>
+    </div>
+  </div>`;
+
+  html += `<div class="card tappable" onclick="goto('backup')">
+    <div class="row">
+      <div class="badge-num">💾</div>
+      <div class="row-main">
+        <div class="row-title">ব্যাকআপ ও রিস্টোর</div>
+        <div class="row-sub">ডেটা ডাউনলোড / আপলোড / রিসেট</div>
+      </div>
+    </div>
+  </div>`;
+
   return html;
 }
+
 function confirmAddSubject() {
-  var name = document.getElementById('newSubjectName').value.trim();
+  const name = document.getElementById('newSubjectName').value.trim();
   if (!name) return;
-  data.subjects.push({ id: uid(), name: name, chapters: [] });
+  data.subjects.push({ id: uid(), name, chapters: [] });
   state.addingSubject = false;
   saveData(); render();
 }
-function deleteSubject(id) {
-  data.subjects = data.subjects.filter(function (s) { return s.id !== id; });
-  saveData(); render();
-}
 
-// ---------- Subject ----------
+/* =====================================================
+   SUBJECT
+===================================================== */
 function renderSubject() {
-  var s = findSubject(state.subjectId);
-  var totalQ = allQuestionsOfSubject(s).length;
-  var testCount = Math.min(40, totalQ);
-  var html = topbar(escapeHtml(s.name), 'home');
+  const s = findSubject(state.subjectId);
+  if (!s) { goto('home'); return ''; }
+  const totalQ = allQuestionsOfSubject(s).length;
+  const testCount = Math.min(MAX_FINAL_TEST, totalQ);
+
+  let html = topbar(escapeHtml(s.name), 'home');
+
   if (s.chapters.length === 0) {
-    html += '<div class="empty-state">এখনো কোনো অধ্যায় নেই।<br>নিচে থেকে প্রথম অধ্যায় যোগ করো।</div>';
+    html += `<div class="empty-state"><span class="emoji">📖</span>এখনো কোনো অধ্যায় নেই।<br>নিচে থেকে প্রথম অধ্যায় যোগ করুন।</div>`;
   } else {
-    s.chapters.forEach(function (c, i) {
-      html += '<div class="row" onclick="goto(\'chapter\',{chapterId:\'' + c.id + '\'})">'
-        + '<div class="row-num">' + (i + 1) + '</div>'
-        + '<div class="row-main"><div class="row-title">' + escapeHtml(c.name) + '</div>'
-        + '<div class="row-sub">' + c.questions.length + ' প্রশ্ন</div></div>'
-        + '<button class="link-del" onclick="event.stopPropagation();deleteChapter(\'' + c.id + '\')">মুছুন</button></div>';
+    html += `<div class="section-label">অধ্যায় সমূহ</div>`;
+    s.chapters.forEach((c, i) => {
+      html += `<div class="card tappable" onclick="goto('chapter',{chapterId:'${c.id}'})">
+        <div class="row">
+          <div class="badge-num">${i + 1}</div>
+          <div class="row-main">
+            <div class="row-title">${escapeHtml(c.name)}</div>
+            <div class="row-sub">${c.questions.length} প্রশ্ন</div>
+          </div>
+          <button class="del-btn" onclick="event.stopPropagation();askDeleteChapter('${c.id}')">🗑️</button>
+        </div>
+      </div>`;
     });
   }
+
   if (state.addingChapter) {
-    html += '<input type="text" id="newChapterName" placeholder="অধ্যায়ের নাম লেখো" style="margin-top:14px;">'
-      + '<button class="btn btn-solid" onclick="confirmAddChapter()">যোগ করো</button>'
-      + '<button class="btn btn-quiet" onclick="state.addingChapter=false;render();">বাতিল</button>';
+    html += `<input type="text" id="newChapterName" placeholder="অধ্যায়ের নাম লিখুন" style="margin-top:12px;">
+      <button class="btn btn-primary" onclick="confirmAddChapter()">যোগ করুন</button>
+      <button class="btn btn-quiet" onclick="state.addingChapter=false;render();">বাতিল</button>`;
   } else {
-    html += '<button class="btn btn-quiet" style="margin-top:14px;" onclick="state.addingChapter=true;render();">+ নতুন অধ্যায়</button>';
+    html += `<button class="btn btn-outline" onclick="state.addingChapter=true;render();">+ নতুন অধ্যায়</button>`;
   }
-  html += '<button class="btn-stamp" ' + (totalQ === 0 ? 'disabled' : '') + ' onclick="startFinalTest()">ফাইনাল মক টেস্ট · ' + testCount + ' নম্বর</button>';
-  if (totalQ === 0) html += '<div class="row-sub" style="text-align:center;margin-top:-4px;">প্রথমে কিছু প্রশ্ন যোগ করো</div>';
+
+  html += `<div class="section-label">মক টেস্ট</div>`;
+  html += `<button class="btn ${totalQ === 0 ? 'btn-quiet' : 'btn-primary'}" ${totalQ === 0 ? 'disabled' : ''} onclick="startFinalTest()">
+    🎯 ফাইনাল মক টেস্ট · ${testCount} নম্বর
+  </button>`;
+  if (totalQ === 0) html += `<div class="row-sub" style="text-align:center;margin-top:-4px;color:var(--ink-mute);">প্রথমে কিছু প্রশ্ন যোগ করুন</div>`;
+
   return html;
 }
+
 function confirmAddChapter() {
-  var name = document.getElementById('newChapterName').value.trim();
+  const name = document.getElementById('newChapterName').value.trim();
   if (!name) return;
-  var s = findSubject(state.subjectId);
-  s.chapters.push({ id: uid(), name: name, questions: [] });
+  const s = findSubject(state.subjectId);
+  s.chapters.push({ id: uid(), name, questions: [] });
   state.addingChapter = false;
   saveData(); render();
 }
-function deleteChapter(id) {
-  var s = findSubject(state.subjectId);
-  s.chapters = s.chapters.filter(function (c) { return c.id !== id; });
-  saveData(); render();
-}
 
-// ---------- Chapter ----------
+/* =====================================================
+   CHAPTER
+===================================================== */
 function renderChapter() {
-  var s = findSubject(state.subjectId);
-  var c = findChapter(s, state.chapterId);
-  var disabled = c.questions.length === 0;
-  var html = topbar(escapeHtml(c.name), 'subject');
-  html += '<div class="choice-row" style="' + (disabled ? 'opacity:.4;' : '') + '" onclick="' + (disabled ? '' : 'startChapterPractice()') + '">'
-    + '<div class="mark">✓</div><div><div class="label">MCQ Practice</div>'
-    + '<div class="sub">' + (disabled ? 'আগে প্রশ্ন যোগ করো' : c.questions.length + ' টি প্রশ্নে পরীক্ষা দাও') + '</div></div></div>';
-  html += '<div class="choice-row" onclick="goto(\'notes\')"><div class="mark">✎</div>'
-    + '<div><div class="label">নোট / প্রশ্ন ব্যাংক</div><div class="sub">প্রশ্ন যোগ করো বা দেখো</div></div></div>';
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  if (!c) { goto('subject'); return ''; }
+  const disabled = c.questions.length === 0;
+
+  let html = topbar(escapeHtml(c.name), 'subject');
+
+  html += `<div class="card tappable" onclick="${disabled ? '' : 'startChapterPractice()'}" style="${disabled ? 'opacity:0.5;' : ''}">
+    <div class="row">
+      <div class="badge-num">✓</div>
+      <div class="row-main">
+        <div class="row-title">MCQ প্র্যাকটিস</div>
+        <div class="row-sub">${disabled ? 'আগে প্রশ্ন যোগ করুন' : c.questions.length + ' টি প্রশ্নে পরীক্ষা দিন'}</div>
+      </div>
+    </div>
+  </div>`;
+
+  html += `<div class="card tappable" onclick="goto('notes')">
+    <div class="row">
+      <div class="badge-num">✎</div>
+      <div class="row-main">
+        <div class="row-title">নোট / প্রশ্ন ব্যাংক</div>
+        <div class="row-sub">নতুন প্রশ্ন যোগ করুন বা দেখুন</div>
+      </div>
+    </div>
+  </div>`;
+
   return html;
 }
 
-// ---------- Notes ----------
+/* =====================================================
+   NOTES (add/list questions)
+===================================================== */
 function renderNotes() {
-  var s = findSubject(state.subjectId);
-  var c = findChapter(s, state.chapterId);
-  var html = topbar('নোট', 'chapter');
-  html += '<div class="section-label">নতুন প্রশ্ন যোগ করো</div>';
-  if (state.noteError) html += '<div class="note-banner">' + state.noteError + '</div>';
-  html += '<textarea id="qtext" rows="2" placeholder="প্রশ্ন লেখো..."></textarea>';
-  for (var i = 0; i < 4; i++) {
-    html += '<div class="opt-input-row"><input type="radio" name="correctOpt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + ' style="accent-color:var(--pen);width:17px;height:17px;flex-shrink:0;">'
-      + '<span style="font-weight:700;width:16px;flex-shrink:0;">' + LETTERS[i] + '</span>'
-      + '<input type="text" id="opt' + i + '" placeholder="অপশন ' + (i + 1) + '"></div>';
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  if (!c) { goto('chapter'); return ''; }
+
+  let html = topbar('নোট', 'chapter');
+  html += `<div class="section-label">নতুন প্রশ্ন যোগ করুন</div>`;
+
+  if (state.noteError) html += `<div class="note-banner">${state.noteError}</div>`;
+
+  html += `<textarea id="qtext" rows="2" placeholder="প্রশ্ন লিখুন..."></textarea>`;
+  for (let i = 0; i < 4; i++) {
+    html += `<div class="opt-input-row">
+      <input type="radio" name="correctOpt" value="${i}" ${i === 0 ? 'checked' : ''}>
+      <span class="opt-letter">${LETTERS[i]}</span>
+      <input type="text" id="opt${i}" placeholder="অপশন ${i + 1}">
+    </div>`;
   }
-  html += '<div class="row-sub" style="margin:-2px 0 14px;">রেডিও বাটনে ট্যাপ করে সঠিক উত্তরটা বেছে নাও</div>';
-  html += '<button class="btn btn-solid" onclick="saveNewQuestion()">সংরক্ষণ করো</button>';
-  html += '<div class="section-label">যোগ করা প্রশ্ন (' + c.questions.length + ')</div>';
-  if (c.questions.length === 0) html += '<div class="empty-state">এখনো কোনো প্রশ্ন যোগ করা হয়নি।</div>';
-  c.questions.forEach(function (q, idx) {
-    html += '<div class="qa-item"><div class="qa-q">' + (idx + 1) + '. ' + escapeHtml(q.text) + '</div>';
-    q.options.forEach(function (opt, oi) {
-      html += '<div class="qa-opt' + (oi === q.correct ? ' is-correct' : '') + '">' + LETTERS[oi] + ') ' + escapeHtml(opt) + (oi === q.correct ? ' ✓' : '') + '</div>';
+  html += `<div class="row-sub" style="margin:0 0 14px 4px;">☝️ রেডিও বাটনে ট্যাপ করে সঠিক উত্তরটি বেছে নিন</div>`;
+  html += `<button class="btn btn-primary" onclick="saveNewQuestion()">সংরক্ষণ করুন</button>`;
+
+  html += `<div class="section-label">যোগ করা প্রশ্ন (${c.questions.length})</div>`;
+  if (c.questions.length === 0) {
+    html += `<div class="empty-state"><span class="emoji">📝</span>এখনো কোনো প্রশ্ন যোগ করা হয়নি।</div>`;
+  } else {
+    c.questions.forEach((q, idx) => {
+      html += `<div class="qa-item">
+        <div class="qa-q">${idx + 1}. ${escapeHtml(q.text)}</div>`;
+      q.options.forEach((opt, oi) => {
+        html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
+          <span class="letter">${LETTERS[oi]}</span>
+          <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
+        </div>`;
+      });
+      html += `<div style="text-align:right;margin-top:6px;">
+        <button class="del-btn" onclick="askDeleteQuestion('${q.id}')">🗑️ মুছুন</button>
+      </div>
+    </div>`;
     });
-    html += '<button class="link-del" onclick="deleteQuestion(\'' + q.id + '\')">মুছে ফেলো</button></div>';
-  });
+  }
   return html;
 }
+
 function saveNewQuestion() {
-  var text = document.getElementById('qtext').value.trim();
-  var opts = [0, 1, 2, 3].map(function (i) { return document.getElementById('opt' + i).value.trim(); });
-  if (!text || opts.some(function (o) { return !o; })) {
-    state.noteError = 'অনুগ্রহ করে প্রশ্ন এবং চারটি অপশনই পূরণ করো।';
+  const text = document.getElementById('qtext').value.trim();
+  const opts = [0, 1, 2, 3].map(i => document.getElementById('opt' + i).value.trim());
+  if (!text || opts.some(o => !o)) {
+    state.noteError = 'অনুগ্রহ করে প্রশ্ন এবং চারটি অপশনই পূরণ করুন।';
     render(); return;
   }
   state.noteError = null;
-  var correct = parseInt(document.querySelector('input[name=correctOpt]:checked').value, 10);
-  var s = findSubject(state.subjectId);
-  var c = findChapter(s, state.chapterId);
-  c.questions.push({ id: uid(), text: text, options: opts, correct: correct });
-  saveData(); render();
-}
-function deleteQuestion(qid) {
-  var s = findSubject(state.subjectId);
-  var c = findChapter(s, state.chapterId);
-  c.questions = c.questions.filter(function (q) { return q.id !== qid; });
+  const correct = parseInt(document.querySelector('input[name=correctOpt]:checked').value, 10);
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  c.questions.push({ id: uid(), text, options: opts, correct });
   saveData(); render();
 }
 
-// ---------- Quiz engine (shared by chapter practice & final test) ----------
+/* =====================================================
+   QUIZ ENGINE
+===================================================== */
 function startChapterPractice() {
-  var s = findSubject(state.subjectId);
-  var c = findChapter(s, state.chapterId);
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
   state.quizQuestions = shuffle(c.questions);
-  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.mode = 'chapter';
+  state.quizIndex = 0;
+  state.quizScore = 0;
+  state.quizAnswered = null;
+  state.quizWrongIds = [];
+  state.mode = 'chapter';
   goto('quiz');
 }
+
 function startFinalTest() {
-  var s = findSubject(state.subjectId);
-  var all = allQuestionsOfSubject(s);
-  state.quizQuestions = shuffle(all).slice(0, Math.min(40, all.length));
-  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.mode = 'final';
+  const s = findSubject(state.subjectId);
+  const all = allQuestionsOfSubject(s).map(x => x.q);
+  state.quizQuestions = shuffle(all).slice(0, Math.min(MAX_FINAL_TEST, all.length));
+  state.quizIndex = 0;
+  state.quizScore = 0;
+  state.quizAnswered = null;
+  state.quizWrongIds = [];
+  state.mode = 'final';
   goto('quiz');
 }
+
+function startWrongPractice() {
+  if (data.wrongQuestions.length === 0) return;
+  state.quizQuestions = shuffle(data.wrongQuestions.map(w => w.question));
+  state.quizIndex = 0;
+  state.quizScore = 0;
+  state.quizAnswered = null;
+  state.quizWrongIds = [];
+  state.mode = 'wrong';
+  goto('quiz');
+}
+
 function renderQuiz() {
-  var qs = state.quizQuestions, idx = state.quizIndex, q = qs[idx];
-  var pct = Math.round((idx / qs.length) * 100);
-  var html = topbar(state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : 'MCQ Practice', state.mode === 'final' ? 'subject' : 'chapter');
-  html += '<div class="q-progress">প্রশ্ন ' + (idx + 1) + ' / ' + qs.length + (state.mode === 'final' ? ' &nbsp;·&nbsp; স্কোর ' + state.quizScore : '') + '</div>';
-  html += '<div class="q-rule"></div>';
-  html += '<div class="q-text">' + escapeHtml(q.text) + '</div>';
-  q.options.forEach(function (opt, oi) {
-    var cls = 'opt-row';
+  const qs = state.quizQuestions;
+  if (!qs || qs.length === 0) { goto('home'); return ''; }
+  const idx = state.quizIndex;
+  const q = qs[idx];
+  const pct = Math.round((idx / qs.length) * 100);
+
+  let html = topbar(
+    state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : (state.mode === 'wrong' ? 'ভুল প্রশ্ন প্র্যাকটিস' : 'MCQ প্র্যাকটিস'),
+    state.mode === 'final' ? 'subject' : (state.mode === 'wrong' ? 'wrongList' : 'chapter')
+  );
+
+  html += `<div class="q-progress">
+    <span>প্রশ্ন ${idx + 1} / ${qs.length}</span>
+    <span class="score-pill">স্কোর ${state.quizScore}</span>
+  </div>`;
+  html += `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+
+  html += `<div class="q-text">${escapeHtml(q.text)}</div>`;
+
+  q.options.forEach((opt, oi) => {
+    let cls = 'opt-row';
     if (state.quizAnswered !== null) {
       if (oi === q.correct) cls += ' correct';
       else if (oi === state.quizAnswered) cls += ' wrong';
     }
-    html += '<button class="' + cls + '" ' + (state.quizAnswered !== null ? 'disabled' : 'onclick="answerQuiz(' + oi + ')"') + '>'
-      + '<span class="opt-bubble">' + LETTERS[oi] + '</span><span>' + escapeHtml(opt) + '</span></button>';
+    html += `<button class="${cls}" ${state.quizAnswered !== null ? 'disabled' : `onclick="answerQuiz(${oi})"`}>
+      <span class="opt-bubble">${LETTERS[oi]}</span>
+      <span>${escapeHtml(opt)}</span>
+    </button>`;
   });
+
   if (state.quizAnswered !== null) {
-    html += '<button class="btn btn-solid" style="margin-top:16px;" onclick="nextQuiz()">' + (idx + 1 < qs.length ? 'পরবর্তী প্রশ্ন' : 'ফলাফল দেখো') + '</button>';
+    html += `<button class="btn btn-primary" style="margin-top:16px;" onclick="nextQuiz()">
+      ${idx + 1 < qs.length ? 'পরবর্তী প্রশ্ন →' : 'ফলাফল দেখুন'}
+    </button>`;
   }
   return html;
 }
+
 function answerQuiz(oi) {
   if (state.quizAnswered !== null) return;
   state.quizAnswered = oi;
-  if (oi === state.quizQuestions[state.quizIndex].correct) state.quizScore++;
+  const q = state.quizQuestions[state.quizIndex];
+
+  if (oi === q.correct) {
+    state.quizScore++;
+    // correct in wrong-practice → remove from wrong list
+    if (state.mode === 'wrong') {
+      data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== q.id);
+      saveData();
+    }
+  } else {
+    // wrong → track
+    state.quizWrongIds.push(q.id);
+    addToWrongList(q);
+  }
   render();
 }
-function nextQuiz() {
-  state.quizIndex++; state.quizAnswered = null;
-  if (state.quizIndex >= state.quizQuestions.length) goto('result'); else render();
+
+function addToWrongList(q) {
+  // find subject/chapter info
+  let subjName = '', chapName = '';
+  for (const s of data.subjects) {
+    for (const c of s.chapters) {
+      if (c.questions.some(cq => cq.id === q.id)) {
+        subjName = s.name; chapName = c.name; break;
+      }
+    }
+    if (subjName) break;
+  }
+  const existing = data.wrongQuestions.find(w => w.question.id === q.id);
+  if (existing) {
+    existing.wrongCount = (existing.wrongCount || 1) + 1;
+    existing.lastWrong = Date.now();
+  } else {
+    data.wrongQuestions.push({
+      question: q,
+      subjectName: subjName,
+      chapterName: chapName,
+      wrongCount: 1,
+      lastWrong: Date.now()
+    });
+  }
+  saveData();
 }
+
+function nextQuiz() {
+  state.quizIndex++;
+  state.quizAnswered = null;
+  if (state.quizIndex >= state.quizQuestions.length) goto('result');
+  else render();
+}
+
+/* =====================================================
+   RESULT
+===================================================== */
 function renderResult() {
-  var total = state.quizQuestions.length, score = state.quizScore;
-  var pct = Math.round((score / total) * 100);
-  var html = '<div class="result-wrap">';
-  html += '<div class="row-sub">' + (state.mode === 'final' ? 'ফাইনাল মক টেস্টের ফলাফল' : 'MCQ Practice ফলাফল') + '</div>';
-  html += '<div class="result-num">' + score + ' / ' + total + '</div>';
-  html += '<div class="result-pct">সঠিক ' + pct + '%</div></div>';
-  html += '<button class="btn btn-solid" onclick="retryQuiz()">আবার চেষ্টা করো</button>';
-  html += '<button class="btn btn-quiet" onclick="goto(\'' + (state.mode === 'final' ? 'subject' : 'chapter') + '\')">' + (state.mode === 'final' ? 'সাবজেক্টে ফিরে যাও' : 'অধ্যায়ে ফিরে যাও') + '</button>';
-  html += '<button class="btn btn-quiet" onclick="goto(\'home\')">হোমে ফিরে যাও</button>';
+  const total = state.quizQuestions.length;
+  const score = state.quizScore;
+  const pct = Math.round((score / total) * 100);
+  const cls = pct >= 70 ? 'good' : (pct >= 40 ? '' : 'bad');
+  const emoji = pct >= 70 ? '🎉' : (pct >= 40 ? '👍' : '📚');
+
+  let html = `<div class="result-wrap">
+    <div class="result-circle ${cls}">
+      <div class="num">${score}</div>
+      <div class="lbl">/ ${total}</div>
+    </div>
+    <h2 class="result-title">${emoji} ${pct}% সঠিক</h2>
+    <p class="result-sub">
+      ${state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : state.mode === 'wrong' ? 'ভুল প্রশ্ন প্র্যাকটিস' : 'MCQ প্র্যাকটিস'} সম্পন্ন
+    </p>
+  </div>`;
+
+  if (state.quizWrongIds.length > 0) {
+    html += `<div class="info-banner">❌ এই পরীক্ষায় ${state.quizWrongIds.length}টি ভুল হয়েছে। এগুলো "ভুল প্রশ্ন প্র্যাকটিস" সেকশনে যোগ হয়েছে।</div>`;
+  }
+
+  html += `<button class="btn btn-primary" onclick="retryQuiz()">🔄 আবার চেষ্টা করুন</button>`;
+  const backScreen = state.mode === 'final' ? 'subject' : (state.mode === 'wrong' ? 'wrongList' : 'chapter');
+  html += `<button class="btn btn-quiet" onclick="goto('${backScreen}')">← ফিরে যান</button>`;
+  html += `<button class="btn btn-quiet" onclick="goto('home')">🏠 হোম</button>`;
   return html;
 }
-function retryQuiz() { if (state.mode === 'final') startFinalTest(); else startChapterPractice(); }
 
+function retryQuiz() {
+  if (state.mode === 'final') startFinalTest();
+  else if (state.mode === 'wrong') startWrongPractice();
+  else startChapterPractice();
+}
+
+/* =====================================================
+   WRONG LIST
+===================================================== */
+function renderWrongList() {
+  let html = topbar('ভুল প্রশ্ন প্র্যাকটিস', 'home');
+
+  if (data.wrongQuestions.length === 0) {
+    html += `<div class="empty-state"><span class="emoji">✨</span>এখনো কোনো ভুল প্রশ্ন নেই।<br>পরীক্ষা দিলে যেগুলো ভুল হবে সেগুলো এখানে জমা হবে।</div>`;
+    return html;
+  }
+
+  html += `<div class="info-banner">📌 এখানে শুধু সেই প্রশ্নগুলো দেখাবে যেগুলো আপনি ভুল করেছেন। সঠিকভাবে উত্তর দিলে প্রশ্নটি স্বয়ংক্রিয়ভাবে এখান থেকে মুছে যাবে।</div>`;
+
+  html += `<button class="btn btn-primary" onclick="startWrongPractice()">🎯 সব ভুল প্রশ্ন প্র্যাকটিস (${data.wrongQuestions.length})</button>`;
+
+  html += `<div style="display:flex;gap:8px;margin-bottom:14px;">
+    <button class="btn btn-quiet" style="margin:0;flex:1;font-size:13px;" onclick="askClearWrong()">সব মুছুন</button>
+  </div>`;
+
+  html += `<div class="section-label">ভুল প্রশ্নের তালিকা</div>`;
+
+  data.wrongQuestions.forEach((w, i) => {
+    const q = w.question;
+    html += `<div class="qa-item">
+      <div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
+        <span class="chip red">${w.wrongCount} বার ভুল</span>
+        ${w.subjectName ? `<span class="chip amber">${escapeHtml(w.subjectName)}</span>` : ''}
+        ${w.chapterName ? `<span class="chip green">${escapeHtml(w.chapterName)}</span>` : ''}
+      </div>`;
+    q.options.forEach((opt, oi) => {
+      html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
+        <span class="letter">${LETTERS[oi]}</span>
+        <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
+      </div>`;
+    });
+    html += `<div style="text-align:right;margin-top:6px;">
+      <button class="del-btn" onclick="removeWrong('${q.id}')">এই প্রশ্নটি সরান</button>
+    </div></div>`;
+  });
+
+  return html;
+}
+
+function removeWrong(qid) {
+  data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== qid);
+  saveData(); render();
+}
+
+/* =====================================================
+   TRASH
+===================================================== */
+function renderTrash() {
+  let html = topbar('রিসাইকেল বিন', 'home');
+  html += `<div class="info-banner">🗑️ ডিলিট করা জিনিস এখানে ৩০ দিন থাকবে। এরপর স্বয়ংক্রিয়ভাবে মুছে যাবে। প্রয়োজন হলে এখনই ফিরিয়ে আনুন।</div>`;
+
+  if (data.trash.length === 0) {
+    html += `<div class="empty-state"><span class="emoji">🌿</span>বিন খালি। এখানে কিছু নেই।</div>`;
+    return html;
+  }
+
+  html += `<button class="btn btn-danger" style="margin-bottom:16px;" onclick="askEmptyTrash()">সব স্থায়ীভাবে মুছে ফেলুন</button>`;
+
+  data.trash.forEach((t, i) => {
+    const daysLeft = Math.ceil((TRASH_TTL_DAYS * 86400000 - (Date.now() - t.deletedAt)) / 86400000);
+    const typeLabel = t.type === 'subject' ? 'সাবজেক্ট' : t.type === 'chapter' ? 'অধ্যায়' : 'প্রশ্ন';
+    let name = t.type === 'subject' ? t.data.name : t.type === 'chapter' ? t.data.name : t.data.text;
+    if (name.length > 50) name = name.slice(0, 50) + '...';
+
+    html += `<div class="trash-item">
+      <div class="trash-info">
+        <div class="trash-name">${escapeHtml(name)}</div>
+        <div class="trash-meta">${typeLabel} · ডিলিট হয়েছে ${fmtDate(t.deletedAt)} · ${daysLeft} দিন বাকি</div>
+      </div>
+      <div class="trash-actions">
+        <button class="icon-btn restore" title="ফিরিয়ে আনুন" onclick="restoreFromTrash('${t.id}')">↩️</button>
+        <button class="icon-btn kill" title="স্থায়ীভাবে মুছুন" onclick="killTrashItem('${t.id}')">✕</button>
+      </div>
+    </div>`;
+  });
+
+  return html;
+}
+
+function restoreFromTrash(tid) {
+  const item = data.trash.find(t => t.id === tid);
+  if (!item) return;
+
+  if (item.type === 'subject') {
+    data.subjects.push(item.data);
+  } else if (item.type === 'chapter') {
+    const subj = findSubject(item.parentId);
+    if (!subj) { alert('মূল সাবজেক্টটি খুঁজে পাওয়া যাচ্ছে না। আগে সাবজেক্টটি ফিরিয়ে আনুন।'); return; }
+    subj.chapters.push(item.data);
+  } else if (item.type === 'question') {
+    const subj = findSubject(item.subjectId);
+    const chap = findChapter(subj, item.chapterId);
+    if (!chap) { alert('মূল অধ্যায়টি খুঁজে পাওয়া যাচ্ছে না। আগে অধ্যায়টি ফিরিয়ে আনুন।'); return; }
+    chap.questions.push(item.data);
+  }
+
+  data.trash = data.trash.filter(t => t.id !== tid);
+  saveData(); render();
+}
+
+function killTrashItem(tid) {
+  data.trash = data.trash.filter(t => t.id !== tid);
+  saveData(); render();
+}
+
+/* =====================================================
+   BACKUP / RESTORE
+===================================================== */
+function renderBackup() {
+  let html = topbar('ব্যাকআপ ও রিস্টোর', 'home');
+  html += `<div class="info-banner">💡 আপনার সমস্ত ডেটা এই ফোনের ব্রাউজারে জমা আছে। অন্য ফোনে নিতে চাইলে ব্যাকআপ ডাউনলোড করে সেখানে পাঠিয়ে রিস্টোর করুন।</div>`;
+
+  html += `<div class="section-label">ব্যাকআপ নিন</div>`;
+  html += `<button class="btn btn-primary" onclick="exportBackup()">⬇️ ব্যাকআপ ডাউনলোড করুন (.json)</button>`;
+  html += `<div class="row-sub" style="margin:-4px 4px 20px;">এই ফাইলটি Google Drive বা WhatsApp-এ সেভ রাখুন।</div>`;
+
+  html += `<div class="section-label">রিস্টোর করুন</div>`;
+  html += `<input type="file" id="importFile" accept=".json" style="width:100%;padding:12px;border:1.5px dashed var(--border);border-radius:12px;margin-bottom:10px;background:var(--card);">`;
+  html += `<button class="btn btn-success" onclick="importBackup()">⬆️ ব্যাকআপ থেকে রিস্টোর করুন</button>`;
+  html += `<div class="row-sub" style="margin:-4px 4px 20px;">⚠️ রিস্টোর করলে বর্তমান সব ডেটা প্রতিস্থাপিত হবে।</div>`;
+
+  html += `<div class="section-label">বিপজ্জনক এলাকা</div>`;
+  html += `<button class="btn btn-danger" onclick="askResetAll()">🔄 সবকিছু রিসেট করুন</button>`;
+  html += `<div class="row-sub" style="margin:-4px 4px;">এটি সব প্রশ্ন, নোট, রেকর্ড মুছে ফেলবে। আগে ব্যাকআপ নিন।</div>`;
+
+  return html;
+}
+
+function exportBackup() {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().slice(0, 10);
+  a.href = url;
+  a.download = `exam-prep-backup-${ts}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importBackup() {
+  const fileInput = document.getElementById('importFile');
+  const file = fileInput.files[0];
+  if (!file) { alert('প্রথমে একটি ব্যাকআপ ফাইল নির্বাচন করুন।'); return; }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (!parsed.subjects || !Array.isArray(parsed.subjects)) throw new Error('ভুল ফাইল');
+      if (!confirm('বর্তমান সব ডেটা প্রতিস্থাপিত হবে। নিশ্চিত?')) return;
+      parsed.wrongQuestions = parsed.wrongQuestions || [];
+      parsed.trash = parsed.trash || [];
+      data = parsed;
+      memoryFallback = data;
+      saveData();
+      alert('✅ সফলভাবে রিস্টোর হয়েছে।');
+      goto('home');
+    } catch (err) {
+      alert('❌ ফাইলটি পড়া যাচ্ছে না। সঠিক ব্যাকআপ ফাইল নির্বাচন করুন।');
+    }
+  };
+  reader.readAsText(file);
+}
+
+/* =====================================================
+   MODALS & DELETIONS (soft → trash)
+===================================================== */
+function renderModal() {
+  const m = state.modal;
+  return `<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <h3>${m.title}</h3>
+      <p>${m.body}</p>
+      <button class="btn ${m.danger ? 'btn-danger' : 'btn-primary'}" onclick="${m.onOk}">${m.okText}</button>
+      <button class="btn btn-quiet" onclick="closeModal()">বাতিল</button>
+    </div>
+  </div>`;
+}
+function closeModal() { state.modal = null; render(); }
+function showModal(title, body, okText, onOk, danger) {
+  state.modal = { title, body, okText, onOk, danger };
+  render();
+}
+
+function askDeleteSubject(id) {
+  const s = findSubject(id);
+  showModal('সাবজেক্ট মুছবেন?',
+    `"${escapeHtml(s.name)}" এবং এর সব অধ্যায় ও প্রশ্ন ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
+    'মুছে ফেলুন', `reallyDeleteSubject('${id}')`, true);
+}
+function reallyDeleteSubject(id) {
+  const s = findSubject(id);
+  data.trash.push({ id: uid(), type: 'subject', data: s, deletedAt: Date.now() });
+  data.subjects = data.subjects.filter(x => x.id !== id);
+  closeModal(); saveData(); render();
+}
+
+function askDeleteChapter(id) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, id);
+  showModal('অধ্যায় মুছবেন?',
+    `"${escapeHtml(c.name)}" এবং এর ${c.questions.length}টি প্রশ্ন ৩০ দিনের জন্য রিসিকেল বিনে যাবে।`,
+    'মুছে ফেলুন', `reallyDeleteChapter('${id}')`, true);
+}
+function reallyDeleteChapter(id) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, id);
+  data.trash.push({ id: uid(), type: 'chapter', data: c, parentId: s.id, deletedAt: Date.now() });
+  s.chapters = s.chapters.filter(x => x.id !== id);
+  closeModal(); saveData(); render();
+}
+
+function askDeleteQuestion(qid) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === qid);
+  showModal('প্রশ্ন মুছবেন?',
+    `"${escapeHtml(q.text.slice(0, 60))}..." ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
+    'মুছে ফেলুন', `reallyDeleteQuestion('${qid}')`, true);
+}
+function reallyDeleteQuestion(qid) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === qid);
+  data.trash.push({ id: uid(), type: 'question', data: q, subjectId: s.id, chapterId: c.id, deletedAt: Date.now() });
+  c.questions = c.questions.filter(x => x.id !== qid);
+  closeModal(); saveData(); render();
+}
+
+function askClearWrong() {
+  showModal('সব ভুল প্রশ্ন মুছবেন?',
+    'সব ভুল প্রশ্নের তালিকা খালি হয়ে যাবে। প্রশ্ন ব্যাংক অক্ষত থাকবে।',
+    'সব মুছুন', 'reallyClearWrong()', true);
+}
+function reallyClearWrong() {
+  data.wrongQuestions = [];
+  closeModal(); saveData(); render();
+}
+
+function askEmptyTrash() {
+  showModal('বিন খালি করবেন?',
+    'রিসাইকেল বিনের সবকিছু স্থায়ীভাবে মুছে যাবে। আর ফেরত আনা যাবে না।',
+    'স্থায়ীভাবে মুছুন', 'reallyEmptyTrash()', true);
+}
+function reallyEmptyTrash() {
+  data.trash = [];
+  closeModal(); saveData(); render();
+}
+
+function askResetAll() {
+  showModal('সবকিছু রিসেট করবেন?',
+    'সব সাবজেক্ট, অধ্যায়, প্রশ্ন, ভুল প্রশ্নের তালিকা, রিসাইকেল বিন — সব মুছে যাবে। এটি ফেরানো যাবে না। আগে ব্যাকআপ নিয়েছেন?',
+    'হ্যাঁ, সব মুছে ফেলুন', 'reallyResetAll()', true);
+}
+function reallyResetAll() {
+  data = defaultData();
+  memoryFallback = data;
+  closeModal(); saveData(); goto('home');
+}
+
+/* =====================================================
+   INIT
+===================================================== */
 render();
 </script>
 </body>
