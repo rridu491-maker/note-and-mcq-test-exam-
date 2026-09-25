@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#a23b3b">
+<title>আমার পরীক্ষার প্রস্তুতি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf7ef;
+    --rule: #eae2cc;
+    --margin: #a23b3b;
+    --ink: #2a2a26;
+    --ink-soft: #7a7566;
+    --pen: #263d5c;
+    --pen-dark: #1a2b40;
+    --tick: #2e6b45;
+    --tick-bg: #eef4ee;
+    --cross-bg: #f7ecec;
+    --gold: #9c6b1f;
+    --gold-bg: #f6ecd6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--rule) 27px, var(--rule) 28px);
+    color: var(--ink);
+    font-family: 'Hind Siliguri', -apple-system, "Segoe UI", "Noto Sans Bengali", Roboto, sans-serif;
+    min-height: 100vh;
+  }
+  button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--pen); outline-offset: 2px;
+  }
+  #app { max-width: 560px; margin: 0 auto; padding: 24px 18px 60px 22px; border-left: 3px solid var(--margin); min-height: 100vh; }
+  .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .back-btn {
+    background: none; border: 1.5px solid var(--ink); color: var(--ink);
+    width: 34px; height: 34px; border-radius: 6px; font-size: 16px; cursor: pointer; flex-shrink: 0;
+  }
+  .page-title { font-size: 18px; font-weight: 700; margin: 0; }
+  .app-title {
+    font-family: 'Tiro Bangla', Georgia, serif;
+    font-size: 25px; font-weight: 700; color: var(--pen-dark);
+    padding-bottom: 12px; margin: 4px 0 20px; border-bottom: 2px solid var(--margin);
+  }
+  .row { display: flex; align-items: center; gap: 12px; padding: 14px 2px; border-bottom: 1px solid var(--rule); cursor: pointer; }
+  .row:active { background: rgba(38,61,92,0.05); }
+  .row-num {
+    width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .row-main { flex: 1; min-width: 0; }
+  .row-title { font-weight: 700; font-size: 15.5px; }
+  .row-sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  .link-del { background: none; border: none; font-size: 12.5px; cursor: pointer; color: var(--ink-soft); text-decoration: underline; padding: 4px 0 4px 6px; flex-shrink: 0; }
+  .btn {
+    display: block; width: 100%; padding: 13px; border-radius: 6px; border: 1.5px solid var(--pen);
+    background: var(--paper); color: var(--pen); font-size: 14.5px; font-weight: 700;
+    cursor: pointer; text-align: center; margin-bottom: 10px; font-family: inherit;
+  }
+  .btn-solid { background: var(--pen); color: #fff; }
+  .btn-quiet { border-color: var(--rule); color: var(--ink-soft); }
+  .btn-stamp {
+    display: block; width: 100%; background: var(--gold-bg); border: 2px dashed var(--gold);
+    color: var(--gold); font-weight: 700; font-size: 15px; letter-spacing: .02em;
+    padding: 16px; border-radius: 4px; cursor: pointer; transform: rotate(-1deg);
+    margin: 22px 0 8px; font-family: inherit;
+  }
+  .btn-stamp:disabled { opacity: .4; transform: none; cursor: not-allowed; }
+  .choice-row { display: flex; align-items: center; gap: 14px; padding: 16px 2px; border-bottom: 1px solid var(--rule); cursor: pointer; }
+  .choice-row .mark {
+    width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--pen);
+    display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--pen); flex-shrink: 0;
+  }
+  .choice-row .label { font-weight: 700; font-size: 15px; }
+  .choice-row .sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  textarea, input[type=text] {
+    width: 100%; padding: 11px 10px; border: 1.5px solid var(--rule); border-radius: 6px;
+    font-size: 14px; margin-bottom: 10px; font-family: inherit; background: #fff; color: var(--ink);
+  }
+  textarea:focus, input[type=text]:focus { outline: none; border-color: var(--pen); }
+  .opt-input-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .opt-input-row input[type=text] { margin-bottom: 0; }
+  .opt-row {
+    display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+    padding: 11px 2px; border: none; border-bottom: 1px solid var(--rule); background: none;
+    font-size: 14.5px; font-family: inherit; color: var(--ink); cursor: pointer;
+  }
+  .opt-row:disabled { cursor: default; }
+  .opt-bubble {
+    width: 29px; height: 29px; border-radius: 50%; border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; flex-shrink: 0; color: var(--ink);
+  }
+  .opt-row.correct { color: var(--tick); }
+  .opt-row.correct .opt-bubble { background: var(--tick); border-color: var(--tick); color: #fff; }
+  .opt-row.wrong { color: var(--margin); }
+  .opt-row.wrong .opt-bubble { background: var(--margin); border-color: var(--margin); color: #fff; }
+  .q-progress { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 8px; }
+  .q-rule { height: 1px; background: var(--rule); margin-bottom: 18px; }
+  .q-text { font-size: 16.5px; font-weight: 700; line-height: 1.55; margin-bottom: 18px; }
+  .result-wrap { text-align: center; padding: 26px 10px 16px; }
+  .result-num { font-family: 'Tiro Bangla', Georgia, serif; font-size: 42px; font-weight: 700; color: var(--pen-dark); margin-top: 8px; }
+  .result-pct { display: inline-block; margin-top: 14px; padding: 4px 14px; border: 1.5px solid var(--rule); border-radius: 20px; font-size: 13px; color: var(--ink-soft); }
+  .empty-state { text-align: center; color: var(--ink-soft); padding: 26px 10px; font-size: 13px; line-height: 1.6; }
+  .qa-item { padding: 12px 2px; border-bottom: 1px solid var(--rule); }
+  .qa-q { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .qa-opt { font-size: 12.5px; color: var(--ink-soft); padding: 2px 0; }
+  .qa-opt.is-correct { color: var(--tick); font-weight: 700; }
+  .section-label { font-size: 12px; font-weight: 700; color: var(--ink-soft); margin: 20px 0 8px; }
+  .note-banner { background: var(--cross-bg); color: var(--margin); padding: 9px 12px; border-radius: 6px; font-size: 12.5px; margin-bottom: 10px; border: 1px solid var(--margin); }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// ---------- Storage: works normally on GitHub Pages; falls back to in-memory if a preview sandbox blocks it ----------
+var memoryFallback = null;
+function defaultData() {
+  var names = ['বিষয় ১', 'বিষয় ২', 'বিষয় ৩', 'বিষয় ৪'];
+  var subjects = names.map(function (name, i) { return { id: 'subj-' + (i + 1), name: name, chapters: [] }; });
+  subjects[0].chapters.push({
+    id: 'demo-ch',
+    name: 'অধ্যায় ১ (উদাহরণ)',
+    questions: [
+      { id: 'demo-q1', text: 'বাংলাদেশের রাজধানীর নাম কী?', options: ['চট্টগ্রাম', 'ঢাকা', 'খুলনা', 'রাজশাহী'], correct: 1 },
+      { id: 'demo-q2', text: 'বাংলাদেশ স্বাধীন হয় কোন সালে?', options: ['১৯৬৯', '১৯৭০', '১৯৭১', '১৯৭২'], correct: 2 }
+    ]
+  });
+  return { subjects: subjects };
+}
+function loadData() {
+  if (memoryFallback) return memoryFallback;
+  try {
+    var raw = localStorage.getItem('examStudyAppData');
+    memoryFallback = raw ? JSON.parse(raw) : defaultData();
+  } catch (e) { memoryFallback = defaultData(); }
+  return memoryFallback;
+}
+function saveData() {
+  try { localStorage.setItem('examStudyAppData', JSON.stringify(memoryFallback)); }
+  catch (e) { /* blocked in some preview sandboxes; saves normally once hosted on GitHub Pages */ }
+}
+var data = loadData();
+var state = { screen: 'home', subjectId: null, chapterId: null, mode: null, addingSubject: false, addingChapter: false, noteError: null };
+var LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function findSubject(id) { return data.subjects.find(function (s) { return s.id === id; }); }
+function findChapter(subj, id) { return subj.chapters.find(function (c) { return c.id === id; }); }
+function allQuestionsOfSubject(subj) {
+  var qs = [];
+  subj.chapters.forEach(function (ch) { ch.questions.forEach(function (q) { qs.push(q); }); });
+  return qs;
+}
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function escapeHtml(str) {
+  var d = document.createElement('div');
+  d.innerText = str;
+  return d.innerHTML;
+}
+function goto(screen, opts) {
+  state.screen = screen;
+  if (opts) Object.assign(state, opts);
+  render();
+  window.scrollTo(0, 0);
+}
+function topbar(title, backScreen) {
+  return '<div class="topbar"><button class="back-btn" onclick="goto(\'' + backScreen + '\')">←</button><h1 class="page-title">' + title + '</h1></div>';
+}
+function render() {
+  var app = document.getElementById('app');
+  var fn = { home: renderHome, subject: renderSubject, chapter: renderChapter, notes: renderNotes, quiz: renderQuiz, result: renderResult }[state.screen];
+  app.innerHTML = fn();
+}
+
+// ---------- Home ----------
+function renderHome() {
+  var html = '<div class="app-title">আমার পরীক্ষার প্রস্তুতি</div>';
+  data.subjects.forEach(function (s, i) {
+    var totalQ = allQuestionsOfSubject(s).length;
+    html += '<div class="row" onclick="goto(\'subject\',{subjectId:\'' + s.id + '\'})">'
+      + '<div class="row-num">' + (i + 1) + '</div>'
+      + '<div class="row-main"><div class="row-title">' + escapeHtml(s.name) + '</div>'
+      + '<div class="row-sub">' + s.chapters.length + ' অধ্যায় · ' + totalQ + ' প্রশ্ন</div></div>'
+      + '<button class="link-del" onclick="event.stopPropagation();deleteSubject(\'' + s.id + '\')">মুছুন</button></div>';
+  });
+  if (state.addingSubject) {
+    html += '<input type="text" id="newSubjectName" placeholder="সাবজেক্টের নাম লেখো" style="margin-top:14px;">'
+      + '<button class="btn btn-solid" onclick="confirmAddSubject()">যোগ করো</button>'
+      + '<button class="btn btn-quiet" onclick="state.addingSubject=false;render();">বাতিল</button>';
+  } else {
+    html += '<button class="btn btn-quiet" style="margin-top:14px;" onclick="state.addingSubject=true;render();">+ নতুন সাবজেক্ট</button>';
+  }
+  return html;
+}
+function confirmAddSubject() {
+  var name = document.getElementById('newSubjectName').value.trim();
+  if (!name) return;
+  data.subjects.push({ id: uid(), name: name, chapters: [] });
+  state.addingSubject = false;
+  saveData(); render();
+}
+function deleteSubject(id) {
+  data.subjects = data.subjects.filter(function (s) { return s.id !== id; });
+  saveData(); render();
+}
+
+// ---------- Subject ----------
+function renderSubject() {
+  var s = findSubject(state.subjectId);
+  var totalQ = allQuestionsOfSubject(s).length;
+  var testCount = Math.min(40, totalQ);
+  var html = topbar(escapeHtml(s.name), 'home');
+  if (s.chapters.length === 0) {
+    html += '<div class="empty-state">এখনো কোনো অধ্যায় নেই।<br>নিচে থেকে প্রথম অধ্যায় যোগ করো।</div>';
+  } else {
+    s.chapters.forEach(function (c, i) {
+      html += '<div class="row" onclick="goto(\'chapter\',{chapterId:\'' + c.id + '\'})">'
+        + '<div class="row-num">' + (i + 1) + '</div>'
+        + '<div class="row-main"><div class="row-title">' + escapeHtml(c.name) + '</div>'
+        + '<div class="row-sub">' + c.questions.length + ' প্রশ্ন</div></div>'
+        + '<button class="link-del" onclick="event.stopPropagation();deleteChapter(\'' + c.id + '\')">মুছুন</button></div>';
+    });
+  }
+  if (state.addingChapter) {
+    html += '<input type="text" id="newChapterName" placeholder="অধ্যায়ের নাম লেখো" style="margin-top:14px;">'
+      + '<button class="btn btn-solid" onclick="confirmAddChapter()">যোগ করো</button>'
+      + '<button class="btn btn-quiet" onclick="state.addingChapter=false;render();">বাতিল</button>';
+  } else {
+    html += '<button class="btn btn-quiet" style="margin-top:14px;" onclick="state.addingChapter=true;render();">+ নতুন অধ্যায়</button>';
+  }
+  html += '<button class="btn-stamp" ' + (totalQ === 0 ? 'disabled' : '') + ' onclick="startFinalTest()">ফাইনাল মক টেস্ট · ' + testCount + ' নম্বর</button>';
+  if (totalQ === 0) html += '<div class="row-sub" style="text-align:center;margin-top:-4px;">প্রথমে কিছু প্রশ্ন যোগ করো</div>';
+  return html;
+}
+function confirmAddChapter() {
+  var name = document.getElementById('newChapterName').value.trim();
+  if (!name) return;
+  var s = findSubject(state.subjectId);
+  s.chapters.push({ id: uid(), name: name, questions: [] });
+  state.addingChapter = false;
+  saveData(); render();
+}
+function deleteChapter(id) {
+  var s = findSubject(state.subjectId);
+  s.chapters = s.chapters.filter(function (c) { return c.id !== id; });
+  saveData(); render();
+}
+
+// ---------- Chapter ----------
+function renderChapter() {
+  var s = findSubject(state.subjectId);
+  var c = findChapter(s, state.chapterId);
+  var disabled = c.questions.length === 0;
+  var html = topbar(escapeHtml(c.name), 'subject');
+  html += '<div class="choice-row" style="' + (disabled ? 'opacity:.4;' : '') + '" onclick="' + (disabled ? '' : 'startChapterPractice()') + '">'
+    + '<div class="mark">✓</div><div><div class="label">MCQ Practice</div>'
+    + '<div class="sub">' + (disabled ? 'আগে প্রশ্ন যোগ করো' : c.questions.length + ' টি প্রশ্নে পরীক্ষা দাও') + '</div></div></div>';
+  html += '<div class="choice-row" onclick="goto(\'notes\')"><div class="mark">✎</div>'
+    + '<div><div class="label">নোট / প্রশ্ন ব্যাংক</div><div class="sub">প্রশ্ন যোগ করো বা দেখো</div></div></div>';
+  return html;
+}
+
+// ---------- Notes ----------
+function renderNotes() {
+  var s = findSubject(state.subjectId);
+  var c = findChapter(s, state.chapterId);
+  var html = topbar('নোট', 'chapter');
+  html += '<div class="section-label">নতুন প্রশ্ন যোগ করো</div>';
+  if (state.noteError) html += '<div class="note-banner">' + state.noteError + '</div>';
+  html += '<textarea id="qtext" rows="2" placeholder="প্রশ্ন লেখো..."></textarea>';
+  for (var i = 0; i < 4; i++) {
+    html += '<div class="opt-input-row"><input type="radio" name="correctOpt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + ' style="accent-color:var(--pen);width:17px;height:17px;flex-shrink:0;">'
+      + '<span style="font-weight:700;width:16px;flex-shrink:0;">' + LETTERS[i] + '</span>'
+      + '<input type="text" id="opt' + i + '" placeholder="অপশন ' + (i + 1) + '"></div>';
+  }
+  html += '<div class="row-sub" style="margin:-2px 0 14px;">রেডিও বাটনে ট্যাপ করে সঠিক উত্তরটা বেছে নাও</div>';
+  html += '<button class="btn btn-solid" onclick="saveNewQuestion()">সংরক্ষণ করো</button>';
+  html += '<div class="section-label">যোগ করা প্রশ্ন (' + c.questions.length + ')</div>';
+  if (c.questions.length === 0) html += '<div class="empty-state">এখনো কোনো প্রশ্ন যোগ করা হয়নি।</div>';
+  c.questions.forEach(function (q, idx) {
+    html += '<div class="qa-item"><div class="qa-q">' + (idx + 1) + '. ' + escapeHtml(q.text) + '</div>';
+    q.options.forEach(function (opt, oi) {
+      html += '<div class="qa-opt' + (oi === q.correct ? ' is-correct' : '') + '">' + LETTERS[oi] + ') ' + escapeHtml(opt) + (oi === q.correct ? ' ✓' : '') + '</div>';
+    });
+    html += '<button class="link-del" onclick="deleteQuestion(\'' + q.id + '\')">মুছে ফেলো</button></div>';
+  });
+  return html;
+}
+function saveNewQuestion() {
+  var text = document.getElementById('qtext').value.trim();
+  var opts = [0, 1, 2, 3].map(function (i) { return document.getElementById('opt' + i).value.trim(); });
+  if (!text || opts.some(function (o) { return !o; })) {
+    state.noteError = 'অনুগ্রহ করে প্রশ্ন এবং চারটি অপশনই পূরণ করো।';
+    render(); return;
+  }
+  state.noteError = null;
+  var correct = parseInt(document.querySelector('input[name=correctOpt]:checked').value, 10);
+  var s = findSubject(state.subjectId);
+  var c = findChapter(s, state.chapterId);
+  c.questions.push({ id: uid(), text: text, options: opts, correct: correct });
+  saveData(); render();
+}
+function deleteQuestion(qid) {
+  var s = findSubject(state.subjectId);
+  var c = findChapter(s, state.chapterId);
+  c.questions = c.questions.filter(function (q) { return q.id !== qid; });
+  saveData(); render();
+}
+
+// ---------- Quiz engine (shared by chapter practice & final test) ----------
+function startChapterPractice() {
+  var s = findSubject(state.subjectId);
+  var c = findChapter(s, state.chapterId);
+  state.quizQuestions = shuffle(c.questions);
+  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.mode = 'chapter';
+  goto('quiz');
+}
+function startFinalTest() {
+  var s = findSubject(state.subjectId);
+  var all = allQuestionsOfSubject(s);
+  state.quizQuestions = shuffle(all).slice(0, Math.min(40, all.length));
+  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.mode = 'final';
+  goto('quiz');
+}
+function renderQuiz() {
+  var qs = state.quizQuestions, idx = state.quizIndex, q = qs[idx];
+  var pct = Math.round((idx / qs.length) * 100);
+  var html = topbar(state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : 'MCQ Practice', state.mode === 'final' ? 'subject' : 'chapter');
+  html += '<div class="q-progress">প্রশ্ন ' + (idx + 1) + ' / ' + qs.length + (state.mode === 'final' ? ' &nbsp;·&nbsp; স্কোর ' + state.quizScore : '') + '</div>';
+  html += '<div class="q-rule"></div>';
+  html += '<div class="q-text">' + escapeHtml(q.text) + '</div>';
+  q.options.forEach(function (opt, oi) {
+    var cls = 'opt-row';
+    if (state.quizAnswered !== null) {
+      if (oi === q.correct) cls += ' correct';
+      else if (oi === state.quizAnswered) cls += ' wrong';
+    }
+    html += '<button class="' + cls + '" ' + (state.quizAnswered !== null ? 'disabled' : 'onclick="answerQuiz(' + oi + ')"') + '>'
+      + '<span class="opt-bubble">' + LETTERS[oi] + '</span><span>' + escapeHtml(opt) + '</span></button>';
+  });
+  if (state.quizAnswered !== null) {
+    html += '<button class="btn btn-solid" style="margin-top:16px;" onclick="nextQuiz()">' + (idx + 1 < qs.length ? 'পরবর্তী প্রশ্ন' : 'ফলাফল দেখো') + '</button>';
+  }
+  return html;
+}
+function answerQuiz(oi) {
+  if (state.quizAnswered !== null) return;
+  state.quizAnswered = oi;
+  if (oi === state.quizQuestions[state.quizIndex].correct) state.quizScore++;
+  render();
+}
+function nextQuiz() {
+  state.quizIndex++; state.quizAnswered = null;
+  if (state.quizIndex >= state.quizQuestions.length) goto('result'); else render();
+}
+function renderResult() {
+  var total = state.quizQuestions.length, score = state.quizScore;
+  var pct = Math.round((score / total) * 100);
+  var html = '<div class="result-wrap">';
+  html += '<div class="row-sub">' + (state.mode === 'final' ? 'ফাইনাল মক টেস্টের ফলাফল' : 'MCQ Practice ফলাফল') + '</div>';
+  html += '<div class="result-num">' + score + ' / ' + total + '</div>';
+  html += '<div class="result-pct">সঠিক ' + pct + '%</div></div>';
+  html += '<button class="btn btn-solid" onclick="retryQuiz()">আবার চেষ্টা করো</button>';
+  html += '<button class="btn btn-quiet" onclick="goto(\'' + (state.mode === 'final' ? 'subject' : 'chapter') + '\')">' + (state.mode === 'final' ? 'সাবজেক্টে ফিরে যাও' : 'অধ্যায়ে ফিরে যাও') + '</button>';
+  html += '<button class="btn btn-quiet" onclick="goto(\'home\')">হোমে ফিরে যাও</button>';
+  return html;
+}
+function retryQuiz() { if (state.mode === 'final') startFinalTest(); else startChapterPractice(); }
+
+render();
+</script>
+</body>
+  </html>
