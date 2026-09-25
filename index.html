@@ -35,10 +35,12 @@
   .badge-num.trash{background:linear-gradient(135deg,#64748b,#475569);box-shadow:0 4px 12px rgba(71,85,105,.2)}
   .badge-num.photo{background:linear-gradient(135deg,#0891b2,#0e7490);box-shadow:0 4px 12px rgba(14,116,144,.25)}
   .badge-num.mock{background:linear-gradient(135deg,#d97706,#b45309);box-shadow:0 4px 12px rgba(217,119,6,.35)}
+  .badge-num.complex{background:linear-gradient(135deg,#7c3aed,#6d28d9);box-shadow:0 4px 12px rgba(124,58,237,.3)}
   .chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-left:6px}
   .chip.green{background:var(--success-soft);color:var(--success)}
   .chip.red{background:var(--danger-soft);color:var(--danger)}
   .chip.amber{background:var(--warning-soft);color:var(--warning)}
+  .chip.purple{background:#f3e8ff;color:#7c3aed}
   .del-btn{background:none;border:none;color:var(--ink-mute);font-size:12.5px;padding:8px;cursor:pointer;flex-shrink:0}
   .del-btn:hover{color:var(--danger)}
   .btn{display:block;width:100%;padding:14px;border-radius:12px;border:none;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin-bottom:10px;transition:transform .1s ease,box-shadow .15s ease}
@@ -49,6 +51,7 @@
   .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 6px 20px rgba(220,38,38,.25)}
   .btn-success{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 20px rgba(16,185,129,.25)}
   .btn-info{background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;box-shadow:0 6px 20px rgba(14,116,144,.25)}
+  .btn-purple{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 6px 20px rgba(124,58,237,.28)}
   .btn-mock{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;box-shadow:0 8px 24px rgba(217,119,6,.40);font-size:16.5px;padding:18px;letter-spacing:.3px}
   .section-label{font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin:22px 4px 10px}
   input[type=text],textarea{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14.5px;margin-bottom:10px;background:var(--card);color:var(--ink);transition:border-color .15s}
@@ -70,6 +73,9 @@
   .progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:22px}
   .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),#7c3aed);border-radius:3px;transition:width .3s ease}
   .q-text{font-size:17.5px;font-weight:700;line-height:1.55;margin-bottom:20px;padding:0 4px}
+  .q-text.q-complex{font-size:14.5px;font-weight:600;line-height:1.65;white-space:pre-wrap;word-break:break-word;background:#f8fafc;border-left:3px solid var(--primary);padding:14px;border-radius:10px;font-family:'Hind Siliguri','Courier New',monospace;overflow-x:auto}
+  .q-text.q-complex::before{content:'📋 জটিল প্রশ্ন';display:block;font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+  .q-type-badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:#f3e8ff;color:#7c3aed;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
   .result-wrap{text-align:center;padding:20px 10px}
   .result-circle{width:140px;height:140px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,var(--primary),#7c3aed);box-shadow:0 12px 40px rgba(79,70,229,.30);color:#fff}
   .result-circle.good{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 12px 40px rgba(16,185,129,.30)}
@@ -82,13 +88,14 @@
   .empty-state .emoji{font-size:40px;display:block;margin-bottom:12px}
   .qa-item{padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--border);margin-bottom:10px}
   .qa-q{font-weight:700;font-size:14.5px;margin-bottom:10px;line-height:1.5}
+  .qa-q.q-complex{font-weight:600;font-size:13px;white-space:pre-wrap;word-break:break-word;background:#f8fafc;padding:10px;border-radius:8px;font-family:'Hind Siliguri','Courier New',monospace;overflow-x:auto}
   .qa-opt{font-size:13.5px;color:var(--ink-soft);padding:5px 0;display:flex;align-items:center;gap:8px}
   .qa-opt.is-correct{color:var(--success);font-weight:700}
   .qa-opt .letter{display:inline-flex;width:22px;height:22px;background:var(--primary-soft);color:var(--primary);border-radius:6px;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;flex-shrink:0}
   .qa-opt.is-correct .letter{background:var(--success);color:#fff}
   .note-banner{background:var(--danger-soft);color:var(--danger);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #fecaca}
   .info-banner{background:var(--primary-soft);color:var(--primary-dark);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #c7d2fe;line-height:1.6}
-  .format-box{background:#fff;padding:12px;border-radius:8px;font-size:12.5px;white-space:pre-wrap;font-family:'Courier New',monospace;line-height:1.7;border:1px solid #e2e8f0;margin-top:8px;color:var(--ink);overflow-x:auto}
+  .format-box{background:#fff;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap;font-family:'Courier New',monospace;line-height:1.65;border:1px solid #e2e8f0;margin-top:8px;color:var(--ink);overflow-x:auto}
   .trash-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px}
   .trash-info{flex:1;min-width:0}
   .trash-name{font-weight:700;font-size:14px}
@@ -129,6 +136,10 @@
   .storage-info b{color:var(--primary-dark)}
   .mock-progress{background:var(--warning-soft);border:1px solid #fde68a;border-radius:12px;padding:12px 14px;font-size:13px;color:#92400e;line-height:1.7;margin-bottom:10px}
   .mock-progress b{color:#78350f}
+  .type-toggle{display:flex;gap:8px;margin-bottom:12px}
+  .type-toggle button{flex:1;padding:11px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+  .type-toggle button.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
+  .type-toggle button.active.complex-toggle{background:#f3e8ff;border-color:#7c3aed;color:#7c3aed}
 </style>
 </head>
 <body>
@@ -140,11 +151,11 @@ const STORAGE_KEY = 'examStudyAppData_v2';
 const TRASH_TTL_DAYS = 30;
 const LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
 const MOCK_SIZE = 40;
+const MOCK_COMPLEX_MIN = 10; // minimum complex questions in full mock
 const OPFS_DIR = 'exam-media-v1';
 
 /* ========== OPFS MEDIA STORAGE ========== */
 let mediaBackend = null;
-
 async function getOpfsDir() {
   if (!navigator.storage || !navigator.storage.getDirectory) throw new Error('OPFS unsupported');
   const root = await navigator.storage.getDirectory();
@@ -154,8 +165,7 @@ async function opfsSave(id, blob) {
   const dir = await getOpfsDir();
   const fh = await dir.getFileHandle(id + '.bin', { create: true });
   const w = await fh.createWritable();
-  await w.write(blob);
-  await w.close();
+  await w.write(blob); await w.close();
 }
 async function opfsGet(id) {
   try {
@@ -165,45 +175,24 @@ async function opfsGet(id) {
   } catch (e) { return null; }
 }
 async function opfsDelete(id) {
-  try {
-    const dir = await getOpfsDir();
-    await dir.removeEntry(id + '.bin');
-  } catch (e) {}
+  try { const dir = await getOpfsDir(); await dir.removeEntry(id + '.bin'); } catch (e) {}
 }
 async function opfsClear() {
-  try {
-    const root = await navigator.storage.getDirectory();
-    await root.removeEntry(OPFS_DIR, { recursive: true });
-  } catch (e) {}
+  try { const root = await navigator.storage.getDirectory(); await root.removeEntry(OPFS_DIR, { recursive: true }); } catch (e) {}
 }
 async function requestPersist() {
   if (!navigator.storage || !navigator.storage.persist) return false;
-  try {
-    if (await navigator.storage.persisted()) return true;
-    return await navigator.storage.persist();
-  } catch (e) { return false; }
+  try { if (await navigator.storage.persisted()) return true; return await navigator.storage.persist(); } catch (e) { return false; }
 }
 async function initMediaBackend() {
   if (mediaBackend) return mediaBackend;
-  try {
-    await getOpfsDir();
-    mediaBackend = 'opfs';
-    await requestPersist();
-  } catch (e) { mediaBackend = 'idb'; }
+  try { await getOpfsDir(); mediaBackend = 'opfs'; await requestPersist(); } catch (e) { mediaBackend = 'idb'; }
   return mediaBackend;
 }
 async function mediaSave(meta, blob) {
   const b = await initMediaBackend();
   if (b === 'opfs') return opfsSave(meta.id, blob);
   return idbSaveMedia({ ...meta, blob });
-}
-async function mediaGet(id) {
-  const b = await initMediaBackend();
-  if (b === 'opfs') {
-    const f = await opfsGet(id);
-    return f ? { blob: f } : null;
-  }
-  return idbGetMedia(id);
 }
 async function mediaDelete(id) {
   const b = await initMediaBackend();
@@ -215,20 +204,14 @@ async function mediaGetByChapter(chapterId) {
   if (b === 'idb') return idbGetByChapter(chapterId);
   const metas = data.mediaMeta.filter(m => m.chapterId === chapterId);
   const out = [];
-  for (const m of metas) {
-    const f = await opfsGet(m.id);
-    if (f) out.push({ ...m, blob: f });
-  }
+  for (const m of metas) { const f = await opfsGet(m.id); if (f) out.push({ ...m, blob: f }); }
   return out;
 }
 async function mediaGetAll() {
   const b = await initMediaBackend();
   if (b === 'idb') return idbGetAll();
   const out = [];
-  for (const m of data.mediaMeta) {
-    const f = await opfsGet(m.id);
-    if (f) out.push({ ...m, blob: f });
-  }
+  for (const m of data.mediaMeta) { const f = await opfsGet(m.id); if (f) out.push({ ...m, blob: f }); }
   return out;
 }
 async function mediaClearAll() {
@@ -237,7 +220,7 @@ async function mediaClearAll() {
   return idbClearAll();
 }
 
-/* ========== INDEXEDDB (fallback) ========== */
+/* ========== INDEXEDDB FALLBACK ========== */
 let idbPromise = null;
 function openIDB() {
   if (idbPromise) return idbPromise;
@@ -259,64 +242,32 @@ function openIDB() {
 }
 async function idbSaveMedia(item) {
   const db = await openIDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction('media', 'readwrite');
-    tx.objectStore('media').put(item);
-    tx.oncomplete = res; tx.onerror = () => rej(tx.error);
-  });
-}
-async function idbGetMedia(id) {
-  const db = await openIDB();
-  return new Promise((res, rej) => {
-    const req = db.transaction('media', 'readonly').objectStore('media').get(id);
-    req.onsuccess = () => res(req.result); req.onerror = () => rej(req.error);
-  });
+  return new Promise((res, rej) => { const tx = db.transaction('media', 'readwrite'); tx.objectStore('media').put(item); tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
 }
 async function idbDeleteMedia(id) {
   const db = await openIDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction('media', 'readwrite');
-    tx.objectStore('media').delete(id);
-    tx.oncomplete = res; tx.onerror = () => rej(tx.error);
-  });
+  return new Promise((res, rej) => { const tx = db.transaction('media', 'readwrite'); tx.objectStore('media').delete(id); tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
 }
 async function idbGetByChapter(chapterId) {
   const db = await openIDB();
-  return new Promise((res, rej) => {
-    const req = db.transaction('media', 'readonly').objectStore('media').index('chapterId').getAll(chapterId);
-    req.onsuccess = () => res(req.result || []); req.onerror = () => rej(req.error);
-  });
+  return new Promise((res, rej) => { const req = db.transaction('media', 'readonly').objectStore('media').index('chapterId').getAll(chapterId); req.onsuccess = () => res(req.result || []); req.onerror = () => rej(req.error); });
 }
 async function idbGetAll() {
   const db = await openIDB();
-  return new Promise((res, rej) => {
-    const req = db.transaction('media', 'readonly').objectStore('media').getAll();
-    req.onsuccess = () => res(req.result || []); req.onerror = () => rej(req.error);
-  });
+  return new Promise((res, rej) => { const req = db.transaction('media', 'readonly').objectStore('media').getAll(); req.onsuccess = () => res(req.result || []); req.onerror = () => rej(req.error); });
 }
 async function idbClearAll() {
   const db = await openIDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction('media', 'readwrite');
-    tx.objectStore('media').clear();
-    tx.oncomplete = res; tx.onerror = () => rej(tx.error);
-  });
+  return new Promise((res, rej) => { const tx = db.transaction('media', 'readwrite'); tx.objectStore('media').clear(); tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
 }
 
 function blobToBase64(blob) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload = () => res(r.result); r.onerror = rej;
-    r.readAsDataURL(blob);
-  });
+  return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(blob); });
 }
-function base64ToBlob(dataUrl) {
-  return fetch(dataUrl).then(r => r.blob());
-}
+function base64ToBlob(dataUrl) { return fetch(dataUrl).then(r => r.blob()); }
 
 /* ========== MAIN DATA ========== */
 let memoryFallback = null;
-
 function defaultData() {
   return {
     subjects: [
@@ -325,13 +276,9 @@ function defaultData() {
       { id: 'subj-3', name: 'বিষয় ৩', chapters: [] },
       { id: 'subj-4', name: 'বিষয় ৪', chapters: [] }
     ],
-    wrongQuestions: [],
-    trash: [],
-    mediaMeta: [],
-    mockProgress: {}
+    wrongQuestions: [], trash: [], mediaMeta: [], mockProgress: {}
   };
 }
-
 function loadData() {
   if (memoryFallback) return memoryFallback;
   try {
@@ -341,19 +288,18 @@ function loadData() {
     if (!memoryFallback.trash) memoryFallback.trash = [];
     if (!memoryFallback.mediaMeta) memoryFallback.mediaMeta = [];
     if (!memoryFallback.mockProgress) memoryFallback.mockProgress = {};
+    // Migration: ensure all questions have a type
+    memoryFallback.subjects.forEach(s => s.chapters.forEach(c => c.questions.forEach(q => {
+      if (!q.type) q.type = (q.text && q.text.includes('\n')) ? 'complex' : 'mcq';
+    })));
     purgeOldTrash();
   } catch (e) { memoryFallback = defaultData(); }
   return memoryFallback;
 }
-
 function saveData() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(memoryFallback));
-  } catch (e) {
-    console.warn('save failed:', e.message);
-  }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(memoryFallback)); }
+  catch (e) { console.warn('save failed:', e.message); }
 }
-
 function purgeOldTrash() {
   const now = Date.now();
   const ttl = TRASH_TTL_DAYS * 86400000;
@@ -372,30 +318,32 @@ function allQuestionsOfSubject(subj) {
 }
 function shuffle(arr) {
   const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 }
 function escapeHtml(str) {
   const d = document.createElement('div');
-  d.innerText = str;
+  d.innerText = str == null ? '' : String(str);
   return d.innerHTML;
 }
 function fmtDate(ts) {
   const d = new Date(ts);
   return d.toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' });
 }
-function getWrongForChapter(chapId) {
-  return data.wrongQuestions.filter(w => w.chapterId === chapId);
-}
+function getWrongForChapter(chapId) { return data.wrongQuestions.filter(w => w.chapterId === chapId); }
 function fmtBytes(bytes) {
   if (!bytes) return '০ B';
-  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-  let i = 0;
+  const units = ['B', 'KB', 'MB', 'GB', 'TB']; let i = 0;
   while (bytes >= 1024 && i < units.length - 1) { bytes /= 1024; i++; }
   return bytes.toFixed(2) + ' ' + units[i];
+}
+function countComplexInChapter(c) { return c.questions.filter(q => q.type === 'complex').length; }
+function countComplexInSubject(s) { return allQuestionsOfSubject(s).filter(x => x.q.type === 'complex').length; }
+function questionHtml(q, isQuiz) {
+  if (q.type === 'complex') {
+    return `<div class="q-text q-complex${isQuiz ? '' : ''}" style="margin-bottom:20px;">${escapeHtml(q.text)}</div>`;
+  }
+  return `<div class="q-text">${escapeHtml(q.text)}</div>`;
 }
 
 /* ========== STATE ========== */
@@ -405,6 +353,7 @@ const state = {
   subjectId: null, chapterId: null, mode: null,
   quizQuestions: [], quizIndex: 0, quizScore: 0, quizAnswered: null, quizWrongIds: [],
   addingSubject: false, addingChapter: false, noteError: null,
+  addingComplex: false,
   bulkPreview: null, bulkError: null,
   modal: null, mediaList: [], mediaViewer: null, mediaLoading: false
 };
@@ -426,12 +375,8 @@ function render() {
     trash: renderTrash, backup: renderBackup
   }[state.screen];
   app.innerHTML = fn() + (state.modal ? renderModal() : '') + (state.mediaViewer ? renderMediaViewer() : '');
-  if (state.mediaViewer) {
-    document.body.style.overflow = 'hidden';
-    setTimeout(bindViewer, 20);
-  } else {
-    document.body.style.overflow = '';
-  }
+  if (state.mediaViewer) { document.body.style.overflow = 'hidden'; setTimeout(bindViewer, 20); }
+  else { document.body.style.overflow = ''; }
 }
 
 function topbar(title, backScreen) {
@@ -445,7 +390,7 @@ function topbar(title, backScreen) {
 function renderHome() {
   let html = `<div class="hero">
     <h1>আমার পরীক্ষার প্রস্তুতি</h1>
-    <p>প্রশ্ন যোগ করুন · প্র্যাকটিস করুন · ভুল থেকে শিখুন</p>
+    <p>MCQ ও জটিল প্রশ্ন · প্র্যাকটিস · ভুল থেকে শিখুন</p>
   </div>`;
 
   html += `<div class="section-label">সাবজেক্ট সমূহ</div>`;
@@ -454,12 +399,13 @@ function renderHome() {
   } else {
     data.subjects.forEach((s, i) => {
       const totalQ = allQuestionsOfSubject(s).length;
+      const complexQ = countComplexInSubject(s);
       html += `<div class="card tappable" onclick="goto('subject',{subjectId:'${s.id}'})">
         <div class="row">
           <div class="badge-num">${i + 1}</div>
           <div class="row-main">
             <div class="row-title">${escapeHtml(s.name)}</div>
-            <div class="row-sub">${s.chapters.length} অধ্যায় · ${totalQ} প্রশ্ন</div>
+            <div class="row-sub">${s.chapters.length} অধ্যায় · ${totalQ} প্রশ্ন${complexQ > 0 ? ` · <span style="color:#7c3aed;">${complexQ} জটিল</span>` : ''}</div>
           </div>
           <button class="del-btn" onclick="event.stopPropagation();askDeleteSubject('${s.id}')">🗑️</button>
         </div>
@@ -485,7 +431,6 @@ function renderHome() {
       </div>
     </div>
   </div>`;
-
   html += `<div class="card tappable" onclick="goto('backup')">
     <div class="row">
       <div class="badge-num">💾</div>
@@ -495,10 +440,8 @@ function renderHome() {
       </div>
     </div>
   </div>`;
-
   return html;
 }
-
 function confirmAddSubject() {
   const name = document.getElementById('newSubjectName').value.trim();
   if (!name) return;
@@ -512,6 +455,7 @@ function renderSubject() {
   const s = findSubject(state.subjectId);
   if (!s) { goto('home'); return ''; }
   const totalQ = allQuestionsOfSubject(s).length;
+  const complexQ = countComplexInSubject(s);
 
   let html = topbar(escapeHtml(s.name), 'home');
 
@@ -522,7 +466,9 @@ function renderSubject() {
     s.chapters.forEach((c, i) => {
       const wrongCount = getWrongForChapter(c.id).length;
       const mediaCount = data.mediaMeta.filter(m => m.chapterId === c.id).length;
+      const cplx = countComplexInChapter(c);
       const subs = [`${c.questions.length} প্রশ্ন`];
+      if (cplx > 0) subs.push(`<span style="color:#7c3aed;">${cplx} জটিল</span>`);
       if (wrongCount > 0) subs.push(`<span style="color:var(--danger);">${wrongCount} ভুল</span>`);
       if (mediaCount > 0) subs.push(`<span style="color:#0891b2;">${mediaCount} ছবি</span>`);
 
@@ -555,6 +501,7 @@ function renderSubject() {
     const usedCount = prog.usedIds.length;
     const remaining = Math.max(0, totalQ - usedCount);
     const totalTestsPossible = Math.ceil(totalQ / MOCK_SIZE);
+    const complexInTest = Math.min(MOCK_COMPLEX_MIN, complexQ);
 
     if (usedCount > 0) {
       html += `<div class="mock-progress">
@@ -570,10 +517,11 @@ function renderSubject() {
       html += `<div class="row-sub" style="text-align:center;margin-top:-4px;color:var(--warning);">⚠️ এখন ${totalQ}টি প্রশ্ন আছে — সব দিয়ে পরীক্ষা হবে</div>`;
     } else {
       html += `<div class="row-sub" style="text-align:center;margin-top:-4px;color:var(--ink-soft);">সব অধ্যায় থেকে র্যান্ডম ${MOCK_SIZE}টি · প্রতিবার সম্পূর্ণ নতুন</div>`;
-      html += `<div class="row-sub" style="text-align:center;margin-top:4px;color:var(--ink-soft);font-size:11.5px;">মোট ${totalTestsPossible}টি আলাদা টেস্ট সম্ভব</div>`;
+      if (complexQ > 0) {
+        html += `<div class="row-sub" style="text-align:center;margin-top:4px;color:#7c3aed;font-size:11.5px;">📋 এর মধ্যে কমপক্ষে ${complexInTest}টি জটিল প্রশ্ন থাকবে</div>`;
+      }
     }
   }
-
   return html;
 }
 
@@ -609,6 +557,8 @@ function renderChapter() {
   const disabled = c.questions.length === 0;
   const wrongCount = getWrongForChapter(c.id).length;
   const mediaCount = data.mediaMeta.filter(m => m.chapterId === c.id).length;
+  const cplx = countComplexInChapter(c);
+  const mcqCount = c.questions.length - cplx;
 
   let html = topbar(escapeHtml(c.name), 'subject');
 
@@ -616,8 +566,8 @@ function renderChapter() {
     <div class="row">
       <div class="badge-num">✓</div>
       <div class="row-main">
-        <div class="row-title">MCQ প্র্যাকটিস</div>
-        <div class="row-sub">${disabled ? 'আগে প্রশ্ন যোগ করুন' : c.questions.length + ' টি প্রশ্নে পরীক্ষা দিন'}</div>
+        <div class="row-title">প্র্যাকটিস (সব প্রশ্ন)</div>
+        <div class="row-sub">${disabled ? 'আগে প্রশ্ন যোগ করুন' : `${mcqCount} MCQ${cplx > 0 ? ` + ${cplx} জটিল` : ''} = ${c.questions.length} প্রশ্ন`}</div>
       </div>
     </div>
   </div>`;
@@ -638,7 +588,7 @@ function renderChapter() {
     <div class="row">
       <div class="badge-num">✎</div>
       <div class="row-main">
-        <div class="row-title">নোট / প্রশ্ন ব্যাংক</div>
+        <div class="row-title">প্রশ্ন ব্যাংক</div>
         <div class="row-sub">নতুন প্রশ্ন যোগ করুন বা দেখুন</div>
       </div>
     </div>
@@ -653,7 +603,6 @@ function renderChapter() {
       </div>
     </div>
   </div>`;
-
   return html;
 }
 
@@ -663,12 +612,24 @@ function renderNotes() {
   const c = findChapter(s, state.chapterId);
   if (!c) { goto('chapter'); return ''; }
 
-  let html = topbar('নোট', 'chapter');
+  let html = topbar('প্রশ্ন ব্যাংক', 'chapter');
   html += `<button class="btn btn-success" style="margin-bottom:16px;" onclick="goto('bulkImport')">📥 একসাথে অনেক প্রশ্ন যোগ করুন (বাল্ক ইমপোর্ট)</button>`;
   html += `<div class="section-label">অথবা একটি একটি করে যোগ করুন</div>`;
+
   if (state.noteError) html += `<div class="note-banner">${state.noteError}</div>`;
 
-  html += `<textarea id="qtext" rows="2" placeholder="প্রশ্ন লিখুন..."></textarea>`;
+  // Type toggle
+  html += `<div class="type-toggle">
+    <button class="${!state.addingComplex ? 'active' : ''}" onclick="state.addingComplex=false;state.noteError=null;render();">📝 সাধারণ MCQ</button>
+    <button class="${state.addingComplex ? 'active complex-toggle' : ''}" onclick="state.addingComplex=true;state.noteError=null;render();">📋 জটিল (টেবিল/তালিকা)</button>
+  </div>`;
+
+  if (state.addingComplex) {
+    html += `<textarea id="qtext" rows="8" placeholder="বড় প্রশ্ন/টেবিল/তালিকা এখানে লিখুন... (লাইন ব্রেক সংরক্ষিত হবে)" style="font-family:'Courier New',monospace;font-size:13.5px;line-height:1.6;"></textarea>`;
+  } else {
+    html += `<textarea id="qtext" rows="2" placeholder="প্রশ্ন লিখুন..."></textarea>`;
+  }
+
   for (let i = 0; i < 4; i++) {
     html += `<div class="opt-input-row">
       <input type="radio" name="correctOpt" value="${i}" ${i === 0 ? 'checked' : ''}>
@@ -679,13 +640,17 @@ function renderNotes() {
   html += `<div class="row-sub" style="margin:0 0 14px 4px;">☝️ রেডিও বাটনে ট্যাপ করে সঠিক উত্তরটি বেছে নিন</div>`;
   html += `<button class="btn btn-primary" onclick="saveNewQuestion()">সংরক্ষণ করুন</button>`;
 
-  html += `<div class="section-label">যোগ করা প্রশ্ন (${c.questions.length})</div>`;
+  const cplx = countComplexInChapter(c);
+  const mcqCount = c.questions.length - cplx;
+  html += `<div class="section-label">যোগ করা প্রশ্ন (${c.questions.length}${cplx > 0 ? ` · ${mcqCount} MCQ · ${cplx} জটিল` : ''})</div>`;
   if (c.questions.length === 0) {
     html += `<div class="empty-state"><span class="emoji">📝</span>এখনো কোনো প্রশ্ন যোগ করা হয়নি।</div>`;
   } else {
     c.questions.forEach((q, idx) => {
+      const isC = q.type === 'complex';
       html += `<div class="qa-item">
-        <div class="qa-q">${idx + 1}. ${escapeHtml(q.text)}</div>`;
+        ${isC ? '<div class="q-type-badge">📋 জটিল</div>' : ''}
+        <div class="qa-q${isC ? ' q-complex' : ''}">${idx + 1}. ${escapeHtml(q.text)}</div>`;
       q.options.forEach((opt, oi) => {
         html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
           <span class="letter">${LETTERS[oi]}</span>
@@ -712,41 +677,95 @@ function saveNewQuestion() {
   const correct = parseInt(document.querySelector('input[name=correctOpt]:checked').value, 10);
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
-  c.questions.push({ id: uid(), text, options: opts, correct });
+  const type = state.addingComplex ? 'complex' : 'mcq';
+  c.questions.push({ id: uid(), type, text, options: opts, correct });
+  if (data.mockProgress) delete data.mockProgress[s.id];
   saveData(); render();
 }
 
-/* ========== BULK IMPORT ========== */
+/* ========== BULK IMPORT (auto-detects complex) ========== */
 function parseBulkText(text) {
   const blocks = text.trim().split(/\n\s*\n/);
   const questions = [], errors = [];
   blocks.forEach((block, bi) => {
-    const lines = block.split('\n').map(l => l.trim()).filter(l => l);
-    if (lines.length === 0) return;
-    const optRegex = /^([কখগঘ]|[aAbBcCdD])\s*[\).\]:।]\s*/;
-    const optLines = lines.filter(l => optRegex.test(l));
-    if (optLines.length !== 4) { errors.push(`ব্লক ${bi + 1}: ৪টি অপশন পাওয়া যায়নি`); return; }
-    const qLines = lines.filter(l => !optLines.includes(l) && !/^উত্তর\s*[:：]/i.test(l) && !/^answer\s*[:：]/i.test(l));
-    if (qLines.length === 0) { errors.push(`ব্লক ${bi + 1}: প্রশ্নের টেক্সট নেই`); return; }
-    const qText = qLines.join(' ').replace(/^প্রশ্ন\s*[:：]?\s*/, '').trim();
-    const options = optLines.map(l => l.replace(optRegex, '').trim());
-    let correct = -1;
-    optLines.forEach((l, i) => {
-      if (l.includes('*')) { if (correct === -1) correct = i; options[i] = options[i].replace(/\*/g, '').trim(); }
-    });
-    if (correct === -1) {
-      const answerLine = lines.find(l => /^(উত্তর|answer)\s*[:：]/i.test(l));
-      if (answerLine) {
-        const ans = answerLine.replace(/^(উত্তর|answer)\s*[:：]\s*/i, '').trim();
-        const letterMap = { 'ক': 0, 'খ': 1, 'গ': 2, 'ঘ': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
-        const letter = ans.charAt(0);
-        if (letterMap[letter] !== undefined) correct = letterMap[letter];
-        else if (/^[1-4]/.test(ans)) correct = parseInt(ans) - 1;
-        else { const idx = options.findIndex(o => o.toLowerCase() === ans.toLowerCase()); if (idx !== -1) correct = idx; }
+    const rawLines = block.split('\n').map(l => l.replace(/\s+$/, '')).filter(l => l.trim());
+    if (rawLines.length === 0) return;
+
+    // Option regex: supports ক/খ/গ/ঘ or (a)/(b)/(c)/(d) or a./b./c./d.
+    const optRegex = /^\s*[\(\[]?\s*([কখগঘ]|[aAbBcCdD])\s*[\)\].:।]\s*/;
+    const optIdx = [];
+    rawLines.forEach((l, i) => { if (optRegex.test(l)) optIdx.push(i); });
+
+    // We need exactly 4 consecutive option lines at the end
+    if (optIdx.length < 4) {
+      errors.push(`ব্লক ${bi + 1}: ৪টি অপশন পাওয়া যায়নি (${optIdx.length}টি)`);
+      return;
+    }
+
+    // Take the last 4 option-like lines that are consecutive at the end
+    const last4 = optIdx.slice(-4);
+    // ensure they are consecutive
+    for (let i = 1; i < 4; i++) {
+      if (last4[i] !== last4[i-1] + 1) {
+        errors.push(`ব্লক ${bi + 1}: অপশনগুলো পরপর নয়`);
+        return;
       }
     }
-    if (correct === -1 || correct > 3) { errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত হয়নি`); return; }
-    questions.push({ id: uid(), text: qText, options, correct });
+    if (last4[3] !== rawLines.length - 1) {
+      errors.push(`ব্লক ${bi + 1}: অপশনের পরে অতিরিক্ত লাইন আছে`);
+      return;
+    }
+
+    const optLines = last4.map(i => rawLines[i]);
+    let qLines = rawLines.slice(0, last4[0]);
+
+    // Remove "উত্তর:" / "answer:" lines from question body
+    const answerLineIdx = qLines.findIndex(l => /^\s*(উত্তর|answer)\s*[:：]/i.test(l));
+    let answerLineText = '';
+    if (answerLineIdx !== -1) {
+      answerLineText = qLines[answerLineIdx];
+      qLines.splice(answerLineIdx, 1);
+    }
+
+    if (qLines.length === 0) {
+      errors.push(`ব্লক ${bi + 1}: প্রশ্নের বডি নেই`);
+      return;
+    }
+
+    // Preserve internal line breaks for complex questions
+    let qText = qLines.join('\n').trim();
+    // Strip "প্রশ্ন:" prefix if present
+    qText = qText.replace(/^প্রশ্ন\s*[:：]?\s*/, '');
+
+    const options = optLines.map(l => l.replace(optRegex, '').trim());
+    let correct = -1;
+
+    // Method 1: trailing * on any option
+    optLines.forEach((l, i) => {
+      if (l.includes('*')) {
+        if (correct === -1) correct = i;
+        options[i] = options[i].replace(/\*/g, '').trim();
+      }
+    });
+
+    // Method 2: "উত্তর: ক" line
+    if (correct === -1 && answerLineText) {
+      const ans = answerLineText.replace(/^\s*(উত্তর|answer)\s*[:：]\s*/i, '').trim();
+      const letterMap = { 'ক': 0, 'খ': 1, 'গ': 2, 'ঘ': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+      const letter = ans.charAt(0);
+      if (letterMap[letter] !== undefined) correct = letterMap[letter];
+      else if (/^[1-4]/.test(ans)) correct = parseInt(ans) - 1;
+      else { const idx = options.findIndex(o => o.toLowerCase() === ans.toLowerCase()); if (idx !== -1) correct = idx; }
+    }
+
+    if (correct === -1 || correct > 3) {
+      errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত হয়নি`);
+      return;
+    }
+
+    // Complex if body has multiple lines
+    const type = qLines.length > 1 ? 'complex' : 'mcq';
+    questions.push({ id: uid(), type, text: qText, options, correct });
   });
   return { questions, errors };
 }
@@ -757,32 +776,42 @@ function renderBulkImport() {
   if (!c) { goto('notes'); return ''; }
   let html = topbar('বাল্ক ইমপোর্ট', 'notes');
   html += `<div class="info-banner">
-    <b>📌 ফরম্যাট:</b> প্রতিটি প্রশ্নের পরে একটি খালি লাইন। সঠিক উত্তরের শেষে <b>*</b> চিহ্ন।
+    <b>📌 ফরম্যাট:</b> প্রতিটি প্রশ্নের পরে <b>একটি খালি লাইন</b>। সঠিক উত্তরের শেষে <b>*</b> চিহ্ন।<br>
+    <b>📋 জটিল প্রশ্ন (টেবিল/তালিকা):</b> স্বয়ংক্রিয়ভাবে শনাক্ত হবে — প্রশ্নের বডি একাধিক লাইন হলে।
     <div class="format-box">বাংলাদেশের রাজধানী কী?
 ক) চট্টগ্রাম
 খ) ঢাকা *
 গ) খুলনা
 ঘ) রাজশাহী
 
-স্বাধীনতার বছর?
-ক) ১৯৭০
-খ) ১৯৭১ *
-গ) ১৯৭২
-ঘ) ১৯৬৯</div>
+গুরুত্বপূর্ণ সন্ধি ও তাদের বছর:
+(i) বেলগ্রেড সন্ধান  (1) 1955
+(ii) বাগদাদ সন্ধান   (2) 1961
+(iii) সুয়েজ সংকট    (3) 1962
+(iv) কিউবা সংকট    (4) 1956
+ক) i-1, ii-2, iii-3, iv-4
+খ) i-3, ii-4, iii-2, iv-1
+গ) i-2, ii-1, iii-4, iv-3 *
+ঘ) i-4, ii-3, iii-1, iv-2</div>
   </div>`;
   if (state.bulkError) html += `<div class="note-banner">${state.bulkError}</div>`;
-  html += `<textarea id="bulkText" rows="12" placeholder="এখানে সব প্রশ্ন একসাথে পেস্ট করুন..."></textarea>`;
+  html += `<textarea id="bulkText" rows="14" placeholder="এখানে সব প্রশ্ন একসাথে পেস্ট করুন..." style="font-family:'Courier New',monospace;font-size:13px;line-height:1.6;"></textarea>`;
   html += `<button class="btn btn-primary" onclick="previewBulk()">👁️ প্রিভিউ দেখুন</button>`;
   html += `<button class="btn btn-quiet" onclick="state.bulkPreview=null;state.bulkError=null;goto('notes')">বাতিল</button>`;
 
   if (state.bulkPreview && state.bulkPreview.questions.length > 0) {
-    html += `<div class="section-label">প্রিভিউ (${state.bulkPreview.questions.length}টি সফল)</div>`;
+    const cplxCount = state.bulkPreview.questions.filter(q => q.type === 'complex').length;
+    const mcqCount = state.bulkPreview.questions.length - cplxCount;
+    html += `<div class="section-label">প্রিভিউ (${state.bulkPreview.questions.length}টি · ${mcqCount} MCQ · ${cplxCount} জটিল)</div>`;
     if (state.bulkPreview.errors.length > 0) {
       html += `<div class="note-banner">⚠️ ${state.bulkPreview.errors.length}টি ব্লকে সমস্যা:<br>${state.bulkPreview.errors.map(e => '• ' + e).join('<br>')}</div>`;
     }
     html += `<button class="btn btn-success" onclick="confirmBulkImport()">✅ ${state.bulkPreview.questions.length}টি প্রশ্ন যোগ করুন</button>`;
     state.bulkPreview.questions.forEach((q, i) => {
-      html += `<div class="qa-item"><div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>`;
+      const isC = q.type === 'complex';
+      html += `<div class="qa-item">
+        ${isC ? '<div class="q-type-badge">📋 জটিল</div>' : ''}
+        <div class="qa-q${isC ? ' q-complex' : ''}">${i + 1}. ${escapeHtml(q.text)}</div>`;
       q.options.forEach((opt, oi) => {
         html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
           <span class="letter">${LETTERS[oi]}</span>
@@ -809,11 +838,13 @@ function confirmBulkImport() {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
   const count = state.bulkPreview.questions.length;
+  const cplxCount = state.bulkPreview.questions.filter(q => q.type === 'complex').length;
   state.bulkPreview.questions.forEach(q => c.questions.push(q));
+  if (data.mockProgress) delete data.mockProgress[s.id];
   saveData();
   state.bulkPreview = null;
   state.bulkError = null;
-  alert(`✅ ${count}টি প্রশ্ন সফলভাবে যোগ হয়েছে!`);
+  alert(`✅ ${count}টি প্রশ্ন যোগ হয়েছে!${cplxCount > 0 ? `\n📋 এর মধ্যে ${cplxCount}টি জটিল প্রশ্ন।` : ''}`);
   goto('notes');
 }
 
@@ -826,9 +857,7 @@ async function openMediaScreen() {
     const list = await mediaGetByChapter(state.chapterId);
     list.sort((a, b) => b.createdAt - a.createdAt);
     state.mediaList = list;
-  } catch (e) {
-    state.mediaList = [];
-  }
+  } catch (e) { state.mediaList = []; }
   state.mediaLoading = false;
   render();
   attachThumbs();
@@ -901,11 +930,7 @@ async function handleMediaUpload(event, type) {
       try { blob = await compressImage(file, 1600, 0.85); } catch (e) { blob = file; }
     }
     const id = uid();
-    const meta = {
-      id, chapterId: state.chapterId, type,
-      name: file.name || (type === 'image' ? 'ছবি' : 'PDF'),
-      createdAt: Date.now()
-    };
+    const meta = { id, chapterId: state.chapterId, type, name: file.name || (type === 'image' ? 'ছবি' : 'PDF'), createdAt: Date.now() };
     await mediaSave(meta, blob);
     data.mediaMeta.push(meta);
     saveData();
@@ -955,13 +980,10 @@ async function openPdfMedia(id) {
   } catch (e) { alert('PDF খোলা যায়নি।'); }
 }
 
-/* ========== MEDIA VIEWER (with zoom/pan/rotate) ========== */
+/* ========== MEDIA VIEWER ========== */
 function renderMediaViewer() {
   const m = state.mediaViewer;
-  const scale = m.scale || 1;
-  const rot = m.rotation || 0;
-  const tx = m.tx || 0;
-  const ty = m.ty || 0;
+  const scale = m.scale || 1, rot = m.rotation || 0, tx = m.tx || 0, ty = m.ty || 0;
   return `<div class="viewer-overlay" id="viewerOverlay">
     <div class="viewer-bar">
       <button onclick="closeViewer()">✕</button>
@@ -983,97 +1005,43 @@ function renderMediaViewer() {
     </div>
   </div>`;
 }
-
 function updateViewerTransform() {
-  const m = state.mediaViewer;
-  if (!m) return;
-  const wrap = document.getElementById('viewerImgWrap');
-  if (!wrap) return;
-  const s = m.scale || 1;
-  const tx = m.tx || 0;
-  const ty = m.ty || 0;
-  const rot = m.rotation || 0;
-  wrap.style.transform = `translate(${tx}px, ${ty}px) scale(${s}) rotate(${rot}deg)`;
+  const m = state.mediaViewer; if (!m) return;
+  const wrap = document.getElementById('viewerImgWrap'); if (!wrap) return;
+  wrap.style.transform = `translate(${m.tx || 0}px, ${m.ty || 0}px) scale(${m.scale || 1}) rotate(${m.rotation || 0}deg)`;
   const lbl = document.getElementById('zoomLevel');
-  if (lbl) lbl.textContent = Math.round(s * 100) + '%';
+  if (lbl) lbl.textContent = Math.round((m.scale || 1) * 100) + '%';
 }
-
-function zoomIn() {
-  if (!state.mediaViewer) return;
-  state.mediaViewer.scale = Math.min(6, (state.mediaViewer.scale || 1) * 1.5);
-  updateViewerTransform();
-}
-function zoomOut() {
-  if (!state.mediaViewer) return;
-  state.mediaViewer.scale = Math.max(0.4, (state.mediaViewer.scale || 1) / 1.5);
-  updateViewerTransform();
-}
-function rotateViewer() {
-  if (!state.mediaViewer) return;
-  state.mediaViewer.rotation = ((state.mediaViewer.rotation || 0) + 90) % 360;
-  updateViewerTransform();
-}
-function resetViewer() {
-  if (!state.mediaViewer) return;
-  state.mediaViewer.scale = 1;
-  state.mediaViewer.tx = 0;
-  state.mediaViewer.ty = 0;
-  state.mediaViewer.rotation = 0;
-  updateViewerTransform();
-}
+function zoomIn() { if (!state.mediaViewer) return; state.mediaViewer.scale = Math.min(6, (state.mediaViewer.scale || 1) * 1.5); updateViewerTransform(); }
+function zoomOut() { if (!state.mediaViewer) return; state.mediaViewer.scale = Math.max(0.4, (state.mediaViewer.scale || 1) / 1.5); updateViewerTransform(); }
+function rotateViewer() { if (!state.mediaViewer) return; state.mediaViewer.rotation = ((state.mediaViewer.rotation || 0) + 90) % 360; updateViewerTransform(); }
+function resetViewer() { if (!state.mediaViewer) return; state.mediaViewer.scale = 1; state.mediaViewer.tx = 0; state.mediaViewer.ty = 0; state.mediaViewer.rotation = 0; updateViewerTransform(); }
 
 function bindViewer() {
   const body = document.getElementById('viewerBody');
   if (!body || !state.mediaViewer) return;
-
   const hint = document.getElementById('viewerHint');
-  let startDist = 0, startScale = 1;
-  let startX = 0, startY = 0, startTx = 0, startTy = 0;
-  let dragging = false, pinching = false;
-  let lastTap = 0;
-  let hintHidden = false;
+  let startDist = 0, startScale = 1, startX = 0, startY = 0, startTx = 0, startTy = 0;
+  let dragging = false, pinching = false, lastTap = 0, hintHidden = false;
   let mouseDown = false, mStartX = 0, mStartY = 0, mStartTx = 0, mStartTy = 0;
-
-  function hideHint() {
-    if (hint && !hintHidden) {
-      hintHidden = true;
-      hint.style.opacity = '0';
-      setTimeout(() => hint && hint.remove(), 400);
-    }
-  }
-
-  function getDist(t1, t2) {
-    const dx = t1.clientX - t2.clientX;
-    const dy = t1.clientY - t2.clientY;
-    return Math.hypot(dx, dy);
-  }
+  function hideHint() { if (hint && !hintHidden) { hintHidden = true; hint.style.opacity = '0'; setTimeout(() => hint && hint.remove(), 400); } }
+  function getDist(t1, t2) { return Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY); }
 
   body.addEventListener('touchstart', (e) => {
     hideHint();
     if (e.touches.length === 2) {
-      pinching = true;
-      dragging = false;
+      pinching = true; dragging = false;
       startDist = getDist(e.touches[0], e.touches[1]);
       startScale = state.mediaViewer.scale || 1;
     } else if (e.touches.length === 1) {
-      pinching = false;
-      dragging = true;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      startTx = state.mediaViewer.tx || 0;
-      startTy = state.mediaViewer.ty || 0;
-
+      pinching = false; dragging = true;
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+      startTx = state.mediaViewer.tx || 0; startTy = state.mediaViewer.ty || 0;
       const now = Date.now();
       if (now - lastTap < 300) {
-        if ((state.mediaViewer.scale || 1) > 1.1) {
-          state.mediaViewer.scale = 1;
-          state.mediaViewer.tx = 0;
-          state.mediaViewer.ty = 0;
-        } else {
-          state.mediaViewer.scale = 2.5;
-        }
-        updateViewerTransform();
-        dragging = false;
+        if ((state.mediaViewer.scale || 1) > 1.1) { state.mediaViewer.scale = 1; state.mediaViewer.tx = 0; state.mediaViewer.ty = 0; }
+        else { state.mediaViewer.scale = 2.5; }
+        updateViewerTransform(); dragging = false;
       }
       lastTap = now;
     }
@@ -1083,38 +1051,29 @@ function bindViewer() {
     if (!state.mediaViewer) return;
     if (pinching && e.touches.length === 2) {
       e.preventDefault();
-      const d = getDist(e.touches[0], e.touches[1]);
-      const ratio = d / startDist;
+      const ratio = getDist(e.touches[0], e.touches[1]) / startDist;
       state.mediaViewer.scale = Math.max(0.4, Math.min(6, startScale * ratio));
       updateViewerTransform();
     } else if (dragging && e.touches.length === 1) {
       e.preventDefault();
-      const dx = e.touches[0].clientX - startX;
-      const dy = e.touches[0].clientY - startY;
-      state.mediaViewer.tx = startTx + dx;
-      state.mediaViewer.ty = startTy + dy;
+      state.mediaViewer.tx = startTx + (e.touches[0].clientX - startX);
+      state.mediaViewer.ty = startTy + (e.touches[0].clientY - startY);
       updateViewerTransform();
     }
   }, { passive: false });
 
   body.addEventListener('touchend', (e) => {
-    if (e.touches.length === 0) {
-      pinching = false;
-      dragging = false;
-    } else if (e.touches.length === 1) {
-      pinching = false;
-      dragging = true;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      startTx = state.mediaViewer.tx || 0;
-      startTy = state.mediaViewer.ty || 0;
+    if (e.touches.length === 0) { pinching = false; dragging = false; }
+    else if (e.touches.length === 1) {
+      pinching = false; dragging = true;
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+      startTx = state.mediaViewer.tx || 0; startTy = state.mediaViewer.ty || 0;
     }
   }, { passive: true });
 
   body.addEventListener('wheel', (e) => {
     if (!state.mediaViewer) return;
-    e.preventDefault();
-    hideHint();
+    e.preventDefault(); hideHint();
     const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
     state.mediaViewer.scale = Math.max(0.4, Math.min(6, (state.mediaViewer.scale || 1) * factor));
     updateViewerTransform();
@@ -1122,23 +1081,17 @@ function bindViewer() {
 
   body.addEventListener('mousedown', (e) => {
     if (e.button !== 0) return;
-    hideHint();
-    mouseDown = true;
-    mStartX = e.clientX;
-    mStartY = e.clientY;
-    mStartTx = state.mediaViewer.tx || 0;
-    mStartTy = state.mediaViewer.ty || 0;
+    hideHint(); mouseDown = true;
+    mStartX = e.clientX; mStartY = e.clientY;
+    mStartTx = state.mediaViewer.tx || 0; mStartTy = state.mediaViewer.ty || 0;
   });
-
-  const moveHandler = (e) => {
+  window.addEventListener('mousemove', (e) => {
     if (!mouseDown || !state.mediaViewer) return;
     state.mediaViewer.tx = mStartTx + (e.clientX - mStartX);
     state.mediaViewer.ty = mStartTy + (e.clientY - mStartY);
     updateViewerTransform();
-  };
-  const upHandler = () => { mouseDown = false; };
-  window.addEventListener('mousemove', moveHandler);
-  window.addEventListener('mouseup', upHandler);
+  });
+  window.addEventListener('mouseup', () => { mouseDown = false; });
 }
 
 function closeViewer() {
@@ -1147,21 +1100,13 @@ function closeViewer() {
   document.body.style.overflow = '';
   render();
 }
-
-function askDeleteMedia(id) {
-  showModal('ছবি/ফাইল মুছবেন?', 'এটি স্থায়ীভাবে মুছে যাবে।', 'মুছে ফেলুন', `reallyDeleteMedia('${id}')`, true);
-}
-function askDeleteMediaFromViewer() {
-  const id = state.mediaViewer.id;
-  closeViewer();
-  askDeleteMedia(id);
-}
+function askDeleteMedia(id) { showModal('ছবি/ফাইল মুছবেন?', 'এটি স্থায়ীভাবে মুছে যাবে।', 'মুছে ফেলুন', `reallyDeleteMedia('${id}')`, true); }
+function askDeleteMediaFromViewer() { const id = state.mediaViewer.id; closeViewer(); askDeleteMedia(id); }
 async function reallyDeleteMedia(id) {
   try {
     await mediaDelete(id);
     data.mediaMeta = data.mediaMeta.filter(m => m.id !== id);
-    saveData();
-    closeModal();
+    saveData(); closeModal();
     if (state.screen === 'media') await openMediaScreen();
     else render();
   } catch (e) { alert('মুছতে সমস্যা।'); closeModal(); }
@@ -1169,28 +1114,23 @@ async function reallyDeleteMedia(id) {
 
 /* ========== CHAPTER WRONG ========== */
 function openChapterWrong() { goto('chapterWrong'); }
-
 function renderChapterWrong() {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
   if (!c) { goto('chapter'); return ''; }
   const wrongs = getWrongForChapter(c.id);
-
   let html = topbar('ভুল প্রশ্ন', 'chapter');
-  if (wrongs.length === 0) {
-    html += `<div class="empty-state"><span class="emoji">✨</span>এই অধ্যায়ে কোনো ভুল প্রশ্ন নেই।</div>`;
-    return html;
-  }
-
+  if (wrongs.length === 0) { html += `<div class="empty-state"><span class="emoji">✨</span>এই অধ্যায়ে কোনো ভুল প্রশ্ন নেই।</div>`; return html; }
   html += `<div class="info-banner">📌 "${escapeHtml(c.name)}" অধ্যায়ের ভুল প্রশ্নগুলো। সঠিকভাবে উত্তর দিলে স্বয়ংক্রিয়ভাবে মুছে যাবে।</div>`;
   html += `<button class="btn btn-primary" onclick="startChapterWrongPractice()">🎯 সব ভুল প্র্যাকটিস (${wrongs.length})</button>`;
   html += `<button class="btn btn-quiet" onclick="askClearChapterWrong()">সব মুছুন</button>`;
   html += `<div class="section-label">তালিকা</div>`;
-
   wrongs.forEach((w, i) => {
     const q = w.question;
+    const isC = q.type === 'complex';
     html += `<div class="qa-item">
-      <div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>
+      ${isC ? '<div class="q-type-badge">📋 জটিল</div>' : ''}
+      <div class="qa-q${isC ? ' q-complex' : ''}">${i + 1}. ${escapeHtml(q.text)}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
         <span class="chip red">${w.wrongCount} বার ভুল</span>
       </div>`;
@@ -1206,7 +1146,6 @@ function renderChapterWrong() {
   });
   return html;
 }
-
 function removeChapterWrong(qid) {
   data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== qid);
   saveData(); render();
@@ -1220,7 +1159,7 @@ function reallyClearChapterWrong(chapId) {
   closeModal(); saveData(); render();
 }
 
-/* ========== QUIZ ENGINE ========== */
+/* ========== QUIZ ========== */
 function startChapterPractice() {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
@@ -1238,29 +1177,54 @@ function startFullMockTest() {
   const target = Math.min(MOCK_SIZE, all.length);
   let prog = getMockProgress(s.id);
   const usedSet = new Set(prog.usedIds);
-  let fresh = all.filter(q => !usedSet.has(q.id));
+
+  // Split fresh pools by type
+  const freshAll = all.filter(q => !usedSet.has(q.id));
+  const freshComplex = freshAll.filter(q => q.type === 'complex');
+  const freshMcq = freshAll.filter(q => q.type !== 'complex');
+
+  // Compute how many complex we want
+  const availableComplex = all.filter(q => q.type === 'complex').length;
+  const desiredComplex = Math.min(MOCK_COMPLEX_MIN, availableComplex, target);
 
   let selected = [];
   let newUsedIds = [...prog.usedIds];
 
-  if (fresh.length >= target) {
-    selected = shuffle(fresh).slice(0, target);
-    selected.forEach(q => newUsedIds.push(q.id));
-  } else if (fresh.length > 0) {
-    selected = shuffle(fresh);
-    const needed = target - fresh.length;
+  // Try to pick desiredComplex complex from fresh first
+  let pickedComplex = shuffle(freshComplex).slice(0, desiredComplex);
+  let pickedMcq = shuffle(freshMcq).slice(0, target - pickedComplex.length);
+
+  // If not enough fresh MCQ, pull complex from fresh pool
+  if (pickedMcq.length < target - pickedComplex.length) {
+    const extraComplex = shuffle(freshComplex.filter(q => !pickedComplex.includes(q)))
+      .slice(0, (target - pickedComplex.length) - pickedMcq.length);
+    pickedComplex = pickedComplex.concat(extraComplex);
+  }
+
+  // If still not enough fresh overall, we need to reset cycle
+  if (pickedComplex.length + pickedMcq.length < target) {
+    // reset: start new cycle
     prog.cycle++;
-    const justPickedIds = new Set(selected.map(q => q.id));
-    newUsedIds = [...justPickedIds];
-    const secondPool = all.filter(q => !justPickedIds.has(q.id));
-    const secondPick = shuffle(secondPool).slice(0, needed);
-    selected = selected.concat(secondPick);
-    secondPick.forEach(q => newUsedIds.push(q.id));
-    selected = shuffle(selected);
+    const alreadyPickedIds = new Set([...pickedComplex, ...pickedMcq].map(q => q.id));
+    const remaining = target - (pickedComplex.length + pickedMcq.length);
+
+    // Pick complex from full pool (excluding already picked)
+    const complexPool = all.filter(q => q.type === 'complex' && !alreadyPickedIds.has(q.id));
+    const moreComplex = shuffle(complexPool).slice(0, Math.max(0, Math.min(remaining, desiredComplex - pickedComplex.length)));
+    alreadyPickedIds.forEach(id => {});
+    moreComplex.forEach(q => alreadyPickedIds.add(q.id));
+    pickedComplex = pickedComplex.concat(moreComplex);
+
+    // Pick rest from full pool
+    const stillNeeded = target - (pickedComplex.length + pickedMcq.length);
+    const restPool = all.filter(q => !alreadyPickedIds.has(q.id));
+    const rest = shuffle(restPool).slice(0, stillNeeded);
+    pickedMcq = pickedMcq.concat(rest);
+
+    selected = shuffle([...pickedComplex, ...pickedMcq]);
+    newUsedIds = selected.map(q => q.id);
   } else {
-    prog.cycle++;
-    newUsedIds = [];
-    selected = shuffle(all).slice(0, target);
+    selected = shuffle([...pickedComplex, ...pickedMcq]);
     selected.forEach(q => newUsedIds.push(q.id));
   }
 
@@ -1289,9 +1253,8 @@ function renderQuiz() {
   const q = qs[idx];
   const pct = Math.round((idx / qs.length) * 100);
 
-  const titleMap = { final: 'ফুল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'MCQ প্র্যাকটিস' };
+  const titleMap = { final: 'ফুল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'প্র্যাকটিস' };
   const backMap = { final: 'subject', chapterWrong: 'chapterWrong', chapter: 'chapter' };
-
   let html = topbar(titleMap[state.mode] || 'প্রশ্ন', backMap[state.mode] || 'chapter');
 
   html += `<div class="q-progress">
@@ -1299,7 +1262,11 @@ function renderQuiz() {
     <span class="score-pill">স্কোর ${state.quizScore}</span>
   </div>`;
   html += `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
-  html += `<div class="q-text">${escapeHtml(q.text)}</div>`;
+
+  if (q.type === 'complex') {
+    html += `<div class="q-type-badge">📋 জটিল প্রশ্ন</div>`;
+  }
+  html += questionHtml(q);
 
   q.options.forEach((opt, oi) => {
     let cls = 'opt-row';
@@ -1325,7 +1292,6 @@ function answerQuiz(oi) {
   if (state.quizAnswered !== null) return;
   state.quizAnswered = oi;
   const q = state.quizQuestions[state.quizIndex];
-
   if (oi === q.correct) {
     state.quizScore++;
     if (state.mode === 'chapterWrong') {
@@ -1343,9 +1309,7 @@ function addToWrongList(q) {
   let subjId = '', subjName = '', chapId = '', chapName = '';
   for (const s of data.subjects) {
     for (const c of s.chapters) {
-      if (c.questions.some(cq => cq.id === q.id)) {
-        subjId = s.id; subjName = s.name; chapId = c.id; chapName = c.name; break;
-      }
+      if (c.questions.some(cq => cq.id === q.id)) { subjId = s.id; subjName = s.name; chapId = c.id; chapName = c.name; break; }
     }
     if (subjId) break;
   }
@@ -1356,11 +1320,7 @@ function addToWrongList(q) {
     if (!existing.chapterId) { existing.chapterId = chapId; existing.chapterName = chapName; }
     if (!existing.subjectId) { existing.subjectId = subjId; existing.subjectName = subjName; }
   } else {
-    data.wrongQuestions.push({
-      question: q, subjectId: subjId, subjectName: subjName,
-      chapterId: chapId, chapterName: chapName,
-      wrongCount: 1, lastWrong: Date.now()
-    });
+    data.wrongQuestions.push({ question: q, subjectId: subjId, subjectName: subjName, chapterId: chapId, chapterName: chapName, wrongCount: 1, lastWrong: Date.now() });
   }
   saveData();
 }
@@ -1379,8 +1339,7 @@ function renderResult() {
   const pct = Math.round((score / total) * 100);
   const cls = pct >= 70 ? 'good' : (pct >= 40 ? '' : 'bad');
   const emoji = pct >= 70 ? '🎉' : (pct >= 40 ? '👍' : '📚');
-
-  const labelMap = { final: 'ফুল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'MCQ প্র্যাকটিস' };
+  const labelMap = { final: 'ফুল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'প্র্যাকটিস' };
 
   let html = `<div class="result-wrap">
     <div class="result-circle ${cls}">
@@ -1394,7 +1353,6 @@ function renderResult() {
   if (state.quizWrongIds.length > 0) {
     html += `<div class="info-banner">❌ ${state.quizWrongIds.length}টি ভুল হয়েছে। সংশ্লিষ্ট চ্যাপ্টারের "ভুল প্রশ্ন" সেকশনে যোগ হয়েছে।</div>`;
   }
-
   html += `<button class="btn btn-primary" onclick="retryQuiz()">🔄 আবার চেষ্টা করুন (নতুন সেট)</button>`;
   const backScreen = state.mode === 'final' ? 'subject' : (state.mode === 'chapterWrong' ? 'chapterWrong' : 'chapter');
   html += `<button class="btn btn-quiet" onclick="goto('${backScreen}')">← ফিরে যান</button>`;
@@ -1412,10 +1370,7 @@ function retryQuiz() {
 function renderTrash() {
   let html = topbar('রিসাইকেল বিন', 'home');
   html += `<div class="info-banner">🗑️ ডিলিট করা জিনিস এখানে ৩০ দিন থাকবে।</div>`;
-  if (data.trash.length === 0) {
-    html += `<div class="empty-state"><span class="emoji">🌿</span>বিন খালি।</div>`;
-    return html;
-  }
+  if (data.trash.length === 0) { html += `<div class="empty-state"><span class="emoji">🌿</span>বিন খালি।</div>`; return html; }
   html += `<button class="btn btn-danger" style="margin-bottom:16px;" onclick="askEmptyTrash()">সব স্থায়ীভাবে মুছে ফেলুন</button>`;
   data.trash.forEach((t) => {
     const daysLeft = Math.ceil((TRASH_TTL_DAYS * 86400000 - (Date.now() - t.deletedAt)) / 86400000);
@@ -1435,7 +1390,6 @@ function renderTrash() {
   });
   return html;
 }
-
 function restoreFromTrash(tid) {
   const item = data.trash.find(t => t.id === tid);
   if (!item) return;
@@ -1453,63 +1407,45 @@ function restoreFromTrash(tid) {
   data.trash = data.trash.filter(t => t.id !== tid);
   saveData(); render();
 }
-function killTrashItem(tid) {
-  data.trash = data.trash.filter(t => t.id !== tid);
-  saveData(); render();
-}
+function killTrashItem(tid) { data.trash = data.trash.filter(t => t.id !== tid); saveData(); render(); }
 
-/* ========== BACKUP (sync — storage info loads later) ========== */
+/* ========== BACKUP ========== */
 function renderBackup() {
   let html = topbar('ব্যাকআপ ও রিস্টোর', 'home');
-  html += `<div class="info-banner">💡 ব্যাকআপে সব প্রশ্ন, নোট, ছবি, PDF সবকিছু থাকবে। ছবি যত বেশি, ব্যাকআপ ফাইল তত বড়। যতক্ষণ ফোনে জায়গা আছে, ততক্ষণ ডাউনলোড হবে।</div>`;
-
+  html += `<div class="info-banner">💡 ব্যাকআপে সব প্রশ্ন, নোট, ছবি, PDF সবকিছু থাকবে। যতক্ষণ ফোনে জায়গা আছে, ততক্ষণ ডাউনলোড হবে।</div>`;
   html += `<div class="section-label">স্টোরেজ তথ্য</div>`;
   html += `<div class="storage-info">
     <b>মোট ছবি/PDF:</b> ${data.mediaMeta.length} টি<br>
     <span id="storageEstimate">⏳ লোড হচ্ছে...</span>
   </div>`;
-
   html += `<div class="section-label">ব্যাকআপ নিন</div>`;
   html += `<button class="btn btn-primary" onclick="exportBackup()">⬇️ ব্যাকআপ ডাউনলোড করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px 20px;">ফাইলটি Google Drive বা WhatsApp-এ সেভ রাখুন।</div>`;
-
   html += `<div class="section-label">রিস্টোর করুন</div>`;
   html += `<input type="file" id="importFile" accept=".json" style="width:100%;padding:12px;border:1.5px dashed var(--border);border-radius:12px;margin-bottom:10px;background:var(--card);">`;
   html += `<button class="btn btn-success" onclick="importBackup()">⬆️ ব্যাকআপ থেকে রিস্টোর করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px 20px;">⚠️ বর্তমান সব ডেটা প্রতিস্থাপিত হবে।</div>`;
-
   html += `<div class="section-label">বিপজ্জনক এলাকা</div>`;
   html += `<button class="btn btn-danger" onclick="askResetAll()">🔄 সবকিছু রিসেট করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px;">সব প্রশ্ন, ছবি, নোট মুছে যাবে। আগে ব্যাকআপ নিন।</div>`;
-
   setTimeout(loadStorageInfo, 80);
   return html;
 }
-
 async function loadStorageInfo() {
   const el = document.getElementById('storageEstimate');
   if (!el) return;
   try {
     let backendLabel = 'IndexedDB';
-    try {
-      const b = await initMediaBackend();
-      backendLabel = b === 'opfs' ? 'OPFS (উন্নত)' : 'IndexedDB';
-    } catch (e) {}
-
+    try { const b = await initMediaBackend(); backendLabel = b === 'opfs' ? 'OPFS (উন্নত)' : 'IndexedDB'; } catch (e) {}
     let txt = `<b>স্টোরেজ পদ্ধতি:</b> ${backendLabel}<br>`;
     if (navigator.storage && navigator.storage.estimate) {
       const est = await navigator.storage.estimate();
-      const used = fmtBytes(est.usage);
-      const quota = fmtBytes(est.quota);
+      const used = fmtBytes(est.usage), quota = fmtBytes(est.quota);
       const pct = est.quota ? ((est.usage / est.quota) * 100).toFixed(1) : 0;
       txt += `<b>ব্যবহৃত:</b> ${used} / <b>ফোনের অনুমতি:</b> ${quota} (${pct}%)`;
-    } else {
-      txt += 'সীমা তথ্য পাওয়া যায়নি।';
-    }
+    } else { txt += 'সীমা তথ্য পাওয়া যায়নি।'; }
     el.innerHTML = txt;
-  } catch (e) {
-    el.innerHTML = 'তথ্য লোড করা যায়নি।';
-  }
+  } catch (e) { el.innerHTML = 'তথ্য লোড করা যায়নি।'; }
 }
 
 async function exportBackup() {
@@ -1523,20 +1459,14 @@ async function exportBackup() {
       mediaData.push({ id: m.id, chapterId: m.chapterId, type: m.type, name: m.name, createdAt: m.createdAt, data: base64 });
     }
     const backup = {
-      subjects: data.subjects,
-      wrongQuestions: data.wrongQuestions,
-      trash: data.trash,
-      mediaMeta: data.mediaMeta,
-      mockProgress: data.mockProgress || {},
-      media: mediaData,
-      exportedAt: Date.now()
+      subjects: data.subjects, wrongQuestions: data.wrongQuestions, trash: data.trash,
+      mediaMeta: data.mediaMeta, mockProgress: data.mockProgress || {}, media: mediaData, exportedAt: Date.now()
     };
     const blob = new Blob([JSON.stringify(backup)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     const ts = new Date().toISOString().slice(0, 10);
-    a.href = url;
-    a.download = `exam-prep-backup-${ts}.json`;
+    a.href = url; a.download = `exam-prep-backup-${ts}.json`;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
   } catch (e) { alert('❌ ব্যাকআপ তৈরি ব্যর্থ: ' + e.message); }
@@ -1561,12 +1491,13 @@ function importBackup() {
           await mediaSave({ id: m.id, chapterId: m.chapterId, type: m.type, name: m.name, createdAt: m.createdAt || Date.now() }, blob);
         }
       }
+      // Migration: ensure types on imported questions
+      parsed.subjects.forEach(s => s.chapters.forEach(c => c.questions.forEach(q => {
+        if (!q.type) q.type = (q.text && q.text.includes('\n')) ? 'complex' : 'mcq';
+      })));
       data = {
-        subjects: parsed.subjects,
-        wrongQuestions: parsed.wrongQuestions || [],
-        trash: parsed.trash || [],
-        mediaMeta: parsed.mediaMeta || [],
-        mockProgress: parsed.mockProgress || {}
+        subjects: parsed.subjects, wrongQuestions: parsed.wrongQuestions || [], trash: parsed.trash || [],
+        mediaMeta: parsed.mediaMeta || [], mockProgress: parsed.mockProgress || {}
       };
       memoryFallback = data;
       saveData();
@@ -1590,10 +1521,7 @@ function renderModal() {
   </div>`;
 }
 function closeModal() { state.modal = null; render(); }
-function showModal(title, body, okText, onOk, danger) {
-  state.modal = { title, body, okText, onOk, danger };
-  render();
-}
+function showModal(title, body, okText, onOk, danger) { state.modal = { title, body, okText, onOk, danger }; render(); }
 
 function askDeleteSubject(id) {
   const s = findSubject(id);
@@ -1646,9 +1574,7 @@ function reallyDeleteQuestion(qid) {
   closeModal(); saveData(); render();
 }
 
-function askEmptyTrash() {
-  showModal('বিন খালি করবেন?', 'সব স্থায়ীভাবে মুছে যাবে।', 'স্থায়ীভাবে মুছুন', 'reallyEmptyTrash()', true);
-}
+function askEmptyTrash() { showModal('বিন খালি করবেন?', 'সব স্থায়ীভাবে মুছে যাবে।', 'স্থায়ীভাবে মুছুন', 'reallyEmptyTrash()', true); }
 function reallyEmptyTrash() { data.trash = []; closeModal(); saveData(); render(); }
 
 function askResetAll() {
@@ -1668,4 +1594,4 @@ async function reallyResetAll() {
 })();
 </script>
 </body>
-</html>
+ </html>
