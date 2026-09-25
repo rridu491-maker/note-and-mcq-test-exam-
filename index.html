@@ -7,42 +7,56 @@
 <title>আমার পরীক্ষার প্রস্তুতি</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  :root{--ink:#1e293b;--ink-soft:#64748b;--ink-mute:#94a3b8;--border:#e2e8f0;--card:#fff;--primary:#4f46e5;--primary-soft:#eef2ff;--primary-dark:#4338ca;--success:#16a34a;--success-soft:#f0fdf4;--danger:#dc2626;--danger-soft:#fef2f2;--warning:#d97706;--warning-soft:#fffbeb;--shadow-sm:0 1px 2px rgba(15,23,42,.05);--shadow:0 1px 3px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.05);--shadow-lg:0 8px 30px rgba(15,23,42,.10)}
-  html,body{margin:0;padding:0;min-height:100vh;font-family:'Hind Siliguri',-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#f5f7fb;background-image:radial-gradient(circle at 0% 0%,#eef2ff 0%,transparent 45%),radial-gradient(circle at 100% 0%,#fdf2f8 0%,transparent 40%),linear-gradient(180deg,#f8fafc 0%,#f5f7fb 100%);background-attachment:fixed;-webkit-font-smoothing:antialiased}
+  :root{--ink:#1e293b;--ink-soft:#64748b;--ink-mute:#94a3b8;--border:#e2e8f0;--card:#fff;--bg:#f5f7fb;--primary:#4f46e5;--primary-soft:#eef2ff;--primary-dark:#4338ca;--success:#16a34a;--success-soft:#f0fdf4;--danger:#dc2626;--danger-soft:#fef2f2;--warning:#d97706;--warning-soft:#fffbeb;--purple:#7c3aed;--purple-soft:#f3e8ff;--shadow-sm:0 1px 2px rgba(15,23,42,.05);--shadow:0 1px 3px rgba(15,23,42,.06),0 4px 14px rgba(15,23,42,.05);--shadow-lg:0 8px 30px rgba(15,23,42,.10);--font-main:'Hind Siliguri',sans-serif}
+  html,body{margin:0;padding:0;min-height:100vh;font-family:var(--font-main);color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 0% 0%,#eef2ff 0%,transparent 45%),radial-gradient(circle at 100% 0%,#fdf2f8 0%,transparent 40%),linear-gradient(180deg,#f8fafc 0%,#f5f7fb 100%);background-attachment:fixed;-webkit-font-smoothing:antialiased;transition:font-family .2s}
   #app{max-width:560px;margin:0 auto;padding:20px 16px 80px}
   button{font-family:inherit;cursor:pointer}
-  input,textarea{font-family:inherit}
-  .hero{padding:4px 4px 22px}
+  input,textarea,select{font-family:inherit}
+
+  /* ===== Header & Topbar ===== */
+  .hero{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:4px 4px 22px}
   .hero h1{font-family:'Tiro Bangla',Georgia,serif;font-size:26px;font-weight:700;margin:0 0 6px;background:linear-gradient(135deg,#4f46e5,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .hero p{margin:0;color:var(--ink-soft);font-size:13.5px}
+  .icon-btn-circle{width:42px;height:42px;border-radius:14px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink);transition:transform .1s}
+  .icon-btn-circle:active{transform:scale(.93)}
   .topbar{display:flex;align-items:center;gap:12px;margin-bottom:20px}
   .back-btn{background:var(--card);border:1px solid var(--border);color:var(--ink);width:38px;height:38px;border-radius:12px;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);flex-shrink:0}
   .back-btn:active{transform:scale(.95)}
-  .page-title{font-size:18px;font-weight:700;margin:0;flex:1}
+  .page-title{font-size:18px;font-weight:700;margin:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* ===== Card ===== */
   .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px;border:1px solid rgba(226,232,240,.6);transition:transform .15s ease,box-shadow .15s ease}
   .card.tappable{cursor:pointer}
   .card.tappable:active{transform:scale(.985);box-shadow:var(--shadow-sm)}
   .row{display:flex;align-items:center;gap:14px}
   .row-main{flex:1;min-width:0}
-  .row-title{font-weight:700;font-size:15.5px;color:var(--ink)}
+  .row-title{font-weight:700;font-size:15.5px;color:var(--ink);overflow:hidden;text-overflow:ellipsis}
   .row-sub{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+
+  /* ===== Menu button ===== */
+  .menu-btn{width:36px;height:36px;border-radius:10px;background:transparent;border:none;color:var(--ink-mute);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-weight:700;transition:background .15s}
+  .menu-btn:hover{background:#f1f5f9}
+  .menu-btn:active{background:var(--primary-soft);transform:scale(.9)}
+
+  /* ===== Badges ===== */
   .badge-num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;box-shadow:0 4px 12px rgba(79,70,229,.25)}
   .badge-num.warn{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 4px 12px rgba(217,119,6,.25)}
   .badge-num.danger{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 4px 12px rgba(220,38,38,.25)}
   .badge-num.trash{background:linear-gradient(135deg,#64748b,#475569);box-shadow:0 4px 12px rgba(71,85,105,.2)}
   .badge-num.photo{background:linear-gradient(135deg,#0891b2,#0e7490);box-shadow:0 4px 12px rgba(14,116,144,.25)}
-  .badge-num.mock{background:linear-gradient(135deg,#d97706,#b45309);box-shadow:0 4px 12px rgba(217,119,6,.35)}
-  .badge-num.complex{background:linear-gradient(135deg,#7c3aed,#6d28d9);box-shadow:0 4px 12px rgba(124,58,237,.3)}
+  .badge-num.purple{background:linear-gradient(135deg,#7c3aed,#6d28d9);box-shadow:0 4px 12px rgba(124,58,237,.3)}
+
+  /* ===== Chips ===== */
   .chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-left:6px}
   .chip.green{background:var(--success-soft);color:var(--success)}
   .chip.red{background:var(--danger-soft);color:var(--danger)}
   .chip.amber{background:var(--warning-soft);color:var(--warning)}
-  .chip.purple{background:#f3e8ff;color:#7c3aed}
-  .del-btn{background:none;border:none;color:var(--ink-mute);font-size:12.5px;padding:8px;cursor:pointer;flex-shrink:0}
-  .del-btn:hover{color:var(--danger)}
+  .chip.purple{background:var(--purple-soft);color:var(--purple)}
+
+  /* ===== Buttons ===== */
   .btn{display:block;width:100%;padding:14px;border-radius:12px;border:none;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin-bottom:10px;transition:transform .1s ease,box-shadow .15s ease}
   .btn:active{transform:scale(.98)}
   .btn-primary{background:linear-gradient(135deg,var(--primary),#6366f1);color:#fff;box-shadow:0 6px 20px rgba(79,70,229,.30)}
@@ -51,15 +65,19 @@
   .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 6px 20px rgba(220,38,38,.25)}
   .btn-success{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 20px rgba(16,185,129,.25)}
   .btn-info{background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;box-shadow:0 6px 20px rgba(14,116,144,.25)}
-  .btn-purple{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 6px 20px rgba(124,58,237,.28)}
   .btn-mock{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;box-shadow:0 8px 24px rgba(217,119,6,.40);font-size:16.5px;padding:18px;letter-spacing:.3px}
+
   .section-label{font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin:22px 4px 10px}
+
+  /* ===== Forms ===== */
   input[type=text],textarea{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14.5px;margin-bottom:10px;background:var(--card);color:var(--ink);transition:border-color .15s}
   input[type=text]:focus,textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
   .opt-input-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
   .opt-input-row input[type=text]{margin-bottom:0}
   .opt-input-row input[type=radio]{accent-color:var(--primary);width:20px;height:20px;flex-shrink:0}
   .opt-letter{font-weight:700;width:18px;flex-shrink:0;color:var(--ink-soft);font-size:14px}
+
+  /* ===== Quiz options ===== */
   .opt-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);font-size:15px;color:var(--ink);cursor:pointer;margin-bottom:10px;transition:all .15s ease}
   .opt-row:active:not(:disabled){transform:scale(.985)}
   .opt-row:disabled{cursor:default}
@@ -68,14 +86,17 @@
   .opt-row.correct .opt-bubble{background:var(--success);color:#fff}
   .opt-row.wrong{border-color:var(--danger);background:var(--danger-soft);color:#991b1b}
   .opt-row.wrong .opt-bubble{background:var(--danger);color:#fff}
+
   .q-progress{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;padding:0 4px}
   .q-progress .score-pill{background:var(--primary-soft);color:var(--primary);padding:3px 10px;border-radius:20px;font-weight:700}
   .progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:22px}
   .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),#7c3aed);border-radius:3px;transition:width .3s ease}
   .q-text{font-size:17.5px;font-weight:700;line-height:1.55;margin-bottom:20px;padding:0 4px}
-  .q-text.q-complex{font-size:14.5px;font-weight:600;line-height:1.65;white-space:pre-wrap;word-break:break-word;background:#f8fafc;border-left:3px solid var(--primary);padding:14px;border-radius:10px;font-family:'Hind Siliguri','Courier New',monospace;overflow-x:auto}
+  .q-text.q-complex{font-size:14.5px;font-weight:600;line-height:1.65;white-space:pre-wrap;word-break:break-word;background:#f8fafc;border-left:3px solid var(--primary);padding:14px;border-radius:10px;overflow-x:auto}
   .q-text.q-complex::before{content:'📋 জটিল প্রশ্ন';display:block;font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-  .q-type-badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:#f3e8ff;color:#7c3aed;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+  .q-type-badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--purple-soft);color:var(--purple);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+
+  /* ===== Result ===== */
   .result-wrap{text-align:center;padding:20px 10px}
   .result-circle{width:140px;height:140px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,var(--primary),#7c3aed);box-shadow:0 12px 40px rgba(79,70,229,.30);color:#fff}
   .result-circle.good{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 12px 40px rgba(16,185,129,.30)}
@@ -84,30 +105,62 @@
   .result-circle .lbl{font-size:13px;opacity:.9;margin-top:6px}
   .result-title{font-size:20px;font-weight:700;margin:0 0 6px}
   .result-sub{color:var(--ink-soft);font-size:14px;margin-bottom:26px}
+
+  /* ===== Empty & Banners ===== */
   .empty-state{text-align:center;color:var(--ink-mute);padding:40px 20px;font-size:14px;line-height:1.7}
   .empty-state .emoji{font-size:40px;display:block;margin-bottom:12px}
+  .note-banner{background:var(--danger-soft);color:var(--danger);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #fecaca}
+  .info-banner{background:var(--primary-soft);color:var(--primary-dark);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #c7d2fe;line-height:1.6}
+
+  /* ===== QA list ===== */
   .qa-item{padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--border);margin-bottom:10px}
-  .qa-q{font-weight:700;font-size:14.5px;margin-bottom:10px;line-height:1.5}
-  .qa-q.q-complex{font-weight:600;font-size:13px;white-space:pre-wrap;word-break:break-word;background:#f8fafc;padding:10px;border-radius:8px;font-family:'Hind Siliguri','Courier New',monospace;overflow-x:auto}
+  .qa-header{display:flex;align-items:flex-start;gap:10px}
+  .qa-q{flex:1;font-weight:700;font-size:14.5px;margin-bottom:10px;line-height:1.5}
+  .qa-q.q-complex{font-weight:600;font-size:13px;white-space:pre-wrap;word-break:break-word;background:#f8fafc;padding:10px;border-radius:8px;overflow-x:auto}
   .qa-opt{font-size:13.5px;color:var(--ink-soft);padding:5px 0;display:flex;align-items:center;gap:8px}
   .qa-opt.is-correct{color:var(--success);font-weight:700}
   .qa-opt .letter{display:inline-flex;width:22px;height:22px;background:var(--primary-soft);color:var(--primary);border-radius:6px;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;flex-shrink:0}
   .qa-opt.is-correct .letter{background:var(--success);color:#fff}
-  .note-banner{background:var(--danger-soft);color:var(--danger);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #fecaca}
-  .info-banner{background:var(--primary-soft);color:var(--primary-dark);padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;border:1px solid #c7d2fe;line-height:1.6}
-  .format-box{background:#fff;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap;font-family:'Courier New',monospace;line-height:1.65;border:1px solid #e2e8f0;margin-top:8px;color:var(--ink);overflow-x:auto}
+
+  /* ===== Trash ===== */
   .trash-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px}
   .trash-info{flex:1;min-width:0}
-  .trash-name{font-weight:700;font-size:14px}
+  .trash-name{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .trash-meta{font-size:11.5px;color:var(--ink-soft);margin-top:3px}
   .trash-actions{display:flex;gap:6px;flex-shrink:0}
   .icon-btn{width:36px;height:36px;border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer}
   .icon-btn.restore{background:var(--success-soft);color:var(--success)}
   .icon-btn.kill{background:var(--danger-soft);color:var(--danger)}
-  .modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100;backdrop-filter:blur(4px)}
-  .modal{background:var(--card);border-radius:18px;padding:24px;max-width:380px;width:100%;box-shadow:var(--shadow-lg)}
-  .modal h3{margin:0 0 10px;font-size:17px}
+
+  /* ===== Bottom Sheet ===== */
+  .sheet-overlay{position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:flex-end;justify-content:center;z-index:300;backdrop-filter:blur(6px);animation:fadeIn .2s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .sheet{background:var(--card);width:100%;max-width:560px;border-radius:22px 22px 0 0;padding:8px 0 env(safe-area-inset-bottom,12px);box-shadow:0 -10px 40px rgba(15,23,42,.2);animation:slideUp .28s cubic-bezier(.16,1,.3,1)}
+  .sheet-handle{width:44px;height:5px;background:#cbd5e1;border-radius:3px;margin:8px auto 12px}
+  .sheet-title{padding:6px 22px 14px;font-size:13px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+  .sheet-item{display:flex;align-items:center;gap:16px;padding:15px 22px;border:none;background:none;width:100%;text-align:left;font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit;transition:background .12s}
+  .sheet-item:active{background:#f1f5f9}
+  .sheet-item .sicon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+  .sheet-item .sicon.blue{background:var(--primary-soft);color:var(--primary)}
+  .sheet-item .sicon.green{background:var(--success-soft);color:var(--success)}
+  .sheet-item .sicon.red{background:var(--danger-soft);color:var(--danger)}
+  .sheet-item .sicon.amber{background:var(--warning-soft);color:var(--warning)}
+  .sheet-item .sicon.purple{background:var(--purple-soft);color:var(--purple)}
+  .sheet-item.danger{color:var(--danger)}
+  .sheet-cancel{margin:8px 16px 0;padding:15px;background:#f1f5f9;border:none;border-radius:14px;font-size:15px;font-weight:700;color:var(--ink);width:calc(100% - 32px);cursor:pointer;font-family:inherit}
+
+  /* ===== Modal ===== */
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:400;backdrop-filter:blur(6px);animation:fadeIn .18s ease}
+  .modal{background:var(--card);border-radius:20px;padding:24px;max-width:400px;width:100%;box-shadow:var(--shadow-lg);animation:scaleIn .22s cubic-bezier(.16,1,.3,1)}
+  @keyframes scaleIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+  .modal h3{margin:0 0 10px;font-size:17.5px;font-weight:700}
   .modal p{margin:0 0 18px;color:var(--ink-soft);font-size:14px;line-height:1.6}
+  .modal input[type=text]{font-size:15.5px;padding:14px}
+  .modal-btns{display:flex;gap:10px;margin-top:6px}
+  .modal-btns .btn{flex:1;margin:0}
+
+  /* ===== Media grid ===== */
   .media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
   .media-thumb{position:relative;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:pointer;aspect-ratio:3/4;box-shadow:var(--shadow-sm)}
   .media-thumb:active{transform:scale(.97)}
@@ -116,7 +169,12 @@
   .media-thumb .pdf-badge .icon{font-size:40px}
   .media-thumb .del-overlay{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:8px;border:none;background:rgba(220,38,38,.9);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer}
   .media-thumb .del-overlay:active{transform:scale(.9)}
-  .viewer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:200;display:flex;flex-direction:column}
+  .add-media-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  .add-media-row button{margin:0}
+  .file-input-hidden{display:none}
+
+  /* ===== Viewer ===== */
+  .viewer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:500;display:flex;flex-direction:column}
   .viewer-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;color:#fff;flex-shrink:0;background:rgba(0,0,0,.3);z-index:10}
   .viewer-bar button{background:rgba(255,255,255,.18);border:none;color:#fff;width:42px;height:42px;border-radius:12px;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer}
   .viewer-bar button:active{transform:scale(.92)}
@@ -129,17 +187,27 @@
   .viewer-controls button:active{background:rgba(255,255,255,.3);transform:scale(.94)}
   .viewer-controls .zoom-level{color:#fff;font-size:13px;display:flex;align-items:center;padding:0 8px;font-weight:700;min-width:52px;justify-content:center}
   .viewer-hint{position:absolute;top:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.75);font-size:11.5px;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:20px;z-index:9;pointer-events:none;transition:opacity .3s;white-space:nowrap}
-  .add-media-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-  .add-media-row button{margin:0}
-  .file-input-hidden{display:none}
-  .storage-info{background:var(--card);border-radius:12px;padding:14px;font-size:13px;line-height:1.8;border:1px solid var(--border)}
+
+  /* ===== Settings ===== */
+  .storage-info{background:var(--card);border-radius:14px;padding:16px;font-size:13px;line-height:1.8;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
   .storage-info b{color:var(--primary-dark)}
+  .font-option{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border-radius:14px;border:2px solid var(--border);margin-bottom:10px;cursor:pointer;transition:all .15s}
+  .font-option:active{transform:scale(.98)}
+  .font-option.selected{border-color:var(--primary);background:var(--primary-soft)}
+  .font-option .sample{flex:1;font-size:17px;font-weight:600;color:var(--ink)}
+  .font-option .fname{font-size:11.5px;color:var(--ink-soft);margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .font-option .check{width:26px;height:26px;border-radius:50%;background:var(--border);color:transparent;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+  .font-option.selected .check{background:var(--primary);color:#fff}
+
   .mock-progress{background:var(--warning-soft);border:1px solid #fde68a;border-radius:12px;padding:12px 14px;font-size:13px;color:#92400e;line-height:1.7;margin-bottom:10px}
   .mock-progress b{color:#78350f}
+
   .type-toggle{display:flex;gap:8px;margin-bottom:12px}
   .type-toggle button{flex:1;padding:11px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink-soft);transition:all .15s}
   .type-toggle button.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
-  .type-toggle button.active.complex-toggle{background:#f3e8ff;border-color:#7c3aed;color:#7c3aed}
+  .type-toggle button.active.complex-toggle{background:var(--purple-soft);border-color:var(--purple);color:var(--purple)}
+
+  .format-box{background:#fff;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap;font-family:'Courier New',monospace;line-height:1.65;border:1px solid #e2e8f0;margin-top:8px;color:var(--ink);overflow-x:auto}
 </style>
 </head>
 <body>
@@ -151,10 +219,18 @@ const STORAGE_KEY = 'examStudyAppData_v2';
 const TRASH_TTL_DAYS = 30;
 const LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
 const MOCK_SIZE = 40;
-const MOCK_COMPLEX_MIN = 10; // minimum complex questions in full mock
+const MOCK_COMPLEX_MIN = 10;
 const OPFS_DIR = 'exam-media-v1';
 
-/* ========== OPFS MEDIA STORAGE ========== */
+/* Fonts */
+const FONTS = {
+  hind: { name: 'Hind Siliguri', stack: "'Hind Siliguri', sans-serif", label: 'হিন্দ শিলিগুড়ি', style: 'আমার পরীক্ষার প্রস্তুতি' },
+  noto: { name: 'Noto Sans Bengali', stack: "'Noto Sans Bengali', sans-serif", label: 'নোটো সান্স', style: 'আমার পরীক্ষার প্রস্তুতি' },
+  baloo: { name: 'Baloo Da 2', stack: "'Baloo Da 2', sans-serif", label: 'বালু দা ২', style: 'আমার পরীক্ষার প্রস্তুতি' },
+  tiro: { name: 'Tiro Bangla', stack: "'Tiro Bangla', Georgia, serif", label: 'তিরো বাংলা', style: 'আমার পরীক্ষার প্রস্তুতি' }
+};
+
+/* ========== OPFS MEDIA ========== */
 let mediaBackend = null;
 async function getOpfsDir() {
   if (!navigator.storage || !navigator.storage.getDirectory) throw new Error('OPFS unsupported');
@@ -168,18 +244,11 @@ async function opfsSave(id, blob) {
   await w.write(blob); await w.close();
 }
 async function opfsGet(id) {
-  try {
-    const dir = await getOpfsDir();
-    const fh = await dir.getFileHandle(id + '.bin');
-    return await fh.getFile();
-  } catch (e) { return null; }
+  try { const dir = await getOpfsDir(); const fh = await dir.getFileHandle(id + '.bin'); return await fh.getFile(); }
+  catch (e) { return null; }
 }
-async function opfsDelete(id) {
-  try { const dir = await getOpfsDir(); await dir.removeEntry(id + '.bin'); } catch (e) {}
-}
-async function opfsClear() {
-  try { const root = await navigator.storage.getDirectory(); await root.removeEntry(OPFS_DIR, { recursive: true }); } catch (e) {}
-}
+async function opfsDelete(id) { try { const d = await getOpfsDir(); await d.removeEntry(id + '.bin'); } catch (e) {} }
+async function opfsClear() { try { const r = await navigator.storage.getDirectory(); await r.removeEntry(OPFS_DIR, { recursive: true }); } catch (e) {} }
 async function requestPersist() {
   if (!navigator.storage || !navigator.storage.persist) return false;
   try { if (await navigator.storage.persisted()) return true; return await navigator.storage.persist(); } catch (e) { return false; }
@@ -261,9 +330,7 @@ async function idbClearAll() {
   return new Promise((res, rej) => { const tx = db.transaction('media', 'readwrite'); tx.objectStore('media').clear(); tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
 }
 
-function blobToBase64(blob) {
-  return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(blob); });
-}
+function blobToBase64(blob) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(blob); }); }
 function base64ToBlob(dataUrl) { return fetch(dataUrl).then(r => r.blob()); }
 
 /* ========== MAIN DATA ========== */
@@ -276,7 +343,8 @@ function defaultData() {
       { id: 'subj-3', name: 'বিষয় ৩', chapters: [] },
       { id: 'subj-4', name: 'বিষয় ৪', chapters: [] }
     ],
-    wrongQuestions: [], trash: [], mediaMeta: [], mockProgress: {}
+    wrongQuestions: [], trash: [], mediaMeta: [], mockProgress: {},
+    settings: { font: 'hind' }
   };
 }
 function loadData() {
@@ -288,7 +356,7 @@ function loadData() {
     if (!memoryFallback.trash) memoryFallback.trash = [];
     if (!memoryFallback.mediaMeta) memoryFallback.mediaMeta = [];
     if (!memoryFallback.mockProgress) memoryFallback.mockProgress = {};
-    // Migration: ensure all questions have a type
+    if (!memoryFallback.settings) memoryFallback.settings = { font: 'hind' };
     memoryFallback.subjects.forEach(s => s.chapters.forEach(c => c.questions.forEach(q => {
       if (!q.type) q.type = (q.text && q.text.includes('\n')) ? 'complex' : 'mcq';
     })));
@@ -306,11 +374,21 @@ function purgeOldTrash() {
   memoryFallback.trash = memoryFallback.trash.filter(item => (now - item.deletedAt) < ttl);
   saveData();
 }
+function applyFont() {
+  const key = (data.settings && data.settings.font) || 'hind';
+  const f = FONTS[key] || FONTS.hind;
+  document.documentElement.style.setProperty('--font-main', f.stack);
+  document.body.style.fontFamily = f.stack;
+}
 
 /* ========== HELPERS ========== */
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 function findSubject(id) { return data.subjects.find(s => s.id === id); }
 function findChapter(subj, id) { return subj ? subj.chapters.find(c => c.id === id) : null; }
+function findQuestion(subj, chapId, qid) {
+  const c = findChapter(subj, chapId);
+  return c ? c.questions.find(q => q.id === qid) : null;
+}
 function allQuestionsOfSubject(subj) {
   const qs = [];
   subj.chapters.forEach(ch => ch.questions.forEach(q => qs.push({ q, chapterId: ch.id, chapterName: ch.name })));
@@ -339,15 +417,10 @@ function fmtBytes(bytes) {
 }
 function countComplexInChapter(c) { return c.questions.filter(q => q.type === 'complex').length; }
 function countComplexInSubject(s) { return allQuestionsOfSubject(s).filter(x => x.q.type === 'complex').length; }
-function questionHtml(q, isQuiz) {
-  if (q.type === 'complex') {
-    return `<div class="q-text q-complex${isQuiz ? '' : ''}" style="margin-bottom:20px;">${escapeHtml(q.text)}</div>`;
-  }
-  return `<div class="q-text">${escapeHtml(q.text)}</div>`;
-}
 
 /* ========== STATE ========== */
 let data = loadData();
+applyFont();
 const state = {
   screen: 'home',
   subjectId: null, chapterId: null, mode: null,
@@ -355,7 +428,11 @@ const state = {
   addingSubject: false, addingChapter: false, noteError: null,
   addingComplex: false,
   bulkPreview: null, bulkError: null,
-  modal: null, mediaList: [], mediaViewer: null, mediaLoading: false
+  modal: null,
+  sheet: null,
+  mediaList: [], mediaViewer: null, mediaLoading: false,
+  editingQuestionId: null,
+  editingQuestionError: null
 };
 
 function goto(screen, opts) {
@@ -370,11 +447,14 @@ function render() {
   const app = document.getElementById('app');
   const fn = {
     home: renderHome, subject: renderSubject, chapter: renderChapter,
-    notes: renderNotes, bulkImport: renderBulkImport, media: renderMedia,
-    chapterWrong: renderChapterWrong, quiz: renderQuiz, result: renderResult,
-    trash: renderTrash, backup: renderBackup
+    notes: renderNotes, editQuestion: renderEditQuestion, bulkImport: renderBulkImport,
+    media: renderMedia, chapterWrong: renderChapterWrong, quiz: renderQuiz,
+    result: renderResult, trash: renderTrash, settings: renderSettings
   }[state.screen];
-  app.innerHTML = fn() + (state.modal ? renderModal() : '') + (state.mediaViewer ? renderMediaViewer() : '');
+  app.innerHTML = fn()
+    + (state.sheet ? renderSheet() : '')
+    + (state.modal ? renderModal() : '')
+    + (state.mediaViewer ? renderMediaViewer() : '');
   if (state.mediaViewer) { document.body.style.overflow = 'hidden'; setTimeout(bindViewer, 20); }
   else { document.body.style.overflow = ''; }
 }
@@ -389,8 +469,11 @@ function topbar(title, backScreen) {
 /* ========== HOME ========== */
 function renderHome() {
   let html = `<div class="hero">
-    <h1>আমার পরীক্ষার প্রস্তুতি</h1>
-    <p>MCQ ও জটিল প্রশ্ন · প্র্যাকটিস · ভুল থেকে শিখুন</p>
+    <div>
+      <h1>আমার পরীক্ষার প্রস্তুতি</h1>
+      <p>MCQ ও জটিল প্রশ্ন · প্র্যাকটিস · ভুল থেকে শিখুন</p>
+    </div>
+    <button class="icon-btn-circle" onclick="goto('settings')" title="সেটিংস">⚙️</button>
   </div>`;
 
   html += `<div class="section-label">সাবজেক্ট সমূহ</div>`;
@@ -400,14 +483,16 @@ function renderHome() {
     data.subjects.forEach((s, i) => {
       const totalQ = allQuestionsOfSubject(s).length;
       const complexQ = countComplexInSubject(s);
+      const subs = [`${s.chapters.length} অধ্যায়`, `${totalQ} প্রশ্ন`];
+      if (complexQ > 0) subs.push(`<span style="color:var(--purple);">${complexQ} জটিল</span>`);
       html += `<div class="card tappable" onclick="goto('subject',{subjectId:'${s.id}'})">
         <div class="row">
           <div class="badge-num">${i + 1}</div>
           <div class="row-main">
             <div class="row-title">${escapeHtml(s.name)}</div>
-            <div class="row-sub">${s.chapters.length} অধ্যায় · ${totalQ} প্রশ্ন${complexQ > 0 ? ` · <span style="color:#7c3aed;">${complexQ} জটিল</span>` : ''}</div>
+            <div class="row-sub">${subs.join(' · ')}</div>
           </div>
-          <button class="del-btn" onclick="event.stopPropagation();askDeleteSubject('${s.id}')">🗑️</button>
+          <button class="menu-btn" onclick="event.stopPropagation();openSubjectMenu('${s.id}')">⋯</button>
         </div>
       </div>`;
     });
@@ -431,17 +516,19 @@ function renderHome() {
       </div>
     </div>
   </div>`;
-  html += `<div class="card tappable" onclick="goto('backup')">
+
+  html += `<div class="card tappable" onclick="goto('settings')">
     <div class="row">
-      <div class="badge-num">💾</div>
+      <div class="badge-num purple">⚙️</div>
       <div class="row-main">
-        <div class="row-title">ব্যাকআপ ও রিস্টোর</div>
-        <div class="row-sub">ডেটা, ছবি সবকিছুর ব্যাকআপ</div>
+        <div class="row-title">সেটিংস</div>
+        <div class="row-sub">ফন্ট, ব্যাকআপ, স্টোরেজ, রিসেট</div>
       </div>
     </div>
   </div>`;
   return html;
 }
+
 function confirmAddSubject() {
   const name = document.getElementById('newSubjectName').value.trim();
   if (!name) return;
@@ -450,7 +537,30 @@ function confirmAddSubject() {
   saveData(); render();
 }
 
-/* ========== SUBJECT ========== */
+/* ========== SUBJECT MENU ========== */
+function openSubjectMenu(id) {
+  const s = findSubject(id);
+  if (!s) return;
+  state.sheet = {
+    title: escapeHtml(s.name),
+    items: [
+      { icon: '✏️', color: 'blue', label: 'নাম পরিবর্তন করুন', action: `editSubjectName('${id}')` },
+      { icon: '🗑️', color: 'red', label: 'সাবজেক্ট ডিলিট করুন', action: `askDeleteSubject('${id}')`, danger: true }
+    ]
+  };
+  render();
+}
+function editSubjectName(id) {
+  const s = findSubject(id);
+  state.sheet = null;
+  showPrompt('সাবজেক্টের নাম', '', s.name, 'নতুন নাম লিখুন', 'সংরক্ষণ করুন', (val) => {
+    if (!val) return;
+    s.name = val;
+    saveData(); closeModal(); render();
+  });
+}
+
+/* ========== SUBJECT SCREEN ========== */
 function renderSubject() {
   const s = findSubject(state.subjectId);
   if (!s) { goto('home'); return ''; }
@@ -468,7 +578,7 @@ function renderSubject() {
       const mediaCount = data.mediaMeta.filter(m => m.chapterId === c.id).length;
       const cplx = countComplexInChapter(c);
       const subs = [`${c.questions.length} প্রশ্ন`];
-      if (cplx > 0) subs.push(`<span style="color:#7c3aed;">${cplx} জটিল</span>`);
+      if (cplx > 0) subs.push(`<span style="color:var(--purple);">${cplx} জটিল</span>`);
       if (wrongCount > 0) subs.push(`<span style="color:var(--danger);">${wrongCount} ভুল</span>`);
       if (mediaCount > 0) subs.push(`<span style="color:#0891b2;">${mediaCount} ছবি</span>`);
 
@@ -479,7 +589,7 @@ function renderSubject() {
             <div class="row-title">${escapeHtml(c.name)}</div>
             <div class="row-sub">${subs.join(' · ')}</div>
           </div>
-          <button class="del-btn" onclick="event.stopPropagation();askDeleteChapter('${c.id}')">🗑️</button>
+          <button class="menu-btn" onclick="event.stopPropagation();openChapterMenu('${c.id}')">⋯</button>
         </div>
       </div>`;
     });
@@ -518,7 +628,7 @@ function renderSubject() {
     } else {
       html += `<div class="row-sub" style="text-align:center;margin-top:-4px;color:var(--ink-soft);">সব অধ্যায় থেকে র্যান্ডম ${MOCK_SIZE}টি · প্রতিবার সম্পূর্ণ নতুন</div>`;
       if (complexQ > 0) {
-        html += `<div class="row-sub" style="text-align:center;margin-top:4px;color:#7c3aed;font-size:11.5px;">📋 এর মধ্যে কমপক্ষে ${complexInTest}টি জটিল প্রশ্ন থাকবে</div>`;
+        html += `<div class="row-sub" style="text-align:center;margin-top:4px;color:var(--purple);font-size:11.5px;">📋 এর মধ্যে কমপক্ষে ${complexInTest}টি জটিল প্রশ্ন থাকবে</div>`;
       }
     }
   }
@@ -532,6 +642,30 @@ function confirmAddChapter() {
   s.chapters.push({ id: uid(), name, questions: [] });
   state.addingChapter = false;
   saveData(); render();
+}
+
+function openChapterMenu(id) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, id);
+  if (!c) return;
+  state.sheet = {
+    title: escapeHtml(c.name),
+    items: [
+      { icon: '✏️', color: 'blue', label: 'নাম পরিবর্তন করুন', action: `editChapterName('${id}')` },
+      { icon: '🗑️', color: 'red', label: 'অধ্যায় ডিলিট করুন', action: `askDeleteChapter('${id}')`, danger: true }
+    ]
+  };
+  render();
+}
+function editChapterName(id) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, id);
+  state.sheet = null;
+  showPrompt('অধ্যায়ের নাম', '', c.name, 'নতুন নাম লিখুন', 'সংরক্ষণ করুন', (val) => {
+    if (!val) return;
+    c.name = val;
+    saveData(); closeModal(); render();
+  });
 }
 
 /* ========== MOCK PROGRESS ========== */
@@ -618,7 +752,6 @@ function renderNotes() {
 
   if (state.noteError) html += `<div class="note-banner">${state.noteError}</div>`;
 
-  // Type toggle
   html += `<div class="type-toggle">
     <button class="${!state.addingComplex ? 'active' : ''}" onclick="state.addingComplex=false;state.noteError=null;render();">📝 সাধারণ MCQ</button>
     <button class="${state.addingComplex ? 'active complex-toggle' : ''}" onclick="state.addingComplex=true;state.noteError=null;render();">📋 জটিল (টেবিল/তালিকা)</button>
@@ -649,18 +782,20 @@ function renderNotes() {
     c.questions.forEach((q, idx) => {
       const isC = q.type === 'complex';
       html += `<div class="qa-item">
-        ${isC ? '<div class="q-type-badge">📋 জটিল</div>' : ''}
-        <div class="qa-q${isC ? ' q-complex' : ''}">${idx + 1}. ${escapeHtml(q.text)}</div>`;
+        <div class="qa-header">
+          <div class="qa-q${isC ? ' q-complex' : ''}" style="margin:0;">
+            ${isC ? '<div class="q-type-badge">📋 জটিল</div>' : ''}
+            <span style="font-weight:700;">${idx + 1}.</span> ${escapeHtml(q.text)}
+          </div>
+          <button class="menu-btn" onclick="openQuestionMenu('${q.id}')">⋯</button>
+        </div>`;
       q.options.forEach((opt, oi) => {
-        html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
+        html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}" style="margin-top:6px;">
           <span class="letter">${LETTERS[oi]}</span>
           <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
         </div>`;
       });
-      html += `<div style="text-align:right;margin-top:6px;">
-        <button class="del-btn" onclick="askDeleteQuestion('${q.id}')">🗑️ মুছুন</button>
-      </div>
-    </div>`;
+      html += `</div>`;
     });
   }
   return html;
@@ -683,87 +818,129 @@ function saveNewQuestion() {
   saveData(); render();
 }
 
-/* ========== BULK IMPORT (auto-detects complex) ========== */
+/* ========== QUESTION MENU ========== */
+function openQuestionMenu(qid) {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === qid);
+  if (!q) return;
+  state.sheet = {
+    title: q.text.slice(0, 60) + (q.text.length > 60 ? '...' : ''),
+    items: [
+      { icon: '✏️', color: 'blue', label: 'প্রশ্ন এডিট করুন', action: `editQuestion('${qid}')` },
+      { icon: '🗑️', color: 'red', label: 'প্রশ্ন ডিলিট করুন', action: `askDeleteQuestion('${qid}')`, danger: true }
+    ]
+  };
+  render();
+}
+function editQuestion(qid) {
+  state.sheet = null;
+  state.editingQuestionId = qid;
+  state.editingQuestionError = null;
+  goto('editQuestion');
+}
+
+function renderEditQuestion() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === state.editingQuestionId);
+  if (!q) { goto('notes'); return ''; }
+
+  let html = topbar('প্রশ্ন এডিট', 'notes');
+  if (state.editingQuestionError) html += `<div class="note-banner">${state.editingQuestionError}</div>`;
+
+  const isComplex = q.type === 'complex';
+  html += `<div class="info-banner" style="background:${isComplex ? 'var(--purple-soft)' : 'var(--primary-soft)'};color:${isComplex ? 'var(--purple)' : 'var(--primary-dark)'};border-color:${isComplex ? '#d8b4fe' : '#c7d2fe'};">
+    ${isComplex ? '📋 জটিল প্রশ্ন (বহু-লাইন)' : '📝 সাধারণ MCQ'}
+  </div>`;
+
+  if (isComplex) {
+    html += `<textarea id="eqtext" rows="10" style="font-family:'Courier New',monospace;font-size:13.5px;line-height:1.6;">${escapeHtml(q.text)}</textarea>`;
+  } else {
+    html += `<textarea id="eqtext" rows="3">${escapeHtml(q.text)}</textarea>`;
+  }
+
+  for (let i = 0; i < 4; i++) {
+    html += `<div class="opt-input-row">
+      <input type="radio" name="editCorrectOpt" value="${i}" ${i === q.correct ? 'checked' : ''}>
+      <span class="opt-letter">${LETTERS[i]}</span>
+      <input type="text" id="eopt${i}" value="${escapeHtml(q.options[i])}" placeholder="অপশন ${i + 1}">
+    </div>`;
+  }
+  html += `<div class="row-sub" style="margin:0 0 14px 4px;">☝️ সঠিক উত্তরে ট্যাপ করুন</div>`;
+
+  html += `<button class="btn btn-primary" onclick="saveEditedQuestion()">💾 পরিবর্তন সংরক্ষণ করুন</button>`;
+
+  // Change type
+  html += `<button class="btn btn-quiet" onclick="toggleQuestionType()">🔄 টাইপ পরিবর্তন (এখন: ${isComplex ? 'জটিল' : 'সাধারণ'})</button>`;
+
+  html += `<button class="btn btn-quiet" onclick="goto('notes')">← ফিরে যান</button>`;
+  return html;
+}
+
+function saveEditedQuestion() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === state.editingQuestionId);
+  const text = document.getElementById('eqtext').value.trim();
+  const opts = [0, 1, 2, 3].map(i => document.getElementById('eopt' + i).value.trim());
+  if (!text || opts.some(o => !o)) {
+    state.editingQuestionError = 'প্রশ্ন এবং চারটি অপশনই পূরণ করুন।';
+    render(); return;
+  }
+  const correct = parseInt(document.querySelector('input[name=editCorrectOpt]:checked').value, 10);
+  q.text = text;
+  q.options = opts;
+  q.correct = correct;
+  saveData();
+  state.editingQuestionError = null;
+  alert('✅ পরিবর্তন সংরক্ষিত হয়েছে।');
+  goto('notes');
+}
+function toggleQuestionType() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const q = c.questions.find(x => x.id === state.editingQuestionId);
+  q.type = q.type === 'complex' ? 'mcq' : 'complex';
+  saveData();
+  render();
+}
+
+/* ========== BULK IMPORT ========== */
 function parseBulkText(text) {
   const blocks = text.trim().split(/\n\s*\n/);
   const questions = [], errors = [];
   blocks.forEach((block, bi) => {
     const rawLines = block.split('\n').map(l => l.replace(/\s+$/, '')).filter(l => l.trim());
     if (rawLines.length === 0) return;
-
-    // Option regex: supports ক/খ/গ/ঘ or (a)/(b)/(c)/(d) or a./b./c./d.
     const optRegex = /^\s*[\(\[]?\s*([কখগঘ]|[aAbBcCdD])\s*[\)\].:।]\s*/;
     const optIdx = [];
     rawLines.forEach((l, i) => { if (optRegex.test(l)) optIdx.push(i); });
-
-    // We need exactly 4 consecutive option lines at the end
-    if (optIdx.length < 4) {
-      errors.push(`ব্লক ${bi + 1}: ৪টি অপশন পাওয়া যায়নি (${optIdx.length}টি)`);
-      return;
-    }
-
-    // Take the last 4 option-like lines that are consecutive at the end
+    if (optIdx.length < 4) { errors.push(`ব্লক ${bi + 1}: ৪টি অপশন নেই`); return; }
     const last4 = optIdx.slice(-4);
-    // ensure they are consecutive
-    for (let i = 1; i < 4; i++) {
-      if (last4[i] !== last4[i-1] + 1) {
-        errors.push(`ব্লক ${bi + 1}: অপশনগুলো পরপর নয়`);
-        return;
-      }
-    }
-    if (last4[3] !== rawLines.length - 1) {
-      errors.push(`ব্লক ${bi + 1}: অপশনের পরে অতিরিক্ত লাইন আছে`);
-      return;
-    }
-
+    for (let i = 1; i < 4; i++) if (last4[i] !== last4[i-1] + 1) { errors.push(`ব্লক ${bi + 1}: অপশন পরপর নয়`); return; }
+    if (last4[3] !== rawLines.length - 1) { errors.push(`ব্লক ${bi + 1}: অপশনের পরে অতিরিক্ত লাইন`); return; }
     const optLines = last4.map(i => rawLines[i]);
     let qLines = rawLines.slice(0, last4[0]);
-
-    // Remove "উত্তর:" / "answer:" lines from question body
-    const answerLineIdx = qLines.findIndex(l => /^\s*(উত্তর|answer)\s*[:：]/i.test(l));
-    let answerLineText = '';
-    if (answerLineIdx !== -1) {
-      answerLineText = qLines[answerLineIdx];
-      qLines.splice(answerLineIdx, 1);
-    }
-
-    if (qLines.length === 0) {
-      errors.push(`ব্লক ${bi + 1}: প্রশ্নের বডি নেই`);
-      return;
-    }
-
-    // Preserve internal line breaks for complex questions
-    let qText = qLines.join('\n').trim();
-    // Strip "প্রশ্ন:" prefix if present
-    qText = qText.replace(/^প্রশ্ন\s*[:：]?\s*/, '');
-
+    const aIdx = qLines.findIndex(l => /^\s*(উত্তর|answer)\s*[:：]/i.test(l));
+    let aLine = '';
+    if (aIdx !== -1) { aLine = qLines[aIdx]; qLines.splice(aIdx, 1); }
+    if (qLines.length === 0) { errors.push(`ব্লক ${bi + 1}: প্রশ্নের বডি নেই`); return; }
+    let qText = qLines.join('\n').trim().replace(/^প্রশ্ন\s*[:：]?\s*/, '');
     const options = optLines.map(l => l.replace(optRegex, '').trim());
     let correct = -1;
-
-    // Method 1: trailing * on any option
     optLines.forEach((l, i) => {
-      if (l.includes('*')) {
-        if (correct === -1) correct = i;
-        options[i] = options[i].replace(/\*/g, '').trim();
-      }
+      if (l.includes('*')) { if (correct === -1) correct = i; options[i] = options[i].replace(/\*/g, '').trim(); }
     });
-
-    // Method 2: "উত্তর: ক" line
-    if (correct === -1 && answerLineText) {
-      const ans = answerLineText.replace(/^\s*(উত্তর|answer)\s*[:：]\s*/i, '').trim();
-      const letterMap = { 'ক': 0, 'খ': 1, 'গ': 2, 'ঘ': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+    if (correct === -1 && aLine) {
+      const ans = aLine.replace(/^\s*(উত্তর|answer)\s*[:：]\s*/i, '').trim();
+      const lm = { 'ক': 0, 'খ': 1, 'গ': 2, 'ঘ': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
       const letter = ans.charAt(0);
-      if (letterMap[letter] !== undefined) correct = letterMap[letter];
+      if (lm[letter] !== undefined) correct = lm[letter];
       else if (/^[1-4]/.test(ans)) correct = parseInt(ans) - 1;
       else { const idx = options.findIndex(o => o.toLowerCase() === ans.toLowerCase()); if (idx !== -1) correct = idx; }
     }
-
-    if (correct === -1 || correct > 3) {
-      errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত হয়নি`);
-      return;
-    }
-
-    // Complex if body has multiple lines
+    if (correct === -1 || correct > 3) { errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর নেই`); return; }
     const type = qLines.length > 1 ? 'complex' : 'mcq';
     questions.push({ id: uid(), type, text: qText, options, correct });
   });
@@ -777,18 +954,18 @@ function renderBulkImport() {
   let html = topbar('বাল্ক ইমপোর্ট', 'notes');
   html += `<div class="info-banner">
     <b>📌 ফরম্যাট:</b> প্রতিটি প্রশ্নের পরে <b>একটি খালি লাইন</b>। সঠিক উত্তরের শেষে <b>*</b> চিহ্ন।<br>
-    <b>📋 জটিল প্রশ্ন (টেবিল/তালিকা):</b> স্বয়ংক্রিয়ভাবে শনাক্ত হবে — প্রশ্নের বডি একাধিক লাইন হলে।
-    <div class="format-box">বাংলাদেশের রাজধানী কী?
+    <b>📋 জটিল প্রশ্ন:</b> প্রশ্নের বডি একাধিক লাইন হলে স্বয়ংক্রিয়ভাবে শনাক্ত হবে।
+    <div class="format-box">রাজধানী কী?
 ক) চট্টগ্রাম
 খ) ঢাকা *
 গ) খুলনা
 ঘ) রাজশাহী
 
-গুরুত্বপূর্ণ সন্ধি ও তাদের বছর:
-(i) বেলগ্রেড সন্ধান  (1) 1955
-(ii) বাগদাদ সন্ধান   (2) 1961
-(iii) সুয়েজ সংকট    (3) 1962
-(iv) কিউবা সংকট    (4) 1956
+গুরুত্বপূর্ণ সন্ধি:
+(i) বেলগ্রেড    (1) 1955
+(ii) বাগদাদ    (2) 1961
+(iii) সুয়েজ     (3) 1962
+(iv) কিউবা     (4) 1956
 ক) i-1, ii-2, iii-3, iv-4
 খ) i-3, ii-4, iii-2, iv-1
 গ) i-2, ii-1, iii-4, iv-3 *
@@ -833,7 +1010,6 @@ function previewBulk() {
   render();
   if (result.questions.length > 0) window.scrollTo(0, 300);
 }
-
 function confirmBulkImport() {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
@@ -983,7 +1159,6 @@ async function openPdfMedia(id) {
 /* ========== MEDIA VIEWER ========== */
 function renderMediaViewer() {
   const m = state.mediaViewer;
-  const scale = m.scale || 1, rot = m.rotation || 0, tx = m.tx || 0, ty = m.ty || 0;
   return `<div class="viewer-overlay" id="viewerOverlay">
     <div class="viewer-bar">
       <button onclick="closeViewer()">✕</button>
@@ -991,16 +1166,16 @@ function renderMediaViewer() {
       <button onclick="askDeleteMediaFromViewer()">🗑️</button>
     </div>
     <div class="viewer-body" id="viewerBody">
-      <div class="viewer-hint" id="viewerHint">দুই আঙুলে জুম · এক আঙুলে সরান · ডাবল ট্যাপে জুম</div>
-      <div class="viewer-img-wrap" id="viewerImgWrap" style="transform:translate(${tx}px, ${ty}px) scale(${scale}) rotate(${rot}deg)">
+      <div class="viewer-hint" id="viewerHint">দুই আঙুলে জুম · ডাবল ট্যাপে জুম · টেনে সরান</div>
+      <div class="viewer-img-wrap" id="viewerImgWrap" style="transform:translate(${m.tx}px, ${m.ty}px) scale(${m.scale}) rotate(${m.rotation}deg)">
         <img src="${m.url}" id="viewerImg" alt="">
       </div>
       <div class="viewer-controls">
-        <button onclick="zoomOut()" title="ছোট">−</button>
-        <div class="zoom-level" id="zoomLevel">${Math.round(scale * 100)}%</div>
-        <button onclick="zoomIn()" title="বড়">+</button>
-        <button onclick="rotateViewer()" title="ঘোরান">↻</button>
-        <button onclick="resetViewer()" title="রিসেট">⟳</button>
+        <button onclick="zoomOut()">−</button>
+        <div class="zoom-level" id="zoomLevel">${Math.round((m.scale || 1) * 100)}%</div>
+        <button onclick="zoomIn()">+</button>
+        <button onclick="rotateViewer()">↻</button>
+        <button onclick="resetViewer()">⟳</button>
       </div>
     </div>
   </div>`;
@@ -1140,8 +1315,8 @@ function renderChapterWrong() {
         <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
       </div>`;
     });
-    html += `<div style="text-align:right;margin-top:6px;">
-      <button class="del-btn" onclick="removeChapterWrong('${q.id}')">এই প্রশ্নটি সরান</button>
+    html += `<div style="text-align:right;margin-top:8px;">
+      <button class="menu-btn" style="display:inline-flex;" onclick="removeChapterWrong('${q.id}')">✕</button>
     </div></div>`;
   });
   return html;
@@ -1173,54 +1348,36 @@ function startFullMockTest() {
   const s = findSubject(state.subjectId);
   const all = allQuestionsOfSubject(s).map(x => x.q);
   if (all.length === 0) return;
-
   const target = Math.min(MOCK_SIZE, all.length);
   let prog = getMockProgress(s.id);
   const usedSet = new Set(prog.usedIds);
-
-  // Split fresh pools by type
   const freshAll = all.filter(q => !usedSet.has(q.id));
   const freshComplex = freshAll.filter(q => q.type === 'complex');
   const freshMcq = freshAll.filter(q => q.type !== 'complex');
-
-  // Compute how many complex we want
   const availableComplex = all.filter(q => q.type === 'complex').length;
   const desiredComplex = Math.min(MOCK_COMPLEX_MIN, availableComplex, target);
 
-  let selected = [];
-  let newUsedIds = [...prog.usedIds];
-
-  // Try to pick desiredComplex complex from fresh first
+  let selected = [], newUsedIds = [...prog.usedIds];
   let pickedComplex = shuffle(freshComplex).slice(0, desiredComplex);
   let pickedMcq = shuffle(freshMcq).slice(0, target - pickedComplex.length);
 
-  // If not enough fresh MCQ, pull complex from fresh pool
   if (pickedMcq.length < target - pickedComplex.length) {
-    const extraComplex = shuffle(freshComplex.filter(q => !pickedComplex.includes(q)))
-      .slice(0, (target - pickedComplex.length) - pickedMcq.length);
-    pickedComplex = pickedComplex.concat(extraComplex);
+    const extra = shuffle(freshComplex.filter(q => !pickedComplex.includes(q))).slice(0, (target - pickedComplex.length) - pickedMcq.length);
+    pickedComplex = pickedComplex.concat(extra);
   }
 
-  // If still not enough fresh overall, we need to reset cycle
   if (pickedComplex.length + pickedMcq.length < target) {
-    // reset: start new cycle
     prog.cycle++;
-    const alreadyPickedIds = new Set([...pickedComplex, ...pickedMcq].map(q => q.id));
+    const pickedIds = new Set([...pickedComplex, ...pickedMcq].map(q => q.id));
     const remaining = target - (pickedComplex.length + pickedMcq.length);
-
-    // Pick complex from full pool (excluding already picked)
-    const complexPool = all.filter(q => q.type === 'complex' && !alreadyPickedIds.has(q.id));
+    const complexPool = all.filter(q => q.type === 'complex' && !pickedIds.has(q.id));
     const moreComplex = shuffle(complexPool).slice(0, Math.max(0, Math.min(remaining, desiredComplex - pickedComplex.length)));
-    alreadyPickedIds.forEach(id => {});
-    moreComplex.forEach(q => alreadyPickedIds.add(q.id));
+    moreComplex.forEach(q => pickedIds.add(q.id));
     pickedComplex = pickedComplex.concat(moreComplex);
-
-    // Pick rest from full pool
     const stillNeeded = target - (pickedComplex.length + pickedMcq.length);
-    const restPool = all.filter(q => !alreadyPickedIds.has(q.id));
+    const restPool = all.filter(q => !pickedIds.has(q.id));
     const rest = shuffle(restPool).slice(0, stillNeeded);
     pickedMcq = pickedMcq.concat(rest);
-
     selected = shuffle([...pickedComplex, ...pickedMcq]);
     newUsedIds = selected.map(q => q.id);
   } else {
@@ -1252,7 +1409,6 @@ function renderQuiz() {
   const idx = state.quizIndex;
   const q = qs[idx];
   const pct = Math.round((idx / qs.length) * 100);
-
   const titleMap = { final: 'ফুল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'প্র্যাকটিস' };
   const backMap = { final: 'subject', chapterWrong: 'chapterWrong', chapter: 'chapter' };
   let html = topbar(titleMap[state.mode] || 'প্রশ্ন', backMap[state.mode] || 'chapter');
@@ -1262,11 +1418,8 @@ function renderQuiz() {
     <span class="score-pill">স্কোর ${state.quizScore}</span>
   </div>`;
   html += `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
-
-  if (q.type === 'complex') {
-    html += `<div class="q-type-badge">📋 জটিল প্রশ্ন</div>`;
-  }
-  html += questionHtml(q);
+  if (q.type === 'complex') html += `<div class="q-type-badge">📋 জটিল প্রশ্ন</div>`;
+  html += `<div class="q-text${q.type === 'complex' ? ' q-complex' : ''}">${escapeHtml(q.text)}</div>`;
 
   q.options.forEach((opt, oi) => {
     let cls = 'opt-row';
@@ -1304,7 +1457,6 @@ function answerQuiz(oi) {
   }
   render();
 }
-
 function addToWrongList(q) {
   let subjId = '', subjName = '', chapId = '', chapName = '';
   for (const s of data.subjects) {
@@ -1317,14 +1469,11 @@ function addToWrongList(q) {
   if (existing) {
     existing.wrongCount = (existing.wrongCount || 1) + 1;
     existing.lastWrong = Date.now();
-    if (!existing.chapterId) { existing.chapterId = chapId; existing.chapterName = chapName; }
-    if (!existing.subjectId) { existing.subjectId = subjId; existing.subjectName = subjName; }
   } else {
     data.wrongQuestions.push({ question: q, subjectId: subjId, subjectName: subjName, chapterId: chapId, chapterName: chapName, wrongCount: 1, lastWrong: Date.now() });
   }
   saveData();
 }
-
 function nextQuiz() {
   state.quizIndex++;
   state.quizAnswered = null;
@@ -1359,7 +1508,6 @@ function renderResult() {
   html += `<button class="btn btn-quiet" onclick="goto('home')">🏠 হোম</button>`;
   return html;
 }
-
 function retryQuiz() {
   if (state.mode === 'final') startFullMockTest();
   else if (state.mode === 'chapterWrong') startChapterWrongPractice();
@@ -1409,28 +1557,73 @@ function restoreFromTrash(tid) {
 }
 function killTrashItem(tid) { data.trash = data.trash.filter(t => t.id !== tid); saveData(); render(); }
 
-/* ========== BACKUP ========== */
-function renderBackup() {
-  let html = topbar('ব্যাকআপ ও রিস্টোর', 'home');
-  html += `<div class="info-banner">💡 ব্যাকআপে সব প্রশ্ন, নোট, ছবি, PDF সবকিছু থাকবে। যতক্ষণ ফোনে জায়গা আছে, ততক্ষণ ডাউনলোড হবে।</div>`;
-  html += `<div class="section-label">স্টোরেজ তথ্য</div>`;
+/* ========== SETTINGS ========== */
+function renderSettings() {
+  let html = topbar('সেটিংস', 'home');
+
+  // Font
+  html += `<div class="section-label">🔤 ফন্ট স্টাইল</div>`;
+  Object.keys(FONTS).forEach(key => {
+    const f = FONTS[key];
+    const selected = ((data.settings && data.settings.font) || 'hind') === key;
+    html += `<div class="font-option ${selected ? 'selected' : ''}" onclick="setFont('${key}')">
+      <div class="sample">
+        <div class="fname" style="font-family:'Hind Siliguri',sans-serif;">${f.label}</div>
+        <div style="font-family:${f.stack};">আমার পরীক্ষার প্রস্তুতি</div>
+        <div style="font-family:${f.stack};font-size:12px;color:var(--ink-soft);margin-top:2px;">বাংলাদেশ স্বাধীন হয় ১৯৭১ সালে</div>
+      </div>
+      <div class="check">✓</div>
+    </div>`;
+  });
+
+  // Storage info
+  html += `<div class="section-label">📊 স্টোরেজ তথ্য</div>`;
   html += `<div class="storage-info">
     <b>মোট ছবি/PDF:</b> ${data.mediaMeta.length} টি<br>
     <span id="storageEstimate">⏳ লোড হচ্ছে...</span>
   </div>`;
-  html += `<div class="section-label">ব্যাকআপ নিন</div>`;
+
+  // Backup section
+  html += `<div class="section-label">💾 ব্যাকআপ</div>`;
   html += `<button class="btn btn-primary" onclick="exportBackup()">⬇️ ব্যাকআপ ডাউনলোড করুন</button>`;
-  html += `<div class="row-sub" style="margin:-4px 4px 20px;">ফাইলটি Google Drive বা WhatsApp-এ সেভ রাখুন।</div>`;
-  html += `<div class="section-label">রিস্টোর করুন</div>`;
+  html += `<div class="row-sub" style="margin:-4px 4px 12px;">ফাইলটি Google Drive বা WhatsApp-এ সেভ রাখুন।</div>`;
   html += `<input type="file" id="importFile" accept=".json" style="width:100%;padding:12px;border:1.5px dashed var(--border);border-radius:12px;margin-bottom:10px;background:var(--card);">`;
   html += `<button class="btn btn-success" onclick="importBackup()">⬆️ ব্যাকআপ থেকে রিস্টোর করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px 20px;">⚠️ বর্তমান সব ডেটা প্রতিস্থাপিত হবে।</div>`;
-  html += `<div class="section-label">বিপজ্জনক এলাকা</div>`;
+
+  // App info
+  html += `<div class="section-label">ℹ️ অ্যাপ তথ্য</div>`;
+  const totalSubjects = data.subjects.length;
+  const totalChapters = data.subjects.reduce((a, s) => a + s.chapters.length, 0);
+  const totalQ = data.subjects.reduce((a, s) => a + allQuestionsOfSubject(s).length, 0);
+  const totalComplex = data.subjects.reduce((a, s) => a + countComplexInSubject(s), 0);
+  const totalWrong = data.wrongQuestions.length;
+  html += `<div class="storage-info">
+    <b>সাবজেক্ট:</b> ${totalSubjects}<br>
+    <b>মোট অধ্যায়:</b> ${totalChapters}<br>
+    <b>মোট প্রশ্ন:</b> ${totalQ} (${totalComplex} জটিল)<br>
+    <b>ভুল প্রশ্ন:</b> ${totalWrong}<br>
+    <b>রিসাইকেল বিনে:</b> ${data.trash.length}
+  </div>`;
+
+  // Danger
+  html += `<div class="section-label">⚠️ বিপজ্জনক এলাকা</div>`;
   html += `<button class="btn btn-danger" onclick="askResetAll()">🔄 সবকিছু রিসেট করুন</button>`;
-  html += `<div class="row-sub" style="margin:-4px 4px;">সব প্রশ্ন, ছবি, নোট মুছে যাবে। আগে ব্যাকআপ নিন।</div>`;
+  html += `<div class="row-sub" style="margin:-4px 4px;">সব প্রশ্ন, ছবি, নোট, সেটিংস — সব মুছে যাবে।</div>`;
+
   setTimeout(loadStorageInfo, 80);
   return html;
 }
+
+function setFont(key) {
+  if (!FONTS[key]) return;
+  data.settings = data.settings || {};
+  data.settings.font = key;
+  saveData();
+  applyFont();
+  render();
+}
+
 async function loadStorageInfo() {
   const el = document.getElementById('storageEstimate');
   if (!el) return;
@@ -1448,6 +1641,7 @@ async function loadStorageInfo() {
   } catch (e) { el.innerHTML = 'তথ্য লোড করা যায়নি।'; }
 }
 
+/* ========== BACKUP FUNCTIONS ========== */
 async function exportBackup() {
   try {
     alert('⏳ ব্যাকআপ তৈরি হচ্ছে... ছবি অনেক থাকলে কিছু সময় লাগবে।');
@@ -1460,7 +1654,9 @@ async function exportBackup() {
     }
     const backup = {
       subjects: data.subjects, wrongQuestions: data.wrongQuestions, trash: data.trash,
-      mediaMeta: data.mediaMeta, mockProgress: data.mockProgress || {}, media: mediaData, exportedAt: Date.now()
+      mediaMeta: data.mediaMeta, mockProgress: data.mockProgress || {},
+      settings: data.settings || { font: 'hind' },
+      media: mediaData, exportedAt: Date.now()
     };
     const blob = new Blob([JSON.stringify(backup)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -1491,16 +1687,17 @@ function importBackup() {
           await mediaSave({ id: m.id, chapterId: m.chapterId, type: m.type, name: m.name, createdAt: m.createdAt || Date.now() }, blob);
         }
       }
-      // Migration: ensure types on imported questions
       parsed.subjects.forEach(s => s.chapters.forEach(c => c.questions.forEach(q => {
         if (!q.type) q.type = (q.text && q.text.includes('\n')) ? 'complex' : 'mcq';
       })));
       data = {
         subjects: parsed.subjects, wrongQuestions: parsed.wrongQuestions || [], trash: parsed.trash || [],
-        mediaMeta: parsed.mediaMeta || [], mockProgress: parsed.mockProgress || {}
+        mediaMeta: parsed.mediaMeta || [], mockProgress: parsed.mockProgress || {},
+        settings: parsed.settings || { font: 'hind' }
       };
       memoryFallback = data;
       saveData();
+      applyFont();
       alert('✅ সফলভাবে রিস্টোর হয়েছে।');
       goto('home');
     } catch (err) { alert('❌ রিস্টোর ব্যর্থ: ' + err.message); }
@@ -1508,22 +1705,73 @@ function importBackup() {
   reader.readAsText(file);
 }
 
+/* ========== BOTTOM SHEET ========== */
+function renderSheet() {
+  const s = state.sheet;
+  let html = `<div class="sheet-overlay" onclick="if(event.target===this)closeSheet()">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title">${s.title || 'মেনু'}</div>
+      ${s.items.map(it => `<button class="sheet-item ${it.danger ? 'danger' : ''}" onclick="${it.action}">
+        <span class="sicon ${it.color || 'blue'}">${it.icon}</span>
+        <span>${it.label}</span>
+      </button>`).join('')}
+      <button class="sheet-cancel" onclick="closeSheet()">বাতিল</button>
+    </div>
+  </div>`;
+  return html;
+}
+function closeSheet() { state.sheet = null; render(); }
+
 /* ========== MODALS ========== */
 function renderModal() {
   const m = state.modal;
+  if (m.type === 'prompt') {
+    return `<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h3>${m.title}</h3>
+        ${m.body ? `<p>${m.body}</p>` : ''}
+        <input type="text" id="promptInput" value="${escapeHtml(m.value || '')}" placeholder="${escapeHtml(m.placeholder || '')}" autofocus>
+        <div class="modal-btns">
+          <button class="btn btn-quiet" onclick="closeModal()">বাতিল</button>
+          <button class="btn btn-primary" onclick="submitPrompt()">${m.okText || 'সংরক্ষণ'}</button>
+        </div>
+      </div>
+    </div>`;
+  }
   return `<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
       <h3>${m.title}</h3>
       <p>${m.body}</p>
-      <button class="btn ${m.danger ? 'btn-danger' : 'btn-primary'}" onclick="${m.onOk}">${m.okText}</button>
-      <button class="btn btn-quiet" onclick="closeModal()">বাতিল</button>
+      <div class="modal-btns">
+        <button class="btn btn-quiet" onclick="closeModal()">বাতিল</button>
+        <button class="btn ${m.danger ? 'btn-danger' : 'btn-primary'}" onclick="${m.onOk}">${m.okText}</button>
+      </div>
     </div>
   </div>`;
 }
-function closeModal() { state.modal = null; render(); }
-function showModal(title, body, okText, onOk, danger) { state.modal = { title, body, okText, onOk, danger }; render(); }
 
+function closeModal() { state.modal = null; render(); }
+function showModal(title, body, okText, onOk, danger) {
+  state.modal = { type: 'confirm', title, body, okText, onOk, danger };
+  render();
+}
+function showPrompt(title, body, value, placeholder, okText, onSave) {
+  state.modal = { type: 'prompt', title, body, value, placeholder, okText, onSave };
+  render();
+  setTimeout(() => { const el = document.getElementById('promptInput'); if (el) { el.focus(); el.select(); } }, 100);
+}
+function submitPrompt() {
+  const input = document.getElementById('promptInput');
+  if (!input) return;
+  const val = input.value.trim();
+  const cb = state.modal && state.modal.onSave;
+  if (cb) cb(val);
+}
+
+/* ========== DELETE ACTIONS ========== */
 function askDeleteSubject(id) {
+  state.sheet = null;
   const s = findSubject(id);
   showModal('সাবজেক্ট মুছবেন?', `"${escapeHtml(s.name)}" ও সব অধ্যায়, প্রশ্ন, ছবি ৩০ দিনের বিনে যাবে।`, 'মুছে ফেলুন', `reallyDeleteSubject('${id}')`, true);
 }
@@ -1541,6 +1789,7 @@ async function reallyDeleteSubject(id) {
 }
 
 function askDeleteChapter(id) {
+  state.sheet = null;
   const s = findSubject(state.subjectId);
   const c = findChapter(s, id);
   showModal('অধ্যায় মুছবেন?', `"${escapeHtml(c.name)}" ও এর সব প্রশ্ন ও ছবি ৩০ দিনের বিনে যাবে।`, 'মুছে ফেলুন', `reallyDeleteChapter('${id}')`, true);
@@ -1558,6 +1807,7 @@ async function reallyDeleteChapter(id) {
 }
 
 function askDeleteQuestion(qid) {
+  state.sheet = null;
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
   const q = c.questions.find(x => x.id === qid);
@@ -1574,17 +1824,19 @@ function reallyDeleteQuestion(qid) {
   closeModal(); saveData(); render();
 }
 
-function askEmptyTrash() { showModal('বিন খালি করবেন?', 'সব স্থায়ীভাবে মুছে যাবে।', 'স্থায়ীভাবে মুছুন', 'reallyEmptyTrash()', true); }
+function askEmptyTrash() {
+  showModal('বিন খালি করবেন?', 'সব স্থায়ীভাবে মুছে যাবে।', 'স্থায়ীভাবে মুছুন', 'reallyEmptyTrash()', true);
+}
 function reallyEmptyTrash() { data.trash = []; closeModal(); saveData(); render(); }
 
 function askResetAll() {
-  showModal('সবকিছু রিসেট করবেন?', 'সব সাবজেক্ট, প্রশ্ন, ছবি, ভুল, বিন — সব মুছে যাবে। আগে ব্যাকআপ নিয়েছেন?', 'হ্যাঁ, সব মুছুন', 'reallyResetAll()', true);
+  showModal('সবকিছু রিসেট করবেন?', 'সব সাবজেক্ট, প্রশ্ন, ছবি, ভুল, সেটিংস — সব মুছে যাবে। আগে ব্যাকআপ নিয়েছেন?', 'হ্যাঁ, সব মুছুন', 'reallyResetAll()', true);
 }
 async function reallyResetAll() {
   try { await mediaClearAll(); } catch (e) {}
   data = defaultData();
   memoryFallback = data;
-  closeModal(); saveData(); goto('home');
+  closeModal(); saveData(); applyFont(); goto('home');
 }
 
 /* ========== INIT ========== */
