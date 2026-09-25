@@ -11,69 +11,43 @@
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   :root {
-    --ink: #1e293b;
-    --ink-soft: #64748b;
-    --ink-mute: #94a3b8;
-    --border: #e2e8f0;
-    --card: #ffffff;
-    --primary: #4f46e5;
-    --primary-soft: #eef2ff;
-    --primary-dark: #4338ca;
-    --success: #16a34a;
-    --success-soft: #f0fdf4;
-    --danger: #dc2626;
-    --danger-soft: #fef2f2;
-    --warning: #d97706;
-    --warning-soft: #fffbeb;
+    --ink: #1e293b; --ink-soft: #64748b; --ink-mute: #94a3b8;
+    --border: #e2e8f0; --card: #ffffff;
+    --primary: #4f46e5; --primary-soft: #eef2ff; --primary-dark: #4338ca;
+    --success: #16a34a; --success-soft: #f0fdf4;
+    --danger: #dc2626; --danger-soft: #fef2f2;
+    --warning: #d97706; --warning-soft: #fffbeb;
     --shadow-sm: 0 1px 2px rgba(15,23,42,0.05);
     --shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 14px rgba(15,23,42,0.05);
     --shadow-lg: 0 8px 30px rgba(15,23,42,0.10);
   }
-  html, body {
-    margin: 0; padding: 0; min-height: 100vh;
+  html, body { margin: 0; padding: 0; min-height: 100vh;
     font-family: 'Hind Siliguri', -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: var(--ink);
-    background: #f5f7fb;
-    background-image:
-      radial-gradient(circle at 0% 0%, #eef2ff 0%, transparent 45%),
-      radial-gradient(circle at 100% 0%, #fdf2f8 0%, transparent 40%),
-      linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
-    background-attachment: fixed;
-    -webkit-font-smoothing: antialiased;
-  }
+    color: var(--ink); background: #f5f7fb;
+    background-image: radial-gradient(circle at 0% 0%, #eef2ff 0%, transparent 45%), radial-gradient(circle at 100% 0%, #fdf2f8 0%, transparent 40%), linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
+    background-attachment: fixed; -webkit-font-smoothing: antialiased; }
   #app { max-width: 560px; margin: 0 auto; padding: 20px 16px 80px; }
   button { font-family: inherit; cursor: pointer; }
   input, textarea { font-family: inherit; }
 
   .hero { padding: 4px 4px 22px; }
-  .hero h1 {
-    font-family: 'Tiro Bangla', Georgia, serif;
-    font-size: 26px; font-weight: 700; margin: 0 0 6px;
+  .hero h1 { font-family: 'Tiro Bangla', Georgia, serif; font-size: 26px; font-weight: 700; margin: 0 0 6px;
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero p { margin: 0; color: var(--ink-soft); font-size: 13.5px; }
 
   .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-  .back-btn {
-    background: var(--card); border: 1px solid var(--border); color: var(--ink);
+  .back-btn { background: var(--card); border: 1px solid var(--border); color: var(--ink);
     width: 38px; height: 38px; border-radius: 12px; font-size: 17px;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--shadow-sm); flex-shrink: 0;
-  }
+    box-shadow: var(--shadow-sm); flex-shrink: 0; }
   .back-btn:active { transform: scale(0.95); }
   .page-title { font-size: 18px; font-weight: 700; margin: 0; flex: 1; }
 
-  .card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: var(--shadow);
-    margin-bottom: 12px;
+  .card { background: var(--card); border-radius: 16px; padding: 16px;
+    box-shadow: var(--shadow); margin-bottom: 12px;
     border: 1px solid rgba(226,232,240,0.6);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
+    transition: transform 0.15s ease, box-shadow 0.15s ease; }
   .card.tappable { cursor: pointer; }
   .card.tappable:active { transform: scale(0.985); box-shadow: var(--shadow-sm); }
 
@@ -82,143 +56,79 @@
   .row-title { font-weight: 700; font-size: 15.5px; color: var(--ink); }
   .row-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
 
-  .badge-num {
-    width: 34px; height: 34px; border-radius: 10px;
+  .badge-num { width: 34px; height: 34px; border-radius: 10px;
     background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: #fff; display: flex; align-items: center; justify-content: center;
     font-size: 13px; font-weight: 700; flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(79,70,229,0.25);
-  }
+    box-shadow: 0 4px 12px rgba(79,70,229,0.25); }
   .badge-num.warn { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 12px rgba(217,119,6,0.25); }
   .badge-num.danger { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 4px 12px rgba(220,38,38,0.25); }
   .badge-num.trash { background: linear-gradient(135deg, #64748b, #475569); box-shadow: 0 4px 12px rgba(71,85,105,0.2); }
+  .badge-num.photo { background: linear-gradient(135deg, #0891b2, #0e7490); box-shadow: 0 4px 12px rgba(14,116,144,0.25); }
 
-  .chip {
-    display: inline-block; padding: 3px 10px; border-radius: 20px;
-    font-size: 11px; font-weight: 700; margin-left: 6px;
-  }
+  .chip { display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; margin-left: 6px; }
   .chip.green { background: var(--success-soft); color: var(--success); }
   .chip.red { background: var(--danger-soft); color: var(--danger); }
   .chip.amber { background: var(--warning-soft); color: var(--warning); }
 
-  .del-btn {
-    background: none; border: none; color: var(--ink-mute);
-    font-size: 12.5px; padding: 8px; cursor: pointer; flex-shrink: 0;
-  }
+  .del-btn { background: none; border: none; color: var(--ink-mute);
+    font-size: 12.5px; padding: 8px; cursor: pointer; flex-shrink: 0; }
   .del-btn:hover { color: var(--danger); }
 
-  .btn {
-    display: block; width: 100%; padding: 14px; border-radius: 12px;
+  .btn { display: block; width: 100%; padding: 14px; border-radius: 12px;
     border: none; font-size: 15px; font-weight: 700; cursor: pointer;
     text-align: center; margin-bottom: 10px;
-    transition: transform 0.1s ease, box-shadow 0.15s ease;
-  }
+    transition: transform 0.1s ease, box-shadow 0.15s ease; }
   .btn:active { transform: scale(0.98); }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary), #6366f1);
-    color: #fff; box-shadow: 0 6px 20px rgba(79,70,229,0.30);
-  }
-  .btn-outline {
-    background: var(--card); color: var(--primary);
-    border: 1.5px solid var(--primary); box-shadow: var(--shadow-sm);
-  }
-  .btn-quiet {
-    background: var(--card); color: var(--ink-soft);
-    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  }
-  .btn-danger {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    color: #fff; box-shadow: 0 6px 20px rgba(220,38,38,0.25);
-  }
-  .btn-success {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.25);
-  }
+  .btn-primary { background: linear-gradient(135deg, var(--primary), #6366f1); color: #fff; box-shadow: 0 6px 20px rgba(79,70,229,0.30); }
+  .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); box-shadow: var(--shadow-sm); }
+  .btn-quiet { background: var(--card); color: var(--ink-soft); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+  .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; box-shadow: 0 6px 20px rgba(220,38,38,0.25); }
+  .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 6px 20px rgba(16,185,129,0.25); }
+  .btn-info { background: linear-gradient(135deg, #0891b2, #0e7490); color: #fff; box-shadow: 0 6px 20px rgba(14,116,144,0.25); }
 
-  .section-label {
-    font-size: 12px; font-weight: 700; color: var(--ink-soft);
-    text-transform: uppercase; letter-spacing: 0.05em;
-    margin: 22px 4px 10px;
-  }
+  .section-label { font-size: 12px; font-weight: 700; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.05em; margin: 22px 4px 10px; }
 
-  input[type=text], textarea {
-    width: 100%; padding: 13px 14px; border: 1.5px solid var(--border);
+  input[type=text], textarea { width: 100%; padding: 13px 14px; border: 1.5px solid var(--border);
     border-radius: 12px; font-size: 14.5px; margin-bottom: 10px;
-    background: var(--card); color: var(--ink); transition: border-color 0.15s;
-  }
-  input[type=text]:focus, textarea:focus {
-    outline: none; border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-soft);
-  }
+    background: var(--card); color: var(--ink); transition: border-color 0.15s; }
+  input[type=text]:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
 
-  .opt-input-row {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
-  }
+  .opt-input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .opt-input-row input[type=text] { margin-bottom: 0; }
-  .opt-input-row input[type=radio] {
-    accent-color: var(--primary); width: 20px; height: 20px; flex-shrink: 0;
-  }
-  .opt-letter {
-    font-weight: 700; width: 18px; flex-shrink: 0;
-    color: var(--ink-soft); font-size: 14px;
-  }
+  .opt-input-row input[type=radio] { accent-color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; }
+  .opt-letter { font-weight: 700; width: 18px; flex-shrink: 0; color: var(--ink-soft); font-size: 14px; }
 
-  .opt-row {
-    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  .opt-row { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
     padding: 14px; border: 1.5px solid var(--border); border-radius: 12px;
     background: var(--card); font-size: 15px; color: var(--ink);
-    cursor: pointer; margin-bottom: 10px; transition: all 0.15s ease;
-  }
+    cursor: pointer; margin-bottom: 10px; transition: all 0.15s ease; }
   .opt-row:active:not(:disabled) { transform: scale(0.985); }
   .opt-row:disabled { cursor: default; }
-  .opt-bubble {
-    width: 34px; height: 34px; border-radius: 10px;
+  .opt-bubble { width: 34px; height: 34px; border-radius: 10px;
     background: var(--primary-soft); color: var(--primary);
     display: flex; align-items: center; justify-content: center;
-    font-size: 13.5px; font-weight: 700; flex-shrink: 0;
-  }
-  .opt-row.correct {
-    border-color: var(--success); background: var(--success-soft);
-    color: #166534;
-  }
+    font-size: 13.5px; font-weight: 700; flex-shrink: 0; }
+  .opt-row.correct { border-color: var(--success); background: var(--success-soft); color: #166534; }
   .opt-row.correct .opt-bubble { background: var(--success); color: #fff; }
-  .opt-row.wrong {
-    border-color: var(--danger); background: var(--danger-soft);
-    color: #991b1b;
-  }
+  .opt-row.wrong { border-color: var(--danger); background: var(--danger-soft); color: #991b1b; }
   .opt-row.wrong .opt-bubble { background: var(--danger); color: #fff; }
 
-  .q-progress {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 12.5px; color: var(--ink-soft); margin-bottom: 10px;
-    padding: 0 4px;
-  }
-  .q-progress .score-pill {
-    background: var(--primary-soft); color: var(--primary);
-    padding: 3px 10px; border-radius: 20px; font-weight: 700;
-  }
-  .progress-bar {
-    height: 6px; background: var(--border); border-radius: 3px;
-    overflow: hidden; margin-bottom: 22px;
-  }
-  .progress-fill {
-    height: 100%; background: linear-gradient(90deg, var(--primary), #7c3aed);
-    border-radius: 3px; transition: width 0.3s ease;
-  }
-  .q-text {
-    font-size: 17.5px; font-weight: 700; line-height: 1.55;
-    margin-bottom: 20px; padding: 0 4px;
-  }
+  .q-progress { display: flex; align-items: center; justify-content: space-between;
+    font-size: 12.5px; color: var(--ink-soft); margin-bottom: 10px; padding: 0 4px; }
+  .q-progress .score-pill { background: var(--primary-soft); color: var(--primary);
+    padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 22px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #7c3aed); border-radius: 3px; transition: width 0.3s ease; }
+  .q-text { font-size: 17.5px; font-weight: 700; line-height: 1.55; margin-bottom: 20px; padding: 0 4px; }
 
   .result-wrap { text-align: center; padding: 20px 10px; }
-  .result-circle {
-    width: 140px; height: 140px; border-radius: 50%;
-    margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
+  .result-circle { width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
     background: linear-gradient(135deg, var(--primary), #7c3aed);
-    box-shadow: 0 12px 40px rgba(79,70,229,0.30);
-    color: #fff;
-  }
+    box-shadow: 0 12px 40px rgba(79,70,229,0.30); color: #fff; }
   .result-circle.good { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 12px 40px rgba(16,185,129,0.30); }
   .result-circle.bad { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 12px 40px rgba(220,38,38,0.30); }
   .result-circle .num { font-size: 38px; font-weight: 800; line-height: 1; }
@@ -226,76 +136,82 @@
   .result-title { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
   .result-sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 26px; }
 
-  .empty-state {
-    text-align: center; color: var(--ink-mute); padding: 40px 20px;
-    font-size: 14px; line-height: 1.7;
-  }
+  .empty-state { text-align: center; color: var(--ink-mute); padding: 40px 20px; font-size: 14px; line-height: 1.7; }
   .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
 
-  .qa-item {
-    padding: 14px; border-radius: 12px; background: var(--card);
-    border: 1px solid var(--border); margin-bottom: 10px;
-  }
+  .qa-item { padding: 14px; border-radius: 12px; background: var(--card);
+    border: 1px solid var(--border); margin-bottom: 10px; }
   .qa-q { font-weight: 700; font-size: 14.5px; margin-bottom: 10px; line-height: 1.5; }
-  .qa-opt {
-    font-size: 13.5px; color: var(--ink-soft);
-    padding: 5px 0; display: flex; align-items: center; gap: 8px;
-  }
+  .qa-opt { font-size: 13.5px; color: var(--ink-soft); padding: 5px 0; display: flex; align-items: center; gap: 8px; }
   .qa-opt.is-correct { color: var(--success); font-weight: 700; }
-  .qa-opt .letter {
-    display: inline-flex; width: 22px; height: 22px;
-    background: var(--primary-soft); color: var(--primary);
-    border-radius: 6px; align-items: center; justify-content: center;
-    font-size: 11.5px; font-weight: 700; flex-shrink: 0;
-  }
+  .qa-opt .letter { display: inline-flex; width: 22px; height: 22px; background: var(--primary-soft);
+    color: var(--primary); border-radius: 6px; align-items: center; justify-content: center;
+    font-size: 11.5px; font-weight: 700; flex-shrink: 0; }
   .qa-opt.is-correct .letter { background: var(--success); color: #fff; }
 
-  .note-banner {
-    background: var(--danger-soft); color: var(--danger);
-    padding: 12px 14px; border-radius: 10px; font-size: 13px;
-    margin-bottom: 12px; border: 1px solid #fecaca;
-  }
-  .info-banner {
-    background: var(--primary-soft); color: var(--primary-dark);
-    padding: 12px 14px; border-radius: 10px; font-size: 13px;
-    margin-bottom: 12px; border: 1px solid #c7d2fe; line-height: 1.6;
-  }
-  .format-box {
-    background: #fff; padding: 12px; border-radius: 8px;
-    font-size: 12.5px; white-space: pre-wrap;
-    font-family: 'Courier New', monospace; line-height: 1.7;
-    border: 1px solid #e2e8f0; margin-top: 8px;
-    color: var(--ink); overflow-x: auto;
-  }
+  .note-banner { background: var(--danger-soft); color: var(--danger); padding: 12px 14px;
+    border-radius: 10px; font-size: 13px; margin-bottom: 12px; border: 1px solid #fecaca; }
+  .info-banner { background: var(--primary-soft); color: var(--primary-dark); padding: 12px 14px;
+    border-radius: 10px; font-size: 13px; margin-bottom: 12px; border: 1px solid #c7d2fe; line-height: 1.6; }
+  .format-box { background: #fff; padding: 12px; border-radius: 8px; font-size: 12.5px;
+    white-space: pre-wrap; font-family: 'Courier New', monospace; line-height: 1.7;
+    border: 1px solid #e2e8f0; margin-top: 8px; color: var(--ink); overflow-x: auto; }
 
-  .trash-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px; background: var(--card); border-radius: 12px;
-    border: 1px solid var(--border); margin-bottom: 10px;
-  }
+  .trash-item { display: flex; align-items: center; gap: 12px; padding: 14px;
+    background: var(--card); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 10px; }
   .trash-info { flex: 1; min-width: 0; }
   .trash-name { font-weight: 700; font-size: 14px; }
   .trash-meta { font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; }
   .trash-actions { display: flex; gap: 6px; flex-shrink: 0; }
-  .icon-btn {
-    width: 36px; height: 36px; border-radius: 10px; border: none;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; cursor: pointer;
-  }
+  .icon-btn { width: 36px; height: 36px; border-radius: 10px; border: none;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; cursor: pointer; }
   .icon-btn.restore { background: var(--success-soft); color: var(--success); }
   .icon-btn.kill { background: var(--danger-soft); color: var(--danger); }
 
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(15,23,42,0.5);
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px; z-index: 100; backdrop-filter: blur(4px);
-  }
-  .modal {
-    background: var(--card); border-radius: 18px; padding: 24px;
-    max-width: 380px; width: 100%; box-shadow: var(--shadow-lg);
-  }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+    display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 100;
+    backdrop-filter: blur(4px); }
+  .modal { background: var(--card); border-radius: 18px; padding: 24px;
+    max-width: 380px; width: 100%; box-shadow: var(--shadow-lg); }
   .modal h3 { margin: 0 0 10px; font-size: 17px; }
   .modal p { margin: 0 0 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+
+  /* Media gallery */
+  .media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+  .media-thumb { position: relative; border-radius: 12px; overflow: hidden;
+    background: var(--card); border: 1px solid var(--border); cursor: pointer;
+    aspect-ratio: 3/4; box-shadow: var(--shadow-sm); }
+  .media-thumb:active { transform: scale(0.97); }
+  .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media-thumb .pdf-badge { display: flex; align-items: center; justify-content: center;
+    height: 100%; flex-direction: column; gap: 6px; color: var(--danger);
+    background: linear-gradient(135deg, #fef2f2, #fee2e2); font-weight: 700; font-size: 13px; padding: 10px; text-align: center; }
+  .media-thumb .pdf-badge .icon { font-size: 40px; }
+  .media-thumb .del-overlay { position: absolute; top: 6px; right: 6px;
+    width: 30px; height: 30px; border-radius: 8px; border: none;
+    background: rgba(220,38,38,0.9); color: #fff; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .media-thumb .del-overlay:active { transform: scale(0.9); }
+
+  /* Image viewer */
+  .viewer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+    z-index: 200; display: flex; flex-direction: column; }
+  .viewer-bar { display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; color: #fff; flex-shrink: 0; }
+  .viewer-bar button { background: rgba(255,255,255,0.15); border: none; color: #fff;
+    width: 40px; height: 40px; border-radius: 12px; font-size: 18px;
+    display: flex; align-items: center; justify-content: center; }
+  .viewer-bar .title { font-size: 14px; opacity: 0.85; }
+  .viewer-body { flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 16px; overflow: auto; }
+  .viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  /* Add media buttons row */
+  .add-media-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .add-media-row button { margin: 0; }
+  .add-media-row + button { margin-top: 0; }
+
+  .file-input-hidden { display: none; }
 </style>
 </head>
 <body>
@@ -303,13 +219,113 @@
 
 <script>
 /* =====================================================
-   STORAGE & DATA
+   CONSTANTS
 ===================================================== */
 const STORAGE_KEY = 'examStudyAppData_v2';
 const TRASH_TTL_DAYS = 30;
 const LETTERS = ['ক', 'খ', 'গ', 'ঘ'];
 const MAX_FINAL_TEST = 40;
 
+/* =====================================================
+   INDEXEDDB FOR MEDIA
+===================================================== */
+let idbPromise = null;
+function openIDB() {
+  if (idbPromise) return idbPromise;
+  idbPromise = new Promise((resolve, reject) => {
+    try {
+      const req = indexedDB.open('examPrepMediaDB', 1);
+      req.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('media')) {
+          const store = db.createObjectStore('media', { keyPath: 'id' });
+          store.createIndex('chapterId', 'chapterId', { unique: false });
+        }
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    } catch (e) { reject(e); }
+  });
+  return idbPromise;
+}
+
+async function idbSaveMedia(item) {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readwrite');
+    tx.objectStore('media').put(item);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function idbGetMedia(id) {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readonly');
+    const req = tx.objectStore('media').get(id);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbDeleteMedia(id) {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readwrite');
+    tx.objectStore('media').delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function idbGetByChapter(chapterId) {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readonly');
+    const idx = tx.objectStore('media').index('chapterId');
+    const req = idx.getAll(chapterId);
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbGetAll() {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readonly');
+    const req = tx.objectStore('media').getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function idbClearAll() {
+  const db = await openIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('media', 'readwrite');
+    tx.objectStore('media').clear();
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+function base64ToBlob(dataUrl) {
+  return fetch(dataUrl).then(r => r.blob());
+}
+
+/* =====================================================
+   MAIN DATA (localStorage)
+===================================================== */
 let memoryFallback = null;
 
 function defaultData() {
@@ -321,7 +337,8 @@ function defaultData() {
       { id: 'subj-4', name: 'বিষয় ৪', chapters: [] }
     ],
     wrongQuestions: [],
-    trash: []
+    trash: [],
+    mediaMeta: []  // [{ id, chapterId, type, name, createdAt }]
   };
 }
 
@@ -332,10 +349,9 @@ function loadData() {
     memoryFallback = raw ? JSON.parse(raw) : defaultData();
     if (!memoryFallback.wrongQuestions) memoryFallback.wrongQuestions = [];
     if (!memoryFallback.trash) memoryFallback.trash = [];
+    if (!memoryFallback.mediaMeta) memoryFallback.mediaMeta = [];
     purgeOldTrash();
-  } catch (e) {
-    memoryFallback = defaultData();
-  }
+  } catch (e) { memoryFallback = defaultData(); }
   return memoryFallback;
 }
 
@@ -349,7 +365,7 @@ function saveData() {
 
 function purgeOldTrash() {
   const now = Date.now();
-  const ttl = TRASH_TTL_DAYS * 24 * 60 * 60 * 1000;
+  const ttl = TRASH_TTL_DAYS * 86400000;
   memoryFallback.trash = memoryFallback.trash.filter(item => (now - item.deletedAt) < ttl);
   saveData();
 }
@@ -382,6 +398,9 @@ function fmtDate(ts) {
   const d = new Date(ts);
   return d.toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' });
 }
+function getWrongForChapter(chapId) {
+  return data.wrongQuestions.filter(w => w.chapterId === chapId);
+}
 
 /* =====================================================
    STATE
@@ -402,7 +421,11 @@ const state = {
   noteError: null,
   bulkPreview: null,
   bulkError: null,
-  modal: null
+  modal: null,
+  mediaList: [],
+  mediaViewer: null,
+  wrongChapterId: null,
+  mediaLoading: false
 };
 
 function goto(screen, opts) {
@@ -423,13 +446,16 @@ function render() {
     chapter: renderChapter,
     notes: renderNotes,
     bulkImport: renderBulkImport,
+    media: renderMedia,
+    chapterWrong: renderChapterWrong,
     quiz: renderQuiz,
     result: renderResult,
-    wrongList: renderWrongList,
     trash: renderTrash,
     backup: renderBackup
   }[state.screen];
-  app.innerHTML = fn() + (state.modal ? renderModal() : '');
+  app.innerHTML = fn() + (state.modal ? renderModal() : '') + (state.mediaViewer ? renderMediaViewer() : '');
+  // Rebind viewers
+  if (state.mediaViewer) bindViewer();
 }
 
 function topbar(title, backScreen) {
@@ -475,18 +501,7 @@ function renderHome() {
     html += `<button class="btn btn-outline" onclick="state.addingSubject=true;render();">+ নতুন সাবজেক্ট</button>`;
   }
 
-  html += `<div class="section-label">দ্রুত অ্যাকশন</div>`;
-  const wrongCount = data.wrongQuestions.length;
-  html += `<div class="card tappable" onclick="goto('wrongList')">
-    <div class="row">
-      <div class="badge-num danger">✕</div>
-      <div class="row-main">
-        <div class="row-title">ভুল প্রশ্ন প্র্যাকটিস<span class="chip red">${wrongCount}</span></div>
-        <div class="row-sub">শুধু যেগুলো ভুল করেছেন সেগুলো আবার প্র্যাকটিস করুন</div>
-      </div>
-    </div>
-  </div>`;
-
+  html += `<div class="section-label">টুলস</div>`;
   const trashCount = data.trash.length;
   html += `<div class="card tappable" onclick="goto('trash')">
     <div class="row">
@@ -503,7 +518,7 @@ function renderHome() {
       <div class="badge-num">💾</div>
       <div class="row-main">
         <div class="row-title">ব্যাকআপ ও রিস্টোর</div>
-        <div class="row-sub">ডেটা ডাউনলোড / আপলোড / রিসেট</div>
+        <div class="row-sub">ডেটা, ছবি সবকিছুর ব্যাকআপ</div>
       </div>
     </div>
   </div>`;
@@ -535,12 +550,19 @@ function renderSubject() {
   } else {
     html += `<div class="section-label">অধ্যায় সমূহ</div>`;
     s.chapters.forEach((c, i) => {
+      const wrongCount = getWrongForChapter(c.id).length;
+      const mediaCount = data.mediaMeta.filter(m => m.chapterId === c.id).length;
+      const subs = [];
+      subs.push(`${c.questions.length} প্রশ্ন`);
+      if (wrongCount > 0) subs.push(`<span style="color:var(--danger);">${wrongCount} ভুল</span>`);
+      if (mediaCount > 0) subs.push(`<span style="color:#0891b2;">${mediaCount} ছবি</span>`);
+
       html += `<div class="card tappable" onclick="goto('chapter',{chapterId:'${c.id}'})">
         <div class="row">
           <div class="badge-num">${i + 1}</div>
           <div class="row-main">
             <div class="row-title">${escapeHtml(c.name)}</div>
-            <div class="row-sub">${c.questions.length} প্রশ্ন</div>
+            <div class="row-sub">${subs.join(' · ')}</div>
           </div>
           <button class="del-btn" onclick="event.stopPropagation();askDeleteChapter('${c.id}')">🗑️</button>
         </div>
@@ -582,9 +604,12 @@ function renderChapter() {
   const c = findChapter(s, state.chapterId);
   if (!c) { goto('subject'); return ''; }
   const disabled = c.questions.length === 0;
+  const wrongCount = getWrongForChapter(c.id).length;
+  const mediaCount = data.mediaMeta.filter(m => m.chapterId === c.id).length;
 
   let html = topbar(escapeHtml(c.name), 'subject');
 
+  // MCQ Practice
   html += `<div class="card tappable" onclick="${disabled ? '' : 'startChapterPractice()'}" style="${disabled ? 'opacity:0.5;' : ''}">
     <div class="row">
       <div class="badge-num">✓</div>
@@ -595,12 +620,37 @@ function renderChapter() {
     </div>
   </div>`;
 
+  // Chapter Wrong Questions (only if any)
+  if (wrongCount > 0) {
+    html += `<div class="card tappable" onclick="openChapterWrong()">
+      <div class="row">
+        <div class="badge-num danger">❌</div>
+        <div class="row-main">
+          <div class="row-title">এই অধ্যায়ের ভুল প্রশ্ন<span class="chip red">${wrongCount}</span></div>
+          <div class="row-sub">শুধু এই অধ্যায়ের ভুলগুলো রিভিশন করুন</div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // Notes / Question bank
   html += `<div class="card tappable" onclick="goto('notes')">
     <div class="row">
       <div class="badge-num">✎</div>
       <div class="row-main">
         <div class="row-title">নোট / প্রশ্ন ব্যাংক</div>
         <div class="row-sub">নতুন প্রশ্ন যোগ করুন বা দেখুন</div>
+      </div>
+    </div>
+  </div>`;
+
+  // Reading Notes / Images
+  html += `<div class="card tappable" onclick="openMediaScreen()">
+    <div class="row">
+      <div class="badge-num photo">📸</div>
+      <div class="row-main">
+        <div class="row-title">রিডিং নোট / ছবি<span class="chip amber">${mediaCount}</span></div>
+        <div class="row-sub">বইয়ের পাতা, ডাউটের ছবি বা PDF রাখুন</div>
       </div>
     </div>
   </div>`;
@@ -618,9 +668,7 @@ function renderNotes() {
 
   let html = topbar('নোট', 'chapter');
 
-  // Bulk import button at top
   html += `<button class="btn btn-success" style="margin-bottom:16px;" onclick="goto('bulkImport')">📥 একসাথে অনেক প্রশ্ন যোগ করুন (বাল্ক ইমপোর্ট)</button>`;
-
   html += `<div class="section-label">অথবা একটি একটি করে যোগ করুন</div>`;
 
   if (state.noteError) html += `<div class="note-banner">${state.noteError}</div>`;
@@ -705,10 +753,8 @@ function parseBulkText(text) {
     const qText = qLines.join(' ').replace(/^প্রশ্ন\s*[:：]?\s*/, '').trim();
 
     const options = optLines.map(l => l.replace(optRegex, '').trim());
-
     let correct = -1;
 
-    // Method 1: * marker
     optLines.forEach((l, i) => {
       if (l.includes('*')) {
         if (correct === -1) correct = i;
@@ -716,7 +762,6 @@ function parseBulkText(text) {
       }
     });
 
-    // Method 2: "উত্তর: ক" line
     if (correct === -1) {
       const answerLine = lines.find(l => /^(উত্তর|answer)\s*[:：]/i.test(l));
       if (answerLine) {
@@ -733,7 +778,7 @@ function parseBulkText(text) {
     }
 
     if (correct === -1 || correct > 3) {
-      errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত করা যায়নি (অপশনের শেষে * দিন বা "উত্তর: ক" লিখুন)`);
+      errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত করা যায়নি`);
       return;
     }
 
@@ -801,9 +846,7 @@ function previewBulk() {
   if (!text.trim()) { state.bulkError = 'প্রথমে কিছু পেস্ট করুন।'; render(); return; }
   const result = parseBulkText(text);
   state.bulkPreview = result;
-  state.bulkError = result.questions.length === 0
-    ? '❌ কোনো প্রশ্ন পার্স করা যায়নি। ফরম্যাট ঠিকভাবে অনুসরণ করুন।'
-    : null;
+  state.bulkError = result.questions.length === 0 ? '❌ কোনো প্রশ্ন পার্স করা যায়নি। ফরম্যাট ঠিকভাবে অনুসরণ করুন।' : null;
   render();
   if (result.questions.length > 0) window.scrollTo(0, 300);
 }
@@ -821,16 +864,338 @@ function confirmBulkImport() {
 }
 
 /* =====================================================
+   MEDIA SCREEN (chapter images / PDFs)
+===================================================== */
+async function openMediaScreen() {
+  state.mediaLoading = true;
+  goto('media');
+  try {
+    const list = await idbGetByChapter(state.chapterId);
+    // sort newest first
+    list.sort((a, b) => b.createdAt - a.createdAt);
+    state.mediaList = list;
+  } catch (e) {
+    state.mediaList = [];
+    alert('⚠️ ছবি লোড করতে সমস্যা হয়েছে। আপনার ব্রাউজার IndexedDB সাপোর্ট করে কিনা দেখুন।');
+  }
+  state.mediaLoading = false;
+  render();
+}
+
+function renderMedia() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  if (!c) { goto('chapter'); return ''; }
+
+  let html = topbar('রিডিং নোট / ছবি', 'chapter');
+
+  html += `<div class="info-banner">
+    📸 বইয়ের পাতা, ডাউটের ছবি বা PDF এখানে রাখুন। এই ছবিগুলো শুধু <b>এই চ্যাপ্টারে</b> দেখা যাবে।
+  </div>`;
+
+  // Add media buttons
+  html += `<div class="section-label">নতুন যোগ করুন</div>`;
+  html += `<div class="add-media-row">
+    <button class="btn btn-info" onclick="document.getElementById('camInput').click()">📷 ক্যামেরা</button>
+    <button class="btn btn-info" onclick="document.getElementById('galInput').click()">🖼️ গ্যালারি</button>
+  </div>`;
+  html += `<button class="btn btn-info" onclick="document.getElementById('pdfInput').click()">📄 PDF ফাইল</button>`;
+
+  html += `<input type="file" id="camInput" accept="image/*" capture="environment" class="file-input-hidden" onchange="handleMediaUpload(event, 'image')">
+    <input type="file" id="galInput" accept="image/*" class="file-input-hidden" onchange="handleMediaUpload(event, 'image')">
+    <input type="file" id="pdfInput" accept="application/pdf" class="file-input-hidden" onchange="handleMediaUpload(event, 'pdf')">`;
+
+  // Media grid
+  if (state.mediaLoading) {
+    html += `<div class="empty-state">⏳ লোড হচ্ছে...</div>`;
+  } else if (state.mediaList.length === 0) {
+    html += `<div class="section-label">সংরক্ষিত ছবি</div>`;
+    html += `<div class="empty-state"><span class="emoji">📷</span>এখনো কোনো ছবি বা PDF যোগ করা হয়নি।<br>উপরের বাটন থেকে যোগ করুন।</div>`;
+  } else {
+    html += `<div class="section-label">সংরক্ষিত (${state.mediaList.length})</div>`;
+    html += `<div class="media-grid">`;
+    state.mediaList.forEach(m => {
+      if (m.type === 'image') {
+        html += `<div class="media-thumb" onclick="viewMedia('${m.id}')">
+          <img src="${m.thumbUrl || ''}" alt="">
+          <button class="del-overlay" onclick="event.stopPropagation();askDeleteMedia('${m.id}')">✕</button>
+        </div>`;
+      } else {
+        html += `<div class="media-thumb" onclick="openPdfMedia('${m.id}')">
+          <div class="pdf-badge"><span class="icon">📄</span>${escapeHtml((m.name || 'PDF').slice(0, 30))}</div>
+          <button class="del-overlay" onclick="event.stopPropagation();askDeleteMedia('${m.id}')">✕</button>
+        </div>`;
+      }
+    });
+    html += `</div>`;
+    // Load thumbnails async
+    loadThumbs();
+  }
+
+  return html;
+}
+
+async function loadThumbs() {
+  for (const m of state.mediaList) {
+    if (m.type !== 'image') continue;
+    try {
+      const full = await idbGetMedia(m.id);
+      if (!full || !full.blob) continue;
+      const url = URL.createObjectURL(full.blob);
+      // find thumb element and set src
+      const thumbs = document.querySelectorAll('.media-thumb');
+      thumbs.forEach(t => {
+        const img = t.querySelector('img');
+        if (img && (img.src === '' || img.src.includes('about:blank') || !img.src || img.src === window.location.href)) {
+          // best effort match — set if empty
+        }
+      });
+      // Simpler: re-render is heavy; instead target by index
+    } catch (e) {}
+  }
+  // Simpler approach: replace all empty <img> in order
+  const emptyImgs = Array.from(document.querySelectorAll('.media-thumb img')).filter(i => !i.src || i.src.startsWith('data:') === false && i.getAttribute('src') === '');
+  // Instead, use a marker approach
+  await attachThumbs();
+}
+
+async function attachThumbs() {
+  const imgs = document.querySelectorAll('.media-thumb img[src=""]');
+  for (let i = 0; i < imgs.length; i++) {
+    const m = state.mediaList.filter(x => x.type === 'image')[i];
+    if (!m) continue;
+    try {
+      const full = await idbGetMedia(m.id);
+      if (full && full.blob) {
+        const url = URL.createObjectURL(full.blob);
+        imgs[i].src = url;
+      }
+    } catch (e) {}
+  }
+}
+
+async function handleMediaUpload(event, type) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  // Size check
+  const MAX_SIZE = 8 * 1024 * 1024; // 8 MB
+  if (file.size > MAX_SIZE) {
+    if (!confirm(`ফাইলটি ${(file.size / 1024 / 1024).toFixed(1)} MB। বড় ফাইল স্টোরেজ ভরে ফেলতে পারে।\n\nতবুও যোগ করতে চান?`)) {
+      event.target.value = '';
+      return;
+    }
+  }
+
+  try {
+    let blob = file;
+    let thumbUrl = '';
+
+    if (type === 'image') {
+      // Compress image
+      try {
+        blob = await compressImage(file, 1200, 0.82);
+      } catch (e) { /* use original */ }
+    }
+
+    const id = uid();
+    const item = {
+      id,
+      chapterId: state.chapterId,
+      type,
+      name: file.name || (type === 'image' ? 'ছবি' : 'PDF'),
+      blob,
+      createdAt: Date.now()
+    };
+    await idbSaveMedia(item);
+
+    // Save metadata in main data
+    data.mediaMeta.push({ id, chapterId: state.chapterId, type, name: item.name, createdAt: item.createdAt });
+    saveData();
+
+    event.target.value = '';
+    await openMediaScreen();
+  } catch (e) {
+    alert('❌ ফাইল যোগ করা যায়নি: ' + e.message);
+    event.target.value = '';
+  }
+}
+
+function compressImage(file, maxWidth, quality) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let { width, height } = img;
+      if (width > maxWidth) {
+        height = Math.round(height * maxWidth / width);
+        width = maxWidth;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(b => {
+        if (b) resolve(b);
+        else reject(new Error('ছবি কমপ্রেস করা যায়নি'));
+      }, 'image/jpeg', quality);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('ছবি পড়া যায়নি')); };
+    img.src = url;
+  });
+}
+
+async function viewMedia(id) {
+  try {
+    const full = await idbGetMedia(id);
+    if (!full || !full.blob) { alert('ছবি পাওয়া যায়নি।'); return; }
+    const url = URL.createObjectURL(full.blob);
+    state.mediaViewer = { url, name: full.name || 'ছবি', id };
+    render();
+  } catch (e) { alert('ছবি লোড করা যায়নি।'); }
+}
+
+async function openPdfMedia(id) {
+  try {
+    const full = await idbGetMedia(id);
+    if (!full || !full.blob) { alert('PDF পাওয়া যায়নি।'); return; }
+    const url = URL.createObjectURL(full.blob);
+    window.open(url, '_blank');
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { alert('PDF খোলা যায়নি।'); }
+}
+
+function renderMediaViewer() {
+  const m = state.mediaViewer;
+  return `<div class="viewer-overlay" id="viewerOverlay">
+    <div class="viewer-bar">
+      <button onclick="closeViewer()">✕</button>
+      <span class="title">${escapeHtml(m.name)}</span>
+      <button onclick="askDeleteMediaFromViewer()">🗑️</button>
+    </div>
+    <div class="viewer-body">
+      <img src="${m.url}" alt="">
+    </div>
+  </div>`;
+}
+
+function bindViewer() {
+  const el = document.getElementById('viewerOverlay');
+  if (!el) return;
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function closeViewer() {
+  if (state.mediaViewer && state.mediaViewer.url) URL.revokeObjectURL(state.mediaViewer.url);
+  state.mediaViewer = null;
+  document.body.style.overflow = '';
+  render();
+}
+
+function askDeleteMedia(id) {
+  showModal('ছবি/ফাইল মুছবেন?',
+    'এটি স্থায়ীভাবে মুছে যাবে (রিসাইকেল বিনে যাবে না, কারণ এটি ছবি)।',
+    'মুছে ফেলুন', `reallyDeleteMedia('${id}')`, true);
+}
+
+function askDeleteMediaFromViewer() {
+  const id = state.mediaViewer.id;
+  closeViewer();
+  askDeleteMedia(id);
+}
+
+async function reallyDeleteMedia(id) {
+  try {
+    await idbDeleteMedia(id);
+    data.mediaMeta = data.mediaMeta.filter(m => m.id !== id);
+    saveData();
+    closeModal();
+    if (state.screen === 'media') await openMediaScreen();
+    else render();
+  } catch (e) {
+    alert('মুছতে সমস্যা হয়েছে।');
+    closeModal();
+  }
+}
+
+/* =====================================================
+   CHAPTER WRONG QUESTIONS
+===================================================== */
+function openChapterWrong() {
+  state.wrongChapterId = state.chapterId;
+  goto('chapterWrong');
+}
+
+function renderChapterWrong() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  if (!c) { goto('chapter'); return ''; }
+  const wrongs = getWrongForChapter(c.id);
+
+  let html = topbar('ভুল প্রশ্ন', 'chapter');
+
+  if (wrongs.length === 0) {
+    html += `<div class="empty-state"><span class="emoji">✨</span>এই অধ্যায়ে কোনো ভুল প্রশ্ন নেই।</div>`;
+    return html;
+  }
+
+  html += `<div class="info-banner">
+    📌 "${escapeHtml(c.name)}" অধ্যায়ের যেসব প্রশ্নে আপনি ভুল করেছেন। সঠিকভাবে উত্তর দিলে স্বয়ংক্রিয়ভাবে মুছে যাবে।
+  </div>`;
+
+  html += `<button class="btn btn-primary" onclick="startChapterWrongPractice()">🎯 সব ভুল প্র্যাকটিস (${wrongs.length})</button>`;
+  html += `<button class="btn btn-quiet" onclick="askClearChapterWrong()">সব মুছুন</button>`;
+
+  html += `<div class="section-label">তালিকা</div>`;
+  wrongs.forEach((w, i) => {
+    const q = w.question;
+    html += `<div class="qa-item">
+      <div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
+        <span class="chip red">${w.wrongCount} বার ভুল</span>
+      </div>`;
+    q.options.forEach((opt, oi) => {
+      html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
+        <span class="letter">${LETTERS[oi]}</span>
+        <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
+      </div>`;
+    });
+    html += `<div style="text-align:right;margin-top:6px;">
+      <button class="del-btn" onclick="removeChapterWrong('${q.id}')">এই প্রশ্নটি সরান</button>
+    </div></div>`;
+  });
+
+  return html;
+}
+
+function removeChapterWrong(qid) {
+  data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== qid);
+  saveData(); render();
+}
+
+function askClearChapterWrong() {
+  const chapId = state.chapterId;
+  showModal('সব ভুল প্রশ্ন মুছবেন?',
+    'শুধু এই অধ্যায়ের ভুল প্রশ্নের তালিকা খালি হবে।',
+    'সব মুছুন', `reallyClearChapterWrong('${chapId}')`, true);
+}
+
+function reallyClearChapterWrong(chapId) {
+  data.wrongQuestions = data.wrongQuestions.filter(w => w.chapterId !== chapId);
+  closeModal(); saveData(); render();
+}
+
+/* =====================================================
    QUIZ ENGINE
 ===================================================== */
 function startChapterPractice() {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, state.chapterId);
   state.quizQuestions = shuffle(c.questions);
-  state.quizIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = null;
-  state.quizWrongIds = [];
+  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.quizWrongIds = [];
   state.mode = 'chapter';
   goto('quiz');
 }
@@ -839,22 +1204,17 @@ function startFinalTest() {
   const s = findSubject(state.subjectId);
   const all = allQuestionsOfSubject(s).map(x => x.q);
   state.quizQuestions = shuffle(all).slice(0, Math.min(MAX_FINAL_TEST, all.length));
-  state.quizIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = null;
-  state.quizWrongIds = [];
+  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.quizWrongIds = [];
   state.mode = 'final';
   goto('quiz');
 }
 
-function startWrongPractice() {
-  if (data.wrongQuestions.length === 0) return;
-  state.quizQuestions = shuffle(data.wrongQuestions.map(w => w.question));
-  state.quizIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = null;
-  state.quizWrongIds = [];
-  state.mode = 'wrong';
+function startChapterWrongPractice() {
+  const wrongs = getWrongForChapter(state.chapterId);
+  if (wrongs.length === 0) return;
+  state.quizQuestions = shuffle(wrongs.map(w => w.question));
+  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = null; state.quizWrongIds = [];
+  state.mode = 'chapterWrong';
   goto('quiz');
 }
 
@@ -865,10 +1225,10 @@ function renderQuiz() {
   const q = qs[idx];
   const pct = Math.round((idx / qs.length) * 100);
 
-  let html = topbar(
-    state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : (state.mode === 'wrong' ? 'ভুল প্রশ্ন প্র্যাকটিস' : 'MCQ প্র্যাকটিস'),
-    state.mode === 'final' ? 'subject' : (state.mode === 'wrong' ? 'wrongList' : 'chapter')
-  );
+  const titleMap = { final: 'ফাইনাল মক টেস্ট', chapterWrong: 'ভুল প্রশ্ন প্র্যাকটিস', chapter: 'MCQ প্র্যাকটিস' };
+  const backMap = { final: 'subject', chapterWrong: 'chapterWrong', chapter: 'chapter' };
+
+  let html = topbar(titleMap[state.mode] || 'প্রশ্ন', backMap[state.mode] || 'chapter');
 
   html += `<div class="q-progress">
     <span>প্রশ্ন ${idx + 1} / ${qs.length}</span>
@@ -905,7 +1265,7 @@ function answerQuiz(oi) {
 
   if (oi === q.correct) {
     state.quizScore++;
-    if (state.mode === 'wrong') {
+    if (state.mode === 'chapterWrong') {
       data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== q.id);
       saveData();
     }
@@ -917,24 +1277,28 @@ function answerQuiz(oi) {
 }
 
 function addToWrongList(q) {
-  let subjName = '', chapName = '';
+  let subjId = '', subjName = '', chapId = '', chapName = '';
   for (const s of data.subjects) {
     for (const c of s.chapters) {
       if (c.questions.some(cq => cq.id === q.id)) {
-        subjName = s.name; chapName = c.name; break;
+        subjId = s.id; subjName = s.name;
+        chapId = c.id; chapName = c.name;
+        break;
       }
     }
-    if (subjName) break;
+    if (subjId) break;
   }
   const existing = data.wrongQuestions.find(w => w.question.id === q.id);
   if (existing) {
     existing.wrongCount = (existing.wrongCount || 1) + 1;
     existing.lastWrong = Date.now();
+    if (!existing.chapterId) { existing.chapterId = chapId; existing.chapterName = chapName; }
+    if (!existing.subjectId) { existing.subjectId = subjId; existing.subjectName = subjName; }
   } else {
     data.wrongQuestions.push({
       question: q,
-      subjectName: subjName,
-      chapterName: chapName,
+      subjectId: subjId, subjectName: subjName,
+      chapterId: chapId, chapterName: chapName,
       wrongCount: 1,
       lastWrong: Date.now()
     });
@@ -966,16 +1330,16 @@ function renderResult() {
     </div>
     <h2 class="result-title">${emoji} ${pct}% সঠিক</h2>
     <p class="result-sub">
-      ${state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : state.mode === 'wrong' ? 'ভুল প্রশ্ন প্র্যাকটিস' : 'MCQ প্র্যাকটিস'} সম্পন্ন
+      ${state.mode === 'final' ? 'ফাইনাল মক টেস্ট' : state.mode === 'chapterWrong' ? 'ভুল প্রশ্ন প্র্যাকটিস' : 'MCQ প্র্যাকটিস'} সম্পন্ন
     </p>
   </div>`;
 
   if (state.quizWrongIds.length > 0) {
-    html += `<div class="info-banner">❌ এই পরীক্ষায় ${state.quizWrongIds.length}টি ভুল হয়েছে। এগুলো "ভুল প্রশ্ন প্র্যাকটিস" সেকশনে যোগ হয়েছে।</div>`;
+    html += `<div class="info-banner">❌ এই পরীক্ষায় ${state.quizWrongIds.length}টি ভুল হয়েছে। এগুলো সংশ্লিষ্ট চ্যাপ্টারের "ভুল প্রশ্ন" সেকশনে যোগ হয়েছে।</div>`;
   }
 
   html += `<button class="btn btn-primary" onclick="retryQuiz()">🔄 আবার চেষ্টা করুন</button>`;
-  const backScreen = state.mode === 'final' ? 'subject' : (state.mode === 'wrong' ? 'wrongList' : 'chapter');
+  const backScreen = state.mode === 'final' ? 'subject' : (state.mode === 'chapterWrong' ? 'chapterWrong' : 'chapter');
   html += `<button class="btn btn-quiet" onclick="goto('${backScreen}')">← ফিরে যান</button>`;
   html += `<button class="btn btn-quiet" onclick="goto('home')">🏠 হোম</button>`;
   return html;
@@ -983,57 +1347,8 @@ function renderResult() {
 
 function retryQuiz() {
   if (state.mode === 'final') startFinalTest();
-  else if (state.mode === 'wrong') startWrongPractice();
+  else if (state.mode === 'chapterWrong') startChapterWrongPractice();
   else startChapterPractice();
-}
-
-/* =====================================================
-   WRONG LIST
-===================================================== */
-function renderWrongList() {
-  let html = topbar('ভুল প্রশ্ন প্র্যাকটিস', 'home');
-
-  if (data.wrongQuestions.length === 0) {
-    html += `<div class="empty-state"><span class="emoji">✨</span>এখনো কোনো ভুল প্রশ্ন নেই।<br>পরীক্ষা দিলে যেগুলো ভুল হবে সেগুলো এখানে জমা হবে।</div>`;
-    return html;
-  }
-
-  html += `<div class="info-banner">📌 এখানে শুধু সেই প্রশ্নগুলো দেখাবে যেগুলো আপনি ভুল করেছেন। সঠিকভাবে উত্তর দিলে প্রশ্নটি স্বয়ংক্রিয়ভাবে এখান থেকে মুছে যাবে।</div>`;
-
-  html += `<button class="btn btn-primary" onclick="startWrongPractice()">🎯 সব ভুল প্রশ্ন প্র্যাকটিস (${data.wrongQuestions.length})</button>`;
-
-  html += `<div style="display:flex;gap:8px;margin-bottom:14px;">
-    <button class="btn btn-quiet" style="margin:0;flex:1;font-size:13px;" onclick="askClearWrong()">সব মুছুন</button>
-  </div>`;
-
-  html += `<div class="section-label">ভুল প্রশ্নের তালিকা</div>`;
-
-  data.wrongQuestions.forEach((w, i) => {
-    const q = w.question;
-    html += `<div class="qa-item">
-      <div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-        <span class="chip red">${w.wrongCount} বার ভুল</span>
-        ${w.subjectName ? `<span class="chip amber">${escapeHtml(w.subjectName)}</span>` : ''}
-        ${w.chapterName ? `<span class="chip green">${escapeHtml(w.chapterName)}</span>` : ''}
-      </div>`;
-    q.options.forEach((opt, oi) => {
-      html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
-        <span class="letter">${LETTERS[oi]}</span>
-        <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
-      </div>`;
-    });
-    html += `<div style="text-align:right;margin-top:6px;">
-      <button class="del-btn" onclick="removeWrong('${q.id}')">এই প্রশ্নটি সরান</button>
-    </div></div>`;
-  });
-
-  return html;
-}
-
-function removeWrong(qid) {
-  data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== qid);
-  saveData(); render();
 }
 
 /* =====================================================
@@ -1041,7 +1356,7 @@ function removeWrong(qid) {
 ===================================================== */
 function renderTrash() {
   let html = topbar('রিসাইকেল বিন', 'home');
-  html += `<div class="info-banner">🗑️ ডিলিট করা জিনিস এখানে ৩০ দিন থাকবে। এরপর স্বয়ংক্রিয়ভাবে মুছে যাবে। প্রয়োজন হলে এখনই ফিরিয়ে আনুন।</div>`;
+  html += `<div class="info-banner">🗑️ ডিলিট করা জিনিস এখানে ৩০ দিন থাকবে। এরপর স্বয়ংক্রিয়ভাবে মুছে যাবে।</div>`;
 
   if (data.trash.length === 0) {
     html += `<div class="empty-state"><span class="emoji">🌿</span>বিন খালি। এখানে কিছু নেই।</div>`;
@@ -1050,7 +1365,7 @@ function renderTrash() {
 
   html += `<button class="btn btn-danger" style="margin-bottom:16px;" onclick="askEmptyTrash()">সব স্থায়ীভাবে মুছে ফেলুন</button>`;
 
-  data.trash.forEach((t, i) => {
+  data.trash.forEach((t) => {
     const daysLeft = Math.ceil((TRASH_TTL_DAYS * 86400000 - (Date.now() - t.deletedAt)) / 86400000);
     const typeLabel = t.type === 'subject' ? 'সাবজেক্ট' : t.type === 'chapter' ? 'অধ্যায়' : 'প্রশ্ন';
     let name = t.type === 'subject' ? t.data.name : t.type === 'chapter' ? t.data.name : t.data.text;
@@ -1062,8 +1377,8 @@ function renderTrash() {
         <div class="trash-meta">${typeLabel} · ডিলিট হয়েছে ${fmtDate(t.deletedAt)} · ${daysLeft} দিন বাকি</div>
       </div>
       <div class="trash-actions">
-        <button class="icon-btn restore" title="ফিরিয়ে আনুন" onclick="restoreFromTrash('${t.id}')">↩️</button>
-        <button class="icon-btn kill" title="স্থায়ীভাবে মুছুন" onclick="killTrashItem('${t.id}')">✕</button>
+        <button class="icon-btn restore" onclick="restoreFromTrash('${t.id}')">↩️</button>
+        <button class="icon-btn kill" onclick="killTrashItem('${t.id}')">✕</button>
       </div>
     </div>`;
   });
@@ -1074,20 +1389,18 @@ function renderTrash() {
 function restoreFromTrash(tid) {
   const item = data.trash.find(t => t.id === tid);
   if (!item) return;
-
   if (item.type === 'subject') {
     data.subjects.push(item.data);
   } else if (item.type === 'chapter') {
     const subj = findSubject(item.parentId);
-    if (!subj) { alert('মূল সাবজেক্টটি খুঁজে পাওয়া যাচ্ছে না। আগে সাবজেক্টটি ফিরিয়ে আনুন।'); return; }
+    if (!subj) { alert('মূল সাবজেক্টটি পাওয়া যাচ্ছে না।'); return; }
     subj.chapters.push(item.data);
   } else if (item.type === 'question') {
     const subj = findSubject(item.subjectId);
     const chap = findChapter(subj, item.chapterId);
-    if (!chap) { alert('মূল অধ্যায়টি খুঁজে পাওয়া যাচ্ছে না। আগে অধ্যায়টি ফিরিয়ে আনুন।'); return; }
+    if (!chap) { alert('মূল অধ্যায়টি পাওয়া যাচ্ছে না।'); return; }
     chap.questions.push(item.data);
   }
-
   data.trash = data.trash.filter(t => t.id !== tid);
   saveData(); render();
 }
@@ -1098,14 +1411,17 @@ function killTrashItem(tid) {
 }
 
 /* =====================================================
-   BACKUP / RESTORE
+   BACKUP / RESTORE (with media)
 ===================================================== */
 function renderBackup() {
   let html = topbar('ব্যাকআপ ও রিস্টোর', 'home');
-  html += `<div class="info-banner">💡 আপনার সমস্ত ডেটা এই ফোনের ব্রাউজারে জমা আছে। অন্য ফোনে নিতে চাইলে ব্যাকআপ ডাউনলোড করে সেখানে পাঠিয়ে রিস্টোর করুন।</div>`;
+  html += `<div class="info-banner">
+    💡 ব্যাকআপে আপনার সব প্রশ্ন, নোট, <b>ছবি ও PDF</b> সবকিছু থাকবে। অন্য ফোনে নিতে ব্যাকআপ ডাউনলোড করে সেখানে পাঠিয়ে রিস্টোর করুন।
+    <br><br>⚠️ ছবি থাকলে ব্যাকআপ ফাইল বড় হতে পারে — সম্পূর্ণ হতে ১-২ মিনিট লাগতে পারে।
+  </div>`;
 
   html += `<div class="section-label">ব্যাকআপ নিন</div>`;
-  html += `<button class="btn btn-primary" onclick="exportBackup()">⬇️ ব্যাকআপ ডাউনলোড করুন (.json)</button>`;
+  html += `<button class="btn btn-primary" onclick="exportBackup()">⬇️ ব্যাকআপ ডাউনলোড করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px 20px;">এই ফাইলটি Google Drive বা WhatsApp-এ সেভ রাখুন।</div>`;
 
   html += `<div class="section-label">রিস্টোর করুন</div>`;
@@ -1113,24 +1429,54 @@ function renderBackup() {
   html += `<button class="btn btn-success" onclick="importBackup()">⬆️ ব্যাকআপ থেকে রিস্টোর করুন</button>`;
   html += `<div class="row-sub" style="margin:-4px 4px 20px;">⚠️ রিস্টোর করলে বর্তমান সব ডেটা প্রতিস্থাপিত হবে।</div>`;
 
+  html += `<div class="section-label">স্টোরেজ তথ্য</div>`;
+  html += `<div class="card"><div class="row-sub">📷 সংরক্ষিত ছবি/PDF: <b>${data.mediaMeta.length}</b> টি</div></div>`;
+
   html += `<div class="section-label">বিপজ্জনক এলাকা</div>`;
   html += `<button class="btn btn-danger" onclick="askResetAll()">🔄 সবকিছু রিসেট করুন</button>`;
-  html += `<div class="row-sub" style="margin:-4px 4px;">এটি সব প্রশ্ন, নোট, রেকর্ড মুছে ফেলবে। আগে ব্যাকআপ নিন।</div>`;
+  html += `<div class="row-sub" style="margin:-4px 4px;">এটি সব প্রশ্ন, ছবি, নোট, রেকর্ড মুছে ফেলবে।</div>`;
 
   return html;
 }
 
-function exportBackup() {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  const ts = new Date().toISOString().slice(0, 10);
-  a.href = url;
-  a.download = `exam-prep-backup-${ts}.json`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+async function exportBackup() {
+  try {
+    alert('⏳ ব্যাকআপ তৈরি হচ্ছে... ছবি থাকলে কিছু সময় লাগতে পারে।');
+    const allMedia = await idbGetAll();
+    const mediaData = [];
+    for (const m of allMedia) {
+      if (!m.blob) continue;
+      const base64 = await blobToBase64(m.blob);
+      mediaData.push({
+        id: m.id,
+        chapterId: m.chapterId,
+        type: m.type,
+        name: m.name,
+        createdAt: m.createdAt,
+        data: base64
+      });
+    }
+    const backup = {
+      subjects: data.subjects,
+      wrongQuestions: data.wrongQuestions,
+      trash: data.trash,
+      mediaMeta: data.mediaMeta,
+      media: mediaData,
+      exportedAt: Date.now()
+    };
+    const blob = new Blob([JSON.stringify(backup)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const ts = new Date().toISOString().slice(0, 10);
+    a.href = url;
+    a.download = `exam-prep-backup-${ts}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (e) {
+    alert('❌ ব্যাকআপ তৈরি করা যায়নি: ' + e.message);
+  }
 }
 
 function importBackup() {
@@ -1138,27 +1484,50 @@ function importBackup() {
   const file = fileInput.files[0];
   if (!file) { alert('প্রথমে একটি ব্যাকআপ ফাইল নির্বাচন করুন।'); return; }
   const reader = new FileReader();
-  reader.onload = (e) => {
+  reader.onload = async (e) => {
     try {
       const parsed = JSON.parse(e.target.result);
       if (!parsed.subjects || !Array.isArray(parsed.subjects)) throw new Error('ভুল ফাইল');
       if (!confirm('বর্তমান সব ডেটা প্রতিস্থাপিত হবে। নিশ্চিত?')) return;
-      parsed.wrongQuestions = parsed.wrongQuestions || [];
-      parsed.trash = parsed.trash || [];
-      data = parsed;
+
+      alert('⏳ রিস্টোর হচ্ছে... ছবি থাকলে কিছু সময় লাগবে।');
+
+      // Save media to IndexedDB
+      await idbClearAll();
+      if (parsed.media && Array.isArray(parsed.media)) {
+        for (const m of parsed.media) {
+          if (!m.data) continue;
+          const blob = await base64ToBlob(m.data);
+          await idbSaveMedia({
+            id: m.id,
+            chapterId: m.chapterId,
+            type: m.type,
+            name: m.name,
+            blob,
+            createdAt: m.createdAt || Date.now()
+          });
+        }
+      }
+
+      data = {
+        subjects: parsed.subjects,
+        wrongQuestions: parsed.wrongQuestions || [],
+        trash: parsed.trash || [],
+        mediaMeta: parsed.mediaMeta || (parsed.media ? parsed.media.map(m => ({ id: m.id, chapterId: m.chapterId, type: m.type, name: m.name, createdAt: m.createdAt })) : [])
+      };
       memoryFallback = data;
       saveData();
       alert('✅ সফলভাবে রিস্টোর হয়েছে।');
       goto('home');
     } catch (err) {
-      alert('❌ ফাইলটি পড়া যাচ্ছে না। সঠিক ব্যাকআপ ফাইল নির্বাচন করুন।');
+      alert('❌ রিস্টোর করা যায়নি: ' + err.message);
     }
   };
   reader.readAsText(file);
 }
 
 /* =====================================================
-   MODALS & DELETIONS
+   MODALS
 ===================================================== */
 function renderModal() {
   const m = state.modal;
@@ -1180,11 +1549,19 @@ function showModal(title, body, okText, onOk, danger) {
 function askDeleteSubject(id) {
   const s = findSubject(id);
   showModal('সাবজেক্ট মুছবেন?',
-    `"${escapeHtml(s.name)}" এবং এর সব অধ্যায় ও প্রশ্ন ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
+    `"${escapeHtml(s.name)}" এবং এর সব অধ্যায়, প্রশ্ন, ছবি ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
     'মুছে ফেলুন', `reallyDeleteSubject('${id}')`, true);
 }
-function reallyDeleteSubject(id) {
+async function reallyDeleteSubject(id) {
   const s = findSubject(id);
+  // Delete all media of this subject's chapters
+  for (const c of s.chapters) {
+    const mediaList = data.mediaMeta.filter(m => m.chapterId === c.id);
+    for (const m of mediaList) {
+      try { await idbDeleteMedia(m.id); } catch (e) {}
+    }
+  }
+  data.mediaMeta = data.mediaMeta.filter(m => !s.chapters.some(c => c.id === m.chapterId));
   data.trash.push({ id: uid(), type: 'subject', data: s, deletedAt: Date.now() });
   data.subjects = data.subjects.filter(x => x.id !== id);
   closeModal(); saveData(); render();
@@ -1194,12 +1571,18 @@ function askDeleteChapter(id) {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, id);
   showModal('অধ্যায় মুছবেন?',
-    `"${escapeHtml(c.name)}" এবং এর ${c.questions.length}টি প্রশ্ন ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
+    `"${escapeHtml(c.name)}" এবং এর ${c.questions.length}টি প্রশ্ন ও ছবি ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
     'মুছে ফেলুন', `reallyDeleteChapter('${id}')`, true);
 }
-function reallyDeleteChapter(id) {
+async function reallyDeleteChapter(id) {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, id);
+  // Delete media
+  const mediaList = data.mediaMeta.filter(m => m.chapterId === id);
+  for (const m of mediaList) {
+    try { await idbDeleteMedia(m.id); } catch (e) {}
+  }
+  data.mediaMeta = data.mediaMeta.filter(m => m.chapterId !== id);
   data.trash.push({ id: uid(), type: 'chapter', data: c, parentId: s.id, deletedAt: Date.now() });
   s.chapters = s.chapters.filter(x => x.id !== id);
   closeModal(); saveData(); render();
@@ -1219,16 +1602,8 @@ function reallyDeleteQuestion(qid) {
   const q = c.questions.find(x => x.id === qid);
   data.trash.push({ id: uid(), type: 'question', data: q, subjectId: s.id, chapterId: c.id, deletedAt: Date.now() });
   c.questions = c.questions.filter(x => x.id !== qid);
-  closeModal(); saveData(); render();
-}
-
-function askClearWrong() {
-  showModal('সব ভুল প্রশ্ন মুছবেন?',
-    'সব ভুল প্রশ্নের তালিকা খালি হয়ে যাবে। প্রশ্ন ব্যাংক অক্ষত থাকবে।',
-    'সব মুছুন', 'reallyClearWrong()', true);
-}
-function reallyClearWrong() {
-  data.wrongQuestions = [];
+  // Also remove from wrongQuestions if present
+  data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== qid);
   closeModal(); saveData(); render();
 }
 
@@ -1244,10 +1619,11 @@ function reallyEmptyTrash() {
 
 function askResetAll() {
   showModal('সবকিছু রিসেট করবেন?',
-    'সব সাবজেক্ট, অধ্যায়, প্রশ্ন, ভুল প্রশ্নের তালিকা, রিসাইকেল বিন — সব মুছে যাবে। এটি ফেরানো যাবে না। আগে ব্যাকআপ নিয়েছেন?',
+    'সব সাবজেক্ট, অধ্যায়, প্রশ্ন, ছবি, ভুল প্রশ্নের তালিকা — সব মুছে যাবে। আগে ব্যাকআপ নিয়েছেন?',
     'হ্যাঁ, সব মুছে ফেলুন', 'reallyResetAll()', true);
 }
-function reallyResetAll() {
+async function reallyResetAll() {
+  try { await idbClearAll(); } catch (e) {}
   data = defaultData();
   memoryFallback = data;
   closeModal(); saveData(); goto('home');
