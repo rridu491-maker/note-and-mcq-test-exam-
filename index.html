@@ -45,9 +45,7 @@
   button { font-family: inherit; cursor: pointer; }
   input, textarea { font-family: inherit; }
 
-  .hero {
-    padding: 4px 4px 22px;
-  }
+  .hero { padding: 4px 4px 22px; }
   .hero h1 {
     font-family: 'Tiro Bangla', Georgia, serif;
     font-size: 26px; font-weight: 700; margin: 0 0 6px;
@@ -262,6 +260,13 @@
     padding: 12px 14px; border-radius: 10px; font-size: 13px;
     margin-bottom: 12px; border: 1px solid #c7d2fe; line-height: 1.6;
   }
+  .format-box {
+    background: #fff; padding: 12px; border-radius: 8px;
+    font-size: 12.5px; white-space: pre-wrap;
+    font-family: 'Courier New', monospace; line-height: 1.7;
+    border: 1px solid #e2e8f0; margin-top: 8px;
+    color: var(--ink); overflow-x: auto;
+  }
 
   .trash-item {
     display: flex; align-items: center; gap: 12px;
@@ -386,15 +391,17 @@ const state = {
   screen: 'home',
   subjectId: null,
   chapterId: null,
-  mode: null,          // 'chapter' | 'final' | 'wrong'
+  mode: null,
   quizQuestions: [],
   quizIndex: 0,
   quizScore: 0,
   quizAnswered: null,
-  quizWrongIds: [],     // question ids wrong in this quiz session
+  quizWrongIds: [],
   addingSubject: false,
   addingChapter: false,
   noteError: null,
+  bulkPreview: null,
+  bulkError: null,
   modal: null
 };
 
@@ -415,6 +422,7 @@ function render() {
     subject: renderSubject,
     chapter: renderChapter,
     notes: renderNotes,
+    bulkImport: renderBulkImport,
     quiz: renderQuiz,
     result: renderResult,
     wrongList: renderWrongList,
@@ -440,7 +448,6 @@ function renderHome() {
     <p>প্রশ্ন যোগ করুন · প্র্যাকটিস করুন · ভুল থেকে শিখুন</p>
   </div>`;
 
-  // Subjects
   html += `<div class="section-label">সাবজেক্ট সমূহ</div>`;
   if (data.subjects.length === 0) {
     html += `<div class="empty-state"><span class="emoji">📚</span>এখনো কোনো সাবজেক্ট নেই।<br>নিচে থেকে প্রথম সাবজেক্ট যোগ করুন।</div>`;
@@ -468,7 +475,6 @@ function renderHome() {
     html += `<button class="btn btn-outline" onclick="state.addingSubject=true;render();">+ নতুন সাবজেক্ট</button>`;
   }
 
-  // Quick actions
   html += `<div class="section-label">দ্রুত অ্যাকশন</div>`;
   const wrongCount = data.wrongQuestions.length;
   html += `<div class="card tappable" onclick="goto('wrongList')">
@@ -611,7 +617,11 @@ function renderNotes() {
   if (!c) { goto('chapter'); return ''; }
 
   let html = topbar('নোট', 'chapter');
-  html += `<div class="section-label">নতুন প্রশ্ন যোগ করুন</div>`;
+
+  // Bulk import button at top
+  html += `<button class="btn btn-success" style="margin-bottom:16px;" onclick="goto('bulkImport')">📥 একসাথে অনেক প্রশ্ন যোগ করুন (বাল্ক ইমপোর্ট)</button>`;
+
+  html += `<div class="section-label">অথবা একটি একটি করে যোগ করুন</div>`;
 
   if (state.noteError) html += `<div class="note-banner">${state.noteError}</div>`;
 
@@ -661,6 +671,153 @@ function saveNewQuestion() {
   const c = findChapter(s, state.chapterId);
   c.questions.push({ id: uid(), text, options: opts, correct });
   saveData(); render();
+}
+
+/* =====================================================
+   BULK IMPORT
+===================================================== */
+function parseBulkText(text) {
+  const blocks = text.trim().split(/\n\s*\n/);
+  const questions = [];
+  const errors = [];
+
+  blocks.forEach((block, bi) => {
+    const lines = block.split('\n').map(l => l.trim()).filter(l => l);
+    if (lines.length === 0) return;
+
+    const optRegex = /^([কখগঘ]|[aAbBcCdD])\s*[\).\]:।]\s*/;
+    const optLines = lines.filter(l => optRegex.test(l));
+
+    if (optLines.length !== 4) {
+      errors.push(`ব্লক ${bi + 1}: ৪টি অপশন পাওয়া যায়নি (${optLines.length}টি পাওয়া গেছে)`);
+      return;
+    }
+
+    const qLines = lines.filter(l =>
+      !optLines.includes(l) &&
+      !/^উত্তর\s*[:：]/i.test(l) &&
+      !/^answer\s*[:：]/i.test(l)
+    );
+    if (qLines.length === 0) {
+      errors.push(`ব্লক ${bi + 1}: প্রশ্নের টেক্সট পাওয়া যায়নি`);
+      return;
+    }
+    const qText = qLines.join(' ').replace(/^প্রশ্ন\s*[:：]?\s*/, '').trim();
+
+    const options = optLines.map(l => l.replace(optRegex, '').trim());
+
+    let correct = -1;
+
+    // Method 1: * marker
+    optLines.forEach((l, i) => {
+      if (l.includes('*')) {
+        if (correct === -1) correct = i;
+        options[i] = options[i].replace(/\*/g, '').trim();
+      }
+    });
+
+    // Method 2: "উত্তর: ক" line
+    if (correct === -1) {
+      const answerLine = lines.find(l => /^(উত্তর|answer)\s*[:：]/i.test(l));
+      if (answerLine) {
+        const ans = answerLine.replace(/^(উত্তর|answer)\s*[:：]\s*/i, '').trim();
+        const letterMap = { 'ক': 0, 'খ': 1, 'গ': 2, 'ঘ': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+        const letter = ans.charAt(0);
+        if (letterMap[letter] !== undefined) correct = letterMap[letter];
+        else if (/^[1-4]/.test(ans)) correct = parseInt(ans) - 1;
+        else {
+          const idx = options.findIndex(o => o.toLowerCase() === ans.toLowerCase());
+          if (idx !== -1) correct = idx;
+        }
+      }
+    }
+
+    if (correct === -1 || correct > 3) {
+      errors.push(`ব্লক ${bi + 1}: সঠিক উত্তর চিহ্নিত করা যায়নি (অপশনের শেষে * দিন বা "উত্তর: ক" লিখুন)`);
+      return;
+    }
+
+    questions.push({ id: uid(), text: qText, options, correct });
+  });
+
+  return { questions, errors };
+}
+
+function renderBulkImport() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  if (!c) { goto('notes'); return ''; }
+
+  let html = topbar('বাল্ক ইমপোর্ট', 'notes');
+
+  html += `<div class="info-banner">
+    <b>📌 ফরম্যাট:</b> প্রতিটি প্রশ্নের পরে একটি খালি লাইন দিন। সঠিক উত্তরের শেষে <b>*</b> চিহ্ন দিন।
+    <div class="format-box">বাংলাদেশের রাজধানী কী?
+ক) চট্টগ্রাম
+খ) ঢাকা *
+গ) খুলনা
+ঘ) রাজশাহী
+
+স্বাধীনতার বছর?
+ক) ১৯৭০
+খ) ১৯৭১ *
+গ) ১৯৭২
+ঘ) ১৯৬৯</div>
+  </div>`;
+
+  if (state.bulkError) html += `<div class="note-banner">${state.bulkError}</div>`;
+
+  html += `<textarea id="bulkText" rows="12" placeholder="এখানে সব প্রশ্ন একসাথে পেস্ট করুন..."></textarea>`;
+  html += `<button class="btn btn-primary" onclick="previewBulk()">👁️ প্রিভিউ দেখুন</button>`;
+  html += `<button class="btn btn-quiet" onclick="state.bulkPreview=null;state.bulkError=null;goto('notes')">বাতিল</button>`;
+
+  if (state.bulkPreview && state.bulkPreview.questions.length > 0) {
+    html += `<div class="section-label">প্রিভিউ (${state.bulkPreview.questions.length}টি সফলভাবে পার্স হয়েছে)</div>`;
+
+    if (state.bulkPreview.errors.length > 0) {
+      html += `<div class="note-banner">⚠️ ${state.bulkPreview.errors.length}টি ব্লকে সমস্যা:<br>${state.bulkPreview.errors.map(e => '• ' + e).join('<br>')}</div>`;
+    }
+
+    html += `<button class="btn btn-success" onclick="confirmBulkImport()">✅ ${state.bulkPreview.questions.length}টি প্রশ্ন যোগ করুন</button>`;
+
+    state.bulkPreview.questions.forEach((q, i) => {
+      html += `<div class="qa-item">
+        <div class="qa-q">${i + 1}. ${escapeHtml(q.text)}</div>`;
+      q.options.forEach((opt, oi) => {
+        html += `<div class="qa-opt ${oi === q.correct ? 'is-correct' : ''}">
+          <span class="letter">${LETTERS[oi]}</span>
+          <span>${escapeHtml(opt)}${oi === q.correct ? ' ✓' : ''}</span>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+  }
+
+  return html;
+}
+
+function previewBulk() {
+  const text = document.getElementById('bulkText').value;
+  if (!text.trim()) { state.bulkError = 'প্রথমে কিছু পেস্ট করুন।'; render(); return; }
+  const result = parseBulkText(text);
+  state.bulkPreview = result;
+  state.bulkError = result.questions.length === 0
+    ? '❌ কোনো প্রশ্ন পার্স করা যায়নি। ফরম্যাট ঠিকভাবে অনুসরণ করুন।'
+    : null;
+  render();
+  if (result.questions.length > 0) window.scrollTo(0, 300);
+}
+
+function confirmBulkImport() {
+  const s = findSubject(state.subjectId);
+  const c = findChapter(s, state.chapterId);
+  const count = state.bulkPreview.questions.length;
+  state.bulkPreview.questions.forEach(q => c.questions.push(q));
+  saveData();
+  state.bulkPreview = null;
+  state.bulkError = null;
+  alert(`✅ ${count}টি প্রশ্ন সফলভাবে যোগ হয়েছে!`);
+  goto('notes');
 }
 
 /* =====================================================
@@ -748,13 +905,11 @@ function answerQuiz(oi) {
 
   if (oi === q.correct) {
     state.quizScore++;
-    // correct in wrong-practice → remove from wrong list
     if (state.mode === 'wrong') {
       data.wrongQuestions = data.wrongQuestions.filter(w => w.question.id !== q.id);
       saveData();
     }
   } else {
-    // wrong → track
     state.quizWrongIds.push(q.id);
     addToWrongList(q);
   }
@@ -762,7 +917,6 @@ function answerQuiz(oi) {
 }
 
 function addToWrongList(q) {
-  // find subject/chapter info
   let subjName = '', chapName = '';
   for (const s of data.subjects) {
     for (const c of s.chapters) {
@@ -1004,7 +1158,7 @@ function importBackup() {
 }
 
 /* =====================================================
-   MODALS & DELETIONS (soft → trash)
+   MODALS & DELETIONS
 ===================================================== */
 function renderModal() {
   const m = state.modal;
@@ -1040,7 +1194,7 @@ function askDeleteChapter(id) {
   const s = findSubject(state.subjectId);
   const c = findChapter(s, id);
   showModal('অধ্যায় মুছবেন?',
-    `"${escapeHtml(c.name)}" এবং এর ${c.questions.length}টি প্রশ্ন ৩০ দিনের জন্য রিসিকেল বিনে যাবে।`,
+    `"${escapeHtml(c.name)}" এবং এর ${c.questions.length}টি প্রশ্ন ৩০ দিনের জন্য রিসাইকেল বিনে যাবে।`,
     'মুছে ফেলুন', `reallyDeleteChapter('${id}')`, true);
 }
 function reallyDeleteChapter(id) {
@@ -1105,4 +1259,4 @@ function reallyResetAll() {
 render();
 </script>
 </body>
-  </html>
+ </html>
